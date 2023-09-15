@@ -4,8 +4,11 @@
 @import 'colors';
 @import 'responsive';
 @import 'typos';
+@import 'utils';
 @import 'commons';
 @import 'header';
+@import 'footer';
+@import 'home';
 
 * {
   box-sizing: border-box;
@@ -26,6 +29,7 @@ body {
 
 main {
   flex: 1;
+  margin: 5rem 0;
 }
 
 img {
@@ -36,5 +40,10 @@ img {
   padding: 0 2rem;
   max-width: 1300px;
   width: 100%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  margin: 5rem 0;
 }

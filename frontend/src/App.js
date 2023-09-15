@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="page">
         <Header />
-        <main>
+        <main className="container">
             <Outlet />
         </main>
         <Footer />

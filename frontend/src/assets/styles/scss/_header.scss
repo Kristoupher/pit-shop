@@ -14,6 +14,7 @@
       }
     }
     & > div {
+      //Menu mobile
       display: flex;
       align-items: center;
       //Menu burger
@@ -110,6 +111,7 @@
       }
     }
   }
+  //Menu mobile
   .nav-mobile {
     position: absolute;
     top: 0;
@@ -157,6 +159,57 @@
       a {
         display: block;
         margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+//  Menu desktop
+  .nav-desktop {
+    display: none;
+    @include lg {
+      display: block;
+    }
+    margin-top: 4rem;
+    text-align: center;
+    ul {
+      list-style: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      background-color: $lightgrey;
+      padding: 1.5rem 3rem;
+      border-radius: 1rem;
+      li {
+        position: relative;
+        &::after {
+          content: '|';
+          color: $grey;
+          position: absolute;
+          right: -1.8rem;
+          top: 0;
+        }
+        &:last-child {
+          &::after {
+            content: '';
+          }
+        }
+        a {
+          color: $text;
+          text-decoration: none;
+          font-size: 1.8rem;
+          @include xl {
+            font-size: 2rem;
+          }
+          font-weight: 600;
+          transition: all .3s ease-in-out;
+            &:hover, &.active {
+                color: $primary;
+            }
+            &:active {
+              color: darken($primary, 30%);
+            }
+        }
       }
     }
   }

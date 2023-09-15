@@ -5,6 +5,10 @@ import Logo from "../assets/images/logo.svg";
 
 const Header = () => {
     const [toggle, setToggle] = useState(false);
+    const body = document.querySelector('body');
+    // Applique un overflow hidden quand le menu mobile est ouvert pour éviter le scroll
+    toggle ? body.style.overflow = 'hidden' : body.style.overflow = 'auto';
+
     return (
         <header className="container header-nav">
             <div className="navbar">
@@ -52,6 +56,28 @@ const Header = () => {
                     <Link to="/login" className="btn btn-primary">Connexion</Link>'
                 </div>
             {/*    Fin du menu pour la version mobile*/}
+            </nav>
+            <nav className="nav-desktop">
+                <ul>
+                    <li>
+                        <Link to='/men'>Homme</Link>
+                    </li>
+                    <li>
+                        <Link to='/women'>Femme</Link>
+                    </li>
+                    <li>
+                        <Link to='/kid'>Enfant</Link>
+                    </li>
+                    <li>
+                        <Link to='/caps'>Casquettes et chapeaux</Link>
+                    </li>
+                    <li>
+                        <Link to='/accessories'>Accessoires</Link>
+                    </li>
+                    <li>
+                        <Link to='/collection'>Objets de collection</Link>
+                    </li>
+                </ul>
             </nav>
         </header>
     );
