@@ -17,3 +17,10 @@ h2 {
         font-size: 4.5rem;
     }
 }
+
+p, a , li, input {
+    font-size: 1.6rem;
+    @include lg {
+        font-size: 1.8rem;
+    }
+}

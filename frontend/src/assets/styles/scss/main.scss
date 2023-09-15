@@ -4,6 +4,8 @@
 @import 'colors';
 @import 'responsive';
 @import 'typos';
+@import 'commons';
+@import 'header';
 
 * {
   box-sizing: border-box;
@@ -28,4 +30,11 @@ main {
 
 img {
   max-width: 100%;
+}
+
+.container {
+  padding: 0 2rem;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
 }
