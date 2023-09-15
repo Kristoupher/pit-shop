@@ -1,7 +1,17 @@
-function App() {
+import { Outlet} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>Le Pit Shop</h1>
+    <div className="page">
+        <Header />
+        <main>
+            <Outlet />
+        </main>
+        <Footer />
+        <ToastContainer />
     </div>
   );
 }
