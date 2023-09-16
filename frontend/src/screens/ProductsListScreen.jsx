@@ -3,12 +3,17 @@ import { useState } from "react";
 import formatString from "../utils/utils.js";
 import BannerCategory from "../components/BannerCategory";
 import Image from '../assets/images/banner-contact.jpg';
-import { SlidersHorizontal, XCircle,  } from 'lucide-react';
+import {ChevronRight, SlidersHorizontal} from 'lucide-react';
 import FiltersModal from "../components/FiltersModal";
 import ProductCard from "../components/ProductCard";
 import Mercedes from '../assets/images/mercedes.svg';
+import Filters from "../components/Filters";
 
 const ProductsListScreen = () => {
+    const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(true);
+    const [accordionDriversOpen, setAccordionDriversOpen] = useState(true);
+    const [accordionTypesOpen, setAccordionTypesOpen] = useState(true);
+    const [accordionSizesOpen, setAccordionSizesOpen] = useState(true);
     const [filterOpen, setFilterOpen] = useState(false);
     let {category} = useParams();
     category = formatString(category);
@@ -33,8 +38,21 @@ const ProductsListScreen = () => {
             </div>
             <div className="products-container">
                 <div className="section products">
-                    <div></div>
                     <div>
+                        <Filters button={false} />
+                    </div>
+                    <div>
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
+                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
                         <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
                     </div>
                 </div>

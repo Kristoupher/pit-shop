@@ -1,4 +1,5 @@
 // sm : small <= 576px
+//smd : small desktop <= 658px
 // md : medium <= 768px
 // lg : large <= 992px
 // xl : extra large <= 1200px
@@ -6,6 +7,12 @@
 
 @mixin sm {
   @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin smd {
+  @media (min-width: 658px) {
     @content;
   }
 }
