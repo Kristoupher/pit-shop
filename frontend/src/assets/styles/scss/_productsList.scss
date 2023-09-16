@@ -1,0 +1,152 @@
+.products-list {
+  .banner-category {
+    border-radius: 2rem;
+    overflow: hidden;
+    height: 40rem;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(#000, .5);
+    }
+    h1 {
+      position: absolute;
+      bottom: 2rem;
+      right: 0;
+      color: $white;
+      background-color: $primary;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      padding: 1rem 4rem 1rem 2rem;
+    }
+  }
+  .filters-container {
+    position: relative;
+    //Modal pour filter en mobile
+    .mobile-filters {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50rem);
+      background-color: $lightgrey;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 3px 3px 10px rgba(#000, .3);
+      z-index: -5;
+      width: 90%;
+      opacity: 0;
+      transition: all .4s ease-in-out;
+      &.active {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        z-index: 10;
+      }
+      @include xl {
+        display: none;
+      }
+      span {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        cursor: pointer;
+        transition: all .1s ease-in-out;
+        & svg:active {
+          stroke: $danger;
+        }
+      }
+      & > p {
+        text-align: center;
+        font-weight: 600;
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .cols-2-80 {
+    & > div:first-child {
+      display: none;
+      @include xl {
+        width: 20%;
+      }
+    }
+  }
+
+  // Select et bouton de filtres
+  .filters {
+    & div:last-child {
+      display: inline-grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 0 auto;
+      select {
+        padding: 1rem;
+        background-color: $white;
+        outline: none;
+        border: 1px solid $text;
+        border-radius: 1rem;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: $white;
+        outline: none;
+        border: 1px solid $text;
+        border-radius: 1rem;
+        cursor: pointer;
+        transition: all .1s ease-in-out;
+        &:active {
+          background-color: darken($white, 10%);
+        }
+      }
+    }
+  }
+}
+
+//Card produit
+
+.product-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgba(#000, .1);
+  .product-image {
+    background-color: $lightgrey;
+    text-align: center;
+    img {
+      width: 90%;
+      max-width: 30rem;
+    }
+  }
+  .product-content {
+    & > p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      @include lg {
+        font-size: 2rem;
+      }
+    }
+    .product-price {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      padding: 1rem 1.5rem;
+      p {
+        text-align: center;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        background-color: $lightgrey;
+        margin: 0 auto;
+      }
+    }
+  }
+}

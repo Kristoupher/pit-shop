@@ -19,7 +19,7 @@ h2 {
     margin-bottom: 4rem;
 }
 
-p, a , li, input {
+p, a , li, input, select, option, button, label {
     font-size: 1.6rem;
     @include lg {
         font-size: 1.8rem;

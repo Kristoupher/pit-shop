@@ -7,6 +7,7 @@
   font-weight: 500;
   text-align: center;
   border: 2px solid transparent;
+  cursor: pointer;
   @include lg {
     font-size: 2rem;
   }
@@ -45,6 +46,20 @@
       background-color: $danger;
       border-color: $danger;
       color: $white;
+    }
+  }
+  &-success{
+    color: $white;
+    background-color: $success;
+    border-color: $success;
+    transition: all .3s ease-in-out;
+    &:hover {
+      background-color: darken($success, 15%);
+      border-color: darken($success, 15%);
+    }
+    &:active {
+      background-color: darken($success, 30%);
+        border-color: darken($success, 30%);
     }
   }
 }
@@ -158,10 +173,85 @@
   }
 }
 
+.cols-2-80 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  div:first-child {
+    width: 20%;
+  }
+  div:last-child {
+    width: 80%;
+  }
+}
+
 .cols-3 {
   @include lg {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
+  }
+}
+
+//Accordéon
+
+.accordion {
+  > p {
+    display: flex;
+    padding: 1rem;
+    font-weight: 600;
+    justify-content: space-between;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto 2rem;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+    svg {
+      transition: all .3s ease-in-out;
+    }
+    &:hover, &.active {
+      background-color: $text;
+      color: $white;
+      svg {
+        stroke: $white;
+      }
+    }
+    &.active {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &-content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .3s;
+    &.active {
+      max-height: 100rem;
+      padding: 1rem;
+    }
+    .input-group {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      input[type="checkbox"] {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+  .btn-container {
+    text-align: center;
+    button {
+      cursor: pointer;
+    }
   }
 }
