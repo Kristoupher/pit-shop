@@ -19,22 +19,22 @@ const Footer = () => {
                                     <Link to="/">Accueil</Link>
                                 </li>
                                 <li>
-                                    <Link to="/men">Homme</Link>
+                                    <Link to="products/category/homme">Homme</Link>
                                 </li>
                                 <li>
-                                    <Link to="/women">Femme</Link>
+                                    <Link to="products/category/femme">Femme</Link>
                                 </li>
                                 <li>
-                                    <Link to="/kid">Enfant</Link>
+                                    <Link to="products/category/enfant">Enfant</Link>
                                 </li>
                                 <li>
-                                    <Link to="/caps">Casquettes et chapeaux</Link>
+                                    <Link to="products/category/casquettes-et-chapeaux">Casquettes et chapeaux</Link>
                                 </li>
                                 <li>
-                                    <Link to="/accessories">Accessoires</Link>
+                                    <Link to="products/category/accessoires">Accessoires</Link>
                                 </li>
                                 <li>
-                                    <Link to="/collection">Objets de collection</Link>
+                                    <Link to="products/category/objets-de-collection">Objets de collection</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
             <div className="bottom">
                 <div className="container">
-                    <p className="center">© {year} - Création et développement : <Link to="http://kristopher-arregui.fr" rel="noreferrer noopener" target="_blank">Kristopher Arregui</Link></p>
+                    <p>© {year} - Création et développement : <Link to="http://kristopher-arregui.fr" rel="noreferrer noopener" target="_blank">Kristopher Arregui</Link></p>
                 </div>
             </div>
         </footer>

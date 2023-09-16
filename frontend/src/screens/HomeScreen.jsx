@@ -16,7 +16,7 @@ const HomeScreen = () => {
                         course automobile, conçus pour allier style et passion.
                     </p>
                     <div>
-                        <Link className="btn btn-primary" to="#categories">Découvrir</Link>
+                        <Link className="btn btn-primary" to="/products/category/men">Découvrir</Link>
                     </div>
                 </div>
                 <div className="banner-home">
