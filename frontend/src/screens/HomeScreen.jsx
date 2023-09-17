@@ -6,6 +6,12 @@ import Mercedes from "../assets/images/mercedes.svg";
 import Card from "../components/Card";
 
 const HomeScreen = () => {
+    const categoriesSection = document.getElementById('categories');
+
+    const goToCategories = () => {
+        categoriesSection.scrollIntoView({behavior: 'smooth'});
+    }
+
     return (
         <div className="home">
             <div className="banner-card">
@@ -16,7 +22,7 @@ const HomeScreen = () => {
                         course automobile, conçus pour allier style et passion.
                     </p>
                     <div>
-                        <Link className="btn btn-primary" to="/products/category/men">Découvrir</Link>
+                        <button className="btn btn-primary" onClick={goToCategories}>Découvrir</button>
                     </div>
                 </div>
                 <div className="banner-home">
