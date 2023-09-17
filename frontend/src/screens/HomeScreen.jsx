@@ -35,12 +35,12 @@ const HomeScreen = () => {
             <section id="categories">
                 <h2>Catégories</h2>
                 <div className="cols-3">
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" id="1fez4fze" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" id="1fez4fze" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" id="1fez4fze" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" id="1fez4fze" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" id="1fez4fze" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" id="1fez4fze" />
+                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="homme" />
+                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="femme" />
+                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="enfant" />
+                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="casquettes-et-chapeaux" />
+                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="accessoires" />
+                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="objets de collection" />
                 </div>
             </section>
             <section>
