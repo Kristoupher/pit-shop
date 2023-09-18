@@ -1,4 +1,8 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 const ProductCard = ({ image, name, price, id }) => {
+    const [size, setSize] = useState('');
     return (
         <div className="product-card">
             <div className="product-image">
@@ -8,7 +12,7 @@ const ProductCard = ({ image, name, price, id }) => {
                 <p>{name}</p>
                 <div className="product-price">
                     <p>{price}€</p>
-                    <button className="btn btn-primary">Voir le produit</button>
+                    <Link to={`/product/${id}`} className="btn btn-primary">Voir le produit</Link>
                 </div>
             </div>
         </div>

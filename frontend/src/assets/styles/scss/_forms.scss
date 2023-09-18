@@ -1,0 +1,72 @@
+form.form {
+  .form-duo {
+    @include md {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+  .form-group {
+    margin-bottom: 2rem;
+    label {
+      display: none;
+    }
+    input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid transparent;
+      border-radius: 1rem;
+      outline: none;
+      background-color: $lightgrey;
+      transition: all .3s ease-in-out;
+      &:focus {
+        border-color: $primary;
+      }
+    }
+    input[placeholder] {
+      color: $paragraph;
+      font-weight: 500;
+    }
+  }
+  textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    margin-bottom: 4rem;
+    border-radius: 1rem;
+    outline: none;
+    background-color: $lightgrey;
+    border: 2px solid transparent;
+    transition: all .3s ease-in-out;
+    resize: none;
+    &:focus {
+      border-color: $primary;
+    }
+  }
+  textarea[placeholder] {
+    color: $paragraph;
+    font-weight: 500;
+  }
+ .btn-container {
+   text-align: center;
+   button {
+     width: 100%;
+     max-width: 40rem;
+     @include lg {
+       width: auto;
+     }
+   }
+   @include lg {
+     text-align: right;
+   }
+ }
+}
+
+// Page contact width formlaire
+
+.contact {
+  .form {
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

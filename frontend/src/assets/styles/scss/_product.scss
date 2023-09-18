@@ -1,0 +1,92 @@
+.product-single {
+  &-content {
+    @include lg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+    }
+    .image {
+      background-color: $lightgrey;
+      border-radius: 1rem;
+      overflow: hidden;
+      aspect-ratio: 4/4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 60rem;
+      margin: 0 auto 2rem;
+      @include lg {
+        margin: 0;
+      }
+      img {
+        width: 90%;
+      }
+    }
+    .content {
+      .description {
+        color: $paragraph;
+      }
+        strong {
+          font-weight: 600;
+          margin: 3rem 0 2rem;
+          display: inline-block;
+          font-size: 1.8rem;
+          @include lg {
+            font-size: 2.2rem;
+          }
+        }
+      .sizes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        div {
+          position: relative;
+          input {
+            display: none;
+          }
+          label {
+            font-size: 1.8rem;
+            font-weight: 600;
+            display: inline-block;
+            border: 2px solid $text;
+            cursor: pointer;
+            padding: 1rem 2rem;
+            width: 7rem;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                color: $primary;
+                border-color: $primary;
+            }
+            @include lg {
+              font-size: 2.2rem;
+            }
+          }
+          input:checked + label {
+            color: $primary;
+            border-color: $primary;
+          }
+        }
+      }
+      form {
+        display: flex;
+        gap: 5rem;
+        select {
+          width: 12rem;
+          text-align: right;
+          background-color: $white;
+          border: 1px solid $text;
+          border-radius: 1rem;
+          font-size: 1.8rem;
+          font-weight: 600;
+          @include lg {
+            font-size: 2.2rem;
+          }
+          option {
+            direction: rtl;
+          }
+        }
+      }
+    }
+  }
+}
