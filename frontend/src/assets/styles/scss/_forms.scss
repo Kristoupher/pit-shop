@@ -70,3 +70,45 @@ form.form {
     margin-right: auto;
   }
 }
+
+.login {
+  p {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    @include lg {
+      font-size: 1.6rem;
+    }
+    a {
+      color: $primary;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+      @include lg {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .form {
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    .link {
+      text-align: center;
+      @include lg {
+        text-align: left;
+      }
+      & > a {
+        color: $primary;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 2rem;
+        @include lg {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
