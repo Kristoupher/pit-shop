@@ -1,0 +1,45 @@
+.account {
+  .head {
+    text-align: center;
+    @include sm {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 2rem;
+      @include sm {
+        margin-bottom: 0;
+      }
+    }
+    a {
+      display: inline-block;
+    }
+  }
+  .infos {
+    p {
+      margin: 0 0 1rem 0;
+      font-weight: 500;
+    }
+    margin-bottom: 5rem;
+  }
+  h2 {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.2rem;
+    @include lg {
+        font-size: 2.5rem;
+      text-align: left;
+    }
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+

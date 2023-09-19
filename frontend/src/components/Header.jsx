@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {Link} from "react-router-dom";
-import { Search, ShoppingCart, Mail } from "lucide-react";
+import { Search, ShoppingCart, Mail, User2 } from "lucide-react";
 import Logo from "../assets/images/logo.svg";
 
 const Header = () => {
@@ -26,6 +26,7 @@ const Header = () => {
                 <div className="navbar-btns-desktop">
                     <Link to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/></Link>
                     <Link to="/contact"><Mail color="#2E2E2E" size={30} strokeWidth={3}/></Link>
+                    <Link to="/account"><User2 color="#2E2E2E" size={30} strokeWidth={3}/></Link>
                     <Link to="/login" className="btn btn-primary">Connexion</Link>
                 </div>
             </div>
