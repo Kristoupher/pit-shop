@@ -164,3 +164,16 @@ form.form {
     }
   }
 }
+
+.shipping {
+  .form {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+    .btn-container {
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}

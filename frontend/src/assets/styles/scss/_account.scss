@@ -35,11 +35,44 @@
 
   .table-responsive {
     overflow-x: auto;
+    width: 100%;
     table {
       border-collapse: collapse;
       width: 100%;
       height: 100%;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      overflow: hidden;
+      a {
+        display: inline-block;
+      }
+      thead {
+        background-color: $lightgrey;
+        th {
+          text-align: center;
+          padding: 2rem 3rem;
+        }
+      }
+      tbody {
+        tr {
+          background-color: $white;
+            &:nth-child(even) {
+                background-color: $lightgrey;
+            }
+          td {
+            padding: 2rem 3rem;
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }
 
+.order {
+  h1 {
+    span {
+      font-family: "Poppins", sans-serif;
+    }
+  }
+}

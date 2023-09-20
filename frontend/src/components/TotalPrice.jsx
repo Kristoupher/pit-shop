@@ -1,4 +1,6 @@
-const TotalPrice = ({totalHt, tva, shipping, totalTtc, count}) => {
+import {Link} from "react-router-dom";
+
+const TotalPrice = ({totalHt, tva, shipping, totalTtc, count, button}) => {
     return (
         <div className="total-price">
             <p className="total">Total de {count} article{count > 1 ? 's' : ''}</p>
@@ -8,9 +10,13 @@ const TotalPrice = ({totalHt, tva, shipping, totalTtc, count}) => {
                 <p>Frais de port : <span>{shipping}€</span></p>
                 <p>Total TTC : <span>{totalTtc}€</span></p>
             </div>
-            <div className="btn-container">
-                <button className="btn btn-primary">Valider le panier</button>
-            </div>
+            {
+                button &&
+                    <div className="btn-container">
+                        <Link to="/cart/shipping" className="btn btn-primary">Valider le panier</Link>
+                    </div>
+            }
+
         </div>
     );
 };

@@ -135,9 +135,111 @@
   }
   .btn-container {
     text-align: center;
-    button {
+    a {
       width: 100%;
+      display: inline-block;
       max-width: 40rem;
+    }
+  }
+}
+
+// Stepper page panier
+
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 50rem;
+  column-gap: 8rem;
+  margin: 0 auto 10rem;
+  @include md {
+    column-gap: 12rem;
+  }
+  & > div {
+    position: relative;
+    &:nth-child(2) {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -202%;
+        transform: translateY(-50%);
+        width: 8.2rem;
+        height: 1rem;
+        background-color: $grey;
+        z-index: -1;
+        @include md {
+          left: -302%;
+          width: 12.2rem;
+        }
+      }
+      &.active {
+        &::before {
+          background-color: $primary;
+        }
+      }
+    }
+    &:last-child {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -202%;
+        transform: translateY(-50%);
+        width: 8.2rem;
+        height: 1rem;
+        background-color: $grey;
+        z-index: -1;
+        @include md {
+          left: -302%;
+          width: 12.2rem;
+        }
+      }
+      &.active {
+        &::before {
+          background-color: $primary;
+        }
+      }
+    }
+    span {
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: $grey;
+      color: $white;
+      &.active {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+    p {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 500;
+      &.active {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.order-confirm {
+  h1, p {
+    text-align: center;
+  }
+  .btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
+    a {
+      display: inline-block;
     }
   }
 }
