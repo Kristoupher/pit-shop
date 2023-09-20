@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import { Trash2 } from "lucide-react";
 
-const CartList = ({img, title, size, price, qty, id}) => {
+const CartList = ({img, title, size, price, qty, id, button}) => {
     return (
         <div className="cart-list-item">
             <div>
@@ -16,12 +16,20 @@ const CartList = ({img, title, size, price, qty, id}) => {
             </div>
             <div>
                 <p className="price">{price}€</p>
-                <select name="qty" id="qty">
-                    <option value={qty} selected>{qty}</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <button><Trash2 size={28} color="#fff"/></button>
+                {
+                    button ? (
+                        <>
+                            <select name="qty" id="qty">
+                                <option value={qty} selected>{qty}</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        <button><Trash2 size={28} color="#fff"/></button>
+                        </>
+                    ) : (
+                        <p className="qty"><strong>Qté : </strong>{qty}</p>
+                    )
+                }
             </div>
         </div>
     );
