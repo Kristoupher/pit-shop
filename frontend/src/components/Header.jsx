@@ -1,13 +1,21 @@
 import { useState } from "react";
 import {Link} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { Search, ShoppingCart, Mail, User2 } from "lucide-react";
+import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
 import Logo from "../assets/images/logo.svg";
+import formatString from "../utils/utils";
 
 const Header = () => {
+    const { category: categoryId } = useParams();
     const [toggle, setToggle] = useState(false);
     const body = document.querySelector('body');
     // Applique un overflow hidden quand le menu mobile est ouvert pour éviter le scroll
     toggle ? body.style.overflow = 'hidden' : body.style.overflow = 'auto';
+
+    //Récupération des catégories
+    const { data: categories } = useGetCategoriesQuery();
+
 
     return (
         <header className="container header-nav">
@@ -32,52 +40,30 @@ const Header = () => {
             </div>
             <nav className={`nav-mobile ${toggle ? 'active' : ''}`}>
                 <ul>
-                    <li>
-                        <Link to="products/category/homme">Homme</Link>
-                    </li>
-                    <li>
-                        <Link to="products/category/femme">Femme</Link>
-                    </li>
-                    <li>
-                        <Link to="products/category/enfant">Enfant</Link>
-                    </li>
-                    <li>
-                        <Link to="products/category/casquettes-et-chapeaux">Casquettes et chapeaux</Link>
-                    </li>
-                    <li>
-                        <Link to="products/category/accessoires">Accessoires</Link>
-                    </li>
-                    <li>
-                        <Link to="products/category/objets-de-collection">Objets de collection</Link>
-                    </li>
+                    {
+                        categories && categories.map((category) => (
+                            <li key={category._id}>
+                                <Link className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`} onClick={() => setToggle(false)}>{formatString(category.name)}</Link>
+                            </li>
+                        ))
+                    }
                 </ul>
                 <div className="nav-btns">
-                    <Link to="/contact" className="btn btn-secondary">Contact</Link>
-                    <Link to="/cart" className="btn btn-tertiary">Panier</Link>
-                    <Link to="/login" className="btn btn-primary">Connexion</Link>'
+                    <Link to="/contact" className="btn btn-secondary" onClick={() => setToggle(false)}>Contact</Link>
+                    <Link to="/cart" className="btn btn-tertiary" onClick={() => setToggle(false)}>Panier</Link>
+                    <Link to="/login" className="btn btn-primary" onClick={() => setToggle(false)}>Connexion</Link>'
                 </div>
             {/*    Fin du menu pour la version mobile*/}
             </nav>
             <nav className="nav-desktop">
                 <ul>
-                    <li>
-                        <Link to='products/category/homme'>Homme</Link>
-                    </li>
-                    <li>
-                        <Link to='products/category/femme'>Femme</Link>
-                    </li>
-                    <li>
-                        <Link to='products/category/enfant'>Enfant</Link>
-                    </li>
-                    <li>
-                        <Link to='products/category/casquettes-et-chapeaux'>Casquettes et chapeaux</Link>
-                    </li>
-                    <li>
-                        <Link to='products/category/accessoires'>Accessoires</Link>
-                    </li>
-                    <li>
-                        <Link to='products/category/objets-de-collection'>Objets de collection</Link>
-                    </li>
+                    {
+                        categories && categories.map((category) => (
+                            <li key={category._id}>
+                                <Link className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
+                            </li>
+                        ))
+                    }
                 </ul>
             </nav>
         </header>

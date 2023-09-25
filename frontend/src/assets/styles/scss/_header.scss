@@ -150,6 +150,9 @@
           &:active, &:hover {
             color: $primary;
           }
+          &.active {
+            color: $primary;
+          }
         }
       }
     }

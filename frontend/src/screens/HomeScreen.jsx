@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
+import Loader from "../components/Loader";
+import { useGetLastProductsQuery} from "../slices/productsApiSlice";
+import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
+import formatString from "../utils/utils";
 import Banner from "../assets/images/home-banner.jpg";
 import HorizontalCard from "../components/HorizontalCard";
-import Mercedes from "../assets/images/mercedes.svg";
 import Card from "../components/Card";
 
 const HomeScreen = () => {
+    //Au clic sur catégories dans la bannière on scroll vers la section catégories
     const categoriesSection = document.getElementById('categories');
 
     const goToCategories = () => {
         categoriesSection.scrollIntoView({behavior: 'smooth'});
     }
+
+    //Récupération des derniers produits
+    const { data, isLoading, error } = useGetLastProductsQuery();
+
+    //Récupération des catégories
+    const { data: categories, isLoading: isLoadingCategories, error: errorCategories } = useGetCategoriesQuery();
 
     return (
         <div className="home">
@@ -31,23 +41,31 @@ const HomeScreen = () => {
             </div>
             <section>
                 <h2>Les derniers produits</h2>
-                <div className="cols-2">
-                    <HorizontalCard image={Mercedes} name="Sweet à capuche Mercedes" price="75,00" id="1fez4fze" />
-                    <HorizontalCard image={Mercedes} name="Sweet à capuche Mercedes" price="75,00" id="1fez4fze" />
-                    <HorizontalCard image={Mercedes} name="Sweet à capuche Mercedes" price="75,00" id="1fez4fze" />
-                    <HorizontalCard image={Mercedes} name="Sweet à capuche Mercedes" price="75,00" id="1fez4fze" />
-                </div>
+                {
+                    isLoading ? <Loader /> : error ? <p>{error}</p> : (
+                        <div className="cols-2">
+                            {
+                                data.map((product) => (
+                                    <HorizontalCard key={product._id} image={product.image} name={product.name} price={product.price} id={product._id} />
+                                ))
+                            }
+                        </div>
+                    )
+                }
             </section>
             <section id="categories">
                 <h2>Catégories</h2>
-                <div className="cols-3">
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="homme" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="femme" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="enfant" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="casquettes-et-chapeaux" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="accessoires" />
-                    <Card image={Mercedes} name="Sweet à capuche Mercedes" category="objets de collection" />
-                </div>
+                {
+                    isLoadingCategories ? <Loader /> : errorCategories ? <p>{errorCategories}</p> : (
+                        <div className="cols-3">
+                            {
+                                categories.map((category) => (
+                                    <Card key={category._id} image={category.image} name={formatString(category.name)} category={category._id}  />
+                                ))
+                            }
+                        </div>
+                    )
+                }
             </section>
             <section>
                 <div className="banner-contact">

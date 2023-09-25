@@ -17,6 +17,15 @@ const getProducts = asyncHandler(async (req, res) => {
     res.json({products, page, pages: Math.ceil(count / pageSize)});
 });
 
+// @desc    Fetch last 4 products
+// @route   GET /api/products/last
+// @access  Public
+
+const getLastProducts = asyncHandler(async (req, res) => {
+    const products = await Product.find({}).sort({ _id: -1 }).limit(4);
+    res.json(products);
+});
+
 // @desc    Fetch a product
 // @route   GET /api/products/:id
 // @access  Public
@@ -41,6 +50,34 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
     const count = await Product.countDocuments({ category: req.params.category });
 
     const products = await Product.find({ category: req.params.category }).limit(pageSize).skip(pageSize * (page - 1));
+
+    res.json({products, page, pages: Math.ceil(count / pageSize)});
+});
+
+// @desc    Fetch products by category and sort by price asc
+// @route   GET /api/products/category/:category/price/asc
+// @access  Public
+const getProductsByCategoryAndSortByPriceAsc = asyncHandler(async (req, res) => {
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Product.countDocuments({ category: req.params.category });
+
+    const products = await Product.find({ category: req.params.category }).limit(pageSize).skip(pageSize * (page - 1)).sort({ price: 1 });
+
+    res.json({products, page, pages: Math.ceil(count / pageSize)});
+});
+
+// @desc    Fetch products by category and sort by price desc
+// @route   GET /api/products/category/:category/price/desc
+// @access  Public
+const getProductsByCategoryAndSortByPriceDesc = asyncHandler(async (req, res) => {
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Product.countDocuments({ category: req.params.category });
+
+    const products = await Product.find({ category: req.params.category }).limit(pageSize).skip(pageSize * (page - 1)).sort({ price: -1 });
 
     res.json({products, page, pages: Math.ceil(count / pageSize)});
 });
@@ -113,7 +150,11 @@ const deleteProduct = asyncHandler(async (req, res) => {
 });
 
 export { getProducts,
-    getProductById, createProduct,
+    getLastProducts,
+    getProductById,
+    getProductsByCategoryAndSortByPriceAsc,
+    getProductsByCategoryAndSortByPriceDesc,
+    createProduct,
     updateProduct,
     deleteProduct,
     getProductsByCategory

@@ -1,7 +1,7 @@
 const BannerCategory = ({ category, image }) => {
     return (
         <div className="banner-category">
-            <img src={image} alt=""/>
+            <img src={image} alt={category}/>
             <div className="overlay"></div>
             <div className="content">
                 <h1>{category}</h1>

@@ -47,10 +47,10 @@ const ProductScreen = () => {
                     <strong>Quantité :</strong>
                     <form>
                         <select name="qty" id="qty">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option defaultValue="1">1</option>
+                            <option defaultValue="2">2</option>
+                            <option defaultValue="3">3</option>
+                            <option defaultValue="4">4</option>
                         </select>
                         <button className="btn btn-primary">Ajouter au panier</button>
                     </form>

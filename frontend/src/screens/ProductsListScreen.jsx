@@ -1,12 +1,13 @@
-import { useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { useState } from "react";
-import formatString from "../utils/utils.js";
 import BannerCategory from "../components/BannerCategory";
-import Image from '../assets/images/banner-contact.jpg';
 import {ChevronRight, SlidersHorizontal} from 'lucide-react';
+import { useGetCategoryByIdQuery} from "../slices/categoriesApiSlice";
+import { useGetProductsByCategoryQuery, useGetProductsByCategoryPriceAscQuery, useGetProductsByCategoryPriceDescQuery } from "../slices/productsApiSlice";
+import formatString from "../utils/utils";
+import Loader from "../components/Loader";
 import FiltersModal from "../components/FiltersModal";
 import ProductCard from "../components/ProductCard";
-import Mercedes from '../assets/images/mercedes.svg';
 import Filters from "../components/Filters";
 
 const ProductsListScreen = () => {
@@ -15,48 +16,90 @@ const ProductsListScreen = () => {
     const [accordionTypesOpen, setAccordionTypesOpen] = useState(true);
     const [accordionSizesOpen, setAccordionSizesOpen] = useState(true);
     const [filterOpen, setFilterOpen] = useState(false);
-    let {category} = useParams();
-    category = formatString(category);
+    const [priceAsc, setPriceAsc] = useState(false);
+    const [priceDesc, setPriceDesc] = useState(false);
+
+    const { category: id } = useParams();
+
+    const { data: category, isLoading: loadingCategory } = useGetCategoryByIdQuery(id);
+
+    const handlePriceAsc = (e) => {
+        let value = e.target.value;
+        if(value === "asc"){
+            setPriceAsc(true);
+            setPriceDesc(false);
+        } else {
+            setPriceAsc(false);
+            setPriceDesc(true);
+        }
+    }
+
+    const { data: products, isLoading: loadingProducts } = useGetProductsByCategoryQuery(id);
+
+    //Je veux pouvoir trier les produits par prix croissant ou décroissant
+    const { data: productsAsc, isLoading: loadingProductsAsc } = useGetProductsByCategoryPriceAscQuery(id);
+
+    const { data: productsDesc, isLoading: loadingProductsDesc } = useGetProductsByCategoryPriceDescQuery(id);
+
+
 
 
     return (
         <div className="products-list">
-            <BannerCategory category={category} image={Image}/>
-            <div className="filters-container">
-                <div className="cols-2-80 section filters">
-                    <div></div>
-                    <div>
-                        <select name="filter" id="">
-                            <option value="">Trier par</option>
-                            <option value="1">Prix croissant</option>
-                            <option value="1">Prix décroissant</option>
-                        </select>
-                        <button onClick={() => setFilterOpen(!filterOpen)}>Filtrer <SlidersHorizontal size={25} color="#2E2E2E"/></button>
+            {
+                category && <BannerCategory category={formatString(category.name)} image={category.banner}/>
+            }
+            {
+                loadingProducts ? <Loader /> : products.products.length === 0 ? (
+                    <div className="alert section">
+                        <p>Il n'y a pas de produits dans cette catégorie</p>
+                        <div className="center">
+                            <Link to="/" className="btn btn-primary section">Retour à l'accueil</Link>
+                        </div>
                     </div>
-                </div>
-                <FiltersModal filterOpen={filterOpen} setFilterOpen={setFilterOpen}/>
-            </div>
-            <div className="products-container">
-                <div className="section products">
-                    <div>
-                        <Filters button={false} />
-                    </div>
-                    <div>
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                        <ProductCard image={Mercedes} name='Polo Mercedes F1 Team' id="23fe45fef4" price='45,00' />
-                    </div>
-                </div>
-            </div>
+                ) : (
+                    <>
+                        <div className="filters-container">
+                            <div className="cols-2-80 section filters">
+                                <div></div>
+                                <div>
+                                    <select name="filter" id="" onChange={handlePriceAsc}>
+                                        <option value="">Trier par</option>
+                                        <option value="asc">Prix croissant</option>
+                                        <option value="desc">Prix décroissant</option>
+                                    </select>
+                                    <button onClick={() => setFilterOpen(!filterOpen)}>Filtrer <SlidersHorizontal size={25} color="#2E2E2E"/></button>
+                                </div>
+                            </div>
+                            <FiltersModal filterOpen={filterOpen} setFilterOpen={setFilterOpen}/>
+                        </div>
+                        <div className="products-container">
+                            <div className="section products">
+                                <div>
+                                    <Filters button={false} />
+                                </div>
+                                <div>
+                                    {
+                                        priceAsc ? productsAsc.products.
+                                        map(product => (
+                                            <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
+                                        ))
+                                        : priceDesc ? productsDesc.products.
+                                        map(product => (
+                                            <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
+                                        ))
+                                        : products.products.
+                                        map(product => (
+                                            <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )
+            }
+
         </div>
     );
 };

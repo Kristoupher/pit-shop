@@ -1,8 +1,11 @@
 import {Link} from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
+import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
+import formatString from "../utils/utils";
 
 const Footer = () => {
     const year = new Date().getFullYear();
+    const { data: categories } = useGetCategoriesQuery();
     return (
         <footer className="footer">
             <div className="top">
@@ -18,24 +21,13 @@ const Footer = () => {
                                 <li>
                                     <Link to="/">Accueil</Link>
                                 </li>
-                                <li>
-                                    <Link to="products/category/homme">Homme</Link>
-                                </li>
-                                <li>
-                                    <Link to="products/category/femme">Femme</Link>
-                                </li>
-                                <li>
-                                    <Link to="products/category/enfant">Enfant</Link>
-                                </li>
-                                <li>
-                                    <Link to="products/category/casquettes-et-chapeaux">Casquettes et chapeaux</Link>
-                                </li>
-                                <li>
-                                    <Link to="products/category/accessoires">Accessoires</Link>
-                                </li>
-                                <li>
-                                    <Link to="products/category/objets-de-collection">Objets de collection</Link>
-                                </li>
+                                {
+                                    categories && categories.map((category) => (
+                                        <li key={category._id}>
+                                            <Link to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
+                                        </li>
+                                    ))
+                                }
                             </ul>
                         </nav>
                         <nav>
