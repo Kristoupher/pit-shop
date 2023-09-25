@@ -1,29 +1,59 @@
 import {ChevronRight} from "lucide-react";
 import {useState} from "react";
+import { useGetTeamsQuery } from "../slices/productsApiSlice";
+import Loader from "./Loader";
 
 const Filters = ({ button }) => {
     const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(false);
     const [accordionDriversOpen, setAccordionDriversOpen] = useState(false);
     const [accordionTypesOpen, setAccordionTypesOpen] = useState(false);
     const [accordionSizesOpen, setAccordionSizesOpen] = useState(false);
+    const [filters, setFilters] = useState([]);
+    
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let values = [{teams: []}, {drivers: []}, {types: []}, {sizes: []}];
+        let teams = [];
+        let drivers = [];
+        let types = [];
+        let sizes = [];
+        let inputs = e.target.querySelectorAll('input');
+
+        inputs.forEach(input => {
+            if(input.checked){
+                if(input.name === "team"){
+                    teams.push(input.value);
+                } else if(input.name === "driver"){
+                    drivers.push(input.value);
+                } else if(input.name === "type"){
+                    types.push(input.value);
+                } else if(input.name === "size"){
+                    sizes.push(input.value);
+                }
+            }
+        });
+
+        values[0].teams = teams;
+
+        values[1].drivers = drivers;
+
+        values[2].types = types;
+
+        values[3].sizes = sizes;
+
+        setFilters(values);
+    }
+
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="accordion">
                     <p className={`${accordionTeamsOpen ? 'active' : ''}`} onClick={() => setAccordionTeamsOpen(!accordionTeamsOpen)}>Équipes <ChevronRight size={20} color="#2E2E2E" strokeWidth={3}/></p>
                     <div className={`accordion-content ${accordionTeamsOpen ? 'active' : ''}`}>
-                        <div className="input-group">
-                            <input type="checkbox" name="team" id="alfaromeo" value="1"/>
-                            <label htmlFor="alfaromeo">Alfa Romeo</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="team" id="alphatauri" value="1"/>
-                            <label htmlFor="alphatauri">Alphatauri</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="team" id="alpine" value="1"/>
-                            <label htmlFor="alpine">Alpine</label>
-                        </div>
+
                     </div>
                 </div>
                 <div className="accordion">

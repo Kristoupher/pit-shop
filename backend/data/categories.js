@@ -2,7 +2,7 @@ const categories = [
     {
         name: 'homme',
         banner: '/uploads/categories/banners/banner-1.jpg',
-        image: '/uploads/categories/images/product-1.png',
+        image: '/uploads/categories/images/category-1.png',
     },
     {
         name: 'femme',

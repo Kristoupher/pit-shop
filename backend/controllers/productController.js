@@ -82,6 +82,38 @@ const getProductsByCategoryAndSortByPriceDesc = asyncHandler(async (req, res) =>
     res.json({products, page, pages: Math.ceil(count / pageSize)});
 });
 
+// @desc    Fetch all teams from products
+// @route   GET /api/products/teams
+// @access  Public
+const getTeams = asyncHandler(async (req, res) => {
+    const teams = await Product.distinct('team');
+    res.json(teams);
+});
+
+// @desc    Fetch all drivers from products
+// @route   GET /api/products/drivers
+// @access  Public
+const getDrivers = asyncHandler(async (req, res) => {
+    const drivers = await Product.distinct('driver');
+    res.json(drivers);
+});
+
+// @desc    Fetch all types from products
+// @route   GET /api/products/types
+// @access  Public
+const getTypes = asyncHandler(async (req, res) => {
+    const types = await Product.distinct('type');
+    res.json(types);
+});
+
+// @desc    Fetch all sizes from products
+// @route   GET /api/products/sizes
+// @access  Public
+const getSizes = asyncHandler(async (req, res) => {
+    const sizes = await Product.distinct('sizes.name');
+    res.json(sizes);
+});
+
 // @desc    Create a product
 // @route   POST /api/products
 // @access  Private/Admin
@@ -154,6 +186,10 @@ export { getProducts,
     getProductById,
     getProductsByCategoryAndSortByPriceAsc,
     getProductsByCategoryAndSortByPriceDesc,
+    getTeams,
+    getDrivers,
+    getTypes,
+    getSizes,
     createProduct,
     updateProduct,
     deleteProduct,

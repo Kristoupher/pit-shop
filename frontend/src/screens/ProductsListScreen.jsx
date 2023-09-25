@@ -1,9 +1,12 @@
 import {Link, useParams} from "react-router-dom";
 import { useState } from "react";
 import BannerCategory from "../components/BannerCategory";
-import {ChevronRight, SlidersHorizontal} from 'lucide-react';
+import {SlidersHorizontal} from 'lucide-react';
 import { useGetCategoryByIdQuery} from "../slices/categoriesApiSlice";
-import { useGetProductsByCategoryQuery, useGetProductsByCategoryPriceAscQuery, useGetProductsByCategoryPriceDescQuery } from "../slices/productsApiSlice";
+import { useGetProductsByCategoryQuery,
+        useGetProductsByCategoryPriceAscQuery,
+        useGetProductsByCategoryPriceDescQuery
+        } from "../slices/productsApiSlice";
 import formatString from "../utils/utils";
 import Loader from "../components/Loader";
 import FiltersModal from "../components/FiltersModal";
@@ -11,17 +14,13 @@ import ProductCard from "../components/ProductCard";
 import Filters from "../components/Filters";
 
 const ProductsListScreen = () => {
-    const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(true);
-    const [accordionDriversOpen, setAccordionDriversOpen] = useState(true);
-    const [accordionTypesOpen, setAccordionTypesOpen] = useState(true);
-    const [accordionSizesOpen, setAccordionSizesOpen] = useState(true);
     const [filterOpen, setFilterOpen] = useState(false);
     const [priceAsc, setPriceAsc] = useState(false);
     const [priceDesc, setPriceDesc] = useState(false);
 
     const { category: id } = useParams();
 
-    const { data: category, isLoading: loadingCategory } = useGetCategoryByIdQuery(id);
+    const { data: category } = useGetCategoryByIdQuery(id);
 
     const handlePriceAsc = (e) => {
         let value = e.target.value;
@@ -36,10 +35,10 @@ const ProductsListScreen = () => {
 
     const { data: products, isLoading: loadingProducts } = useGetProductsByCategoryQuery(id);
 
-    //Je veux pouvoir trier les produits par prix croissant ou décroissant
-    const { data: productsAsc, isLoading: loadingProductsAsc } = useGetProductsByCategoryPriceAscQuery(id);
+    //Trier les produits par prix croissant ou décroissant
+    const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(id);
 
-    const { data: productsDesc, isLoading: loadingProductsDesc } = useGetProductsByCategoryPriceDescQuery(id);
+    const { data: productsDesc } = useGetProductsByCategoryPriceDescQuery(id);
 
 
 
@@ -76,20 +75,17 @@ const ProductsListScreen = () => {
                         <div className="products-container">
                             <div className="section products">
                                 <div>
-                                    <Filters button={false} />
+                                    <Filters button={true} />
                                 </div>
                                 <div>
                                     {
-                                        priceAsc ? productsAsc.products.
-                                        map(product => (
+                                        priceAsc ? productsAsc.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
-                                        : priceDesc ? productsDesc.products.
-                                        map(product => (
+                                        : priceDesc ? productsDesc.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
-                                        : products.products.
-                                        map(product => (
+                                        : products.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
                                     }

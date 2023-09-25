@@ -137,6 +137,7 @@
       @include smd {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        align-items: self-start;
         gap: 1.5rem;
       }
       @include lg {

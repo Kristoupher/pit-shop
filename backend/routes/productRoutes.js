@@ -7,6 +7,10 @@ import {
     getProductsByCategory,
     getProductsByCategoryAndSortByPriceAsc,
     getProductsByCategoryAndSortByPriceDesc,
+    getTeams,
+    getDrivers,
+    getTypes,
+    getSizes,
     getProductById,
     createProduct,
     updateProduct,
@@ -19,5 +23,9 @@ router.route("/:id").get(getProductById).put(protect, admin, updateProduct).dele
 router.get("/category/:category", getProductsByCategory);
 router.get("/category/:category/price/asc", getProductsByCategoryAndSortByPriceAsc);
 router.get("/category/:category/price/desc", getProductsByCategoryAndSortByPriceDesc);
+router.get("/teams", getTeams);
+router.get("/drivers", getDrivers);
+router.get("/types", getTypes);
+router.get("/sizes", getSizes);
 
 export default router;

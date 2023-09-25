@@ -42,6 +42,40 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
         }),
+        getTeams: builder.query({
+            query: () => ({
+                url: `${PRODUCTS_URL}/teams`,
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ['Products'],
+        }),
+        getDrivers: builder.query({
+            query: () => ({
+                url: `${PRODUCTS_URL}/drivers`,
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ['Products'],
+        }),
+        getTypes: builder.query({
+            query: () => ({
+                url: `${PRODUCTS_URL}/types`,
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ['Products'],
+        }),
+        getSizes: builder.query({
+            query: () => ({
+                url: `${PRODUCTS_URL}/sizes`,
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ['Products'],
+        }),
+        getProductDetails: builder.query({
+            query: (id) => ({
+                url: `${PRODUCTS_URL}/${id}`,
+            }),
+            keepUnusedDataFor: 5,
+        }),
     }),
 });
 
@@ -50,4 +84,9 @@ export const {  useGetProductsQuery,
                 useGetProductsByCategoryQuery,
                 useGetProductsByCategoryPriceAscQuery,
                 useGetProductsByCategoryPriceDescQuery,
+                useGetTeamsQuery,
+                useGetDriversQuery,
+                useGetTypesQuery,
+                useGetSizesQuery,
+                useGetProductDetailsQuery
                 } = productsApiSlice;
