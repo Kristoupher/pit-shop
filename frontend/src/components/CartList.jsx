@@ -30,7 +30,7 @@ const CartList = ({img, title, size, price, qty, id, button, qtyStock}) => {
                             <select name="qty" id="qty">
                                 {
                                     [...Array(qtyStock).keys()].map(x => (
-                                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                        <option selected={qty === x + 1} key={x + 1} value={x + 1}>{x + 1}</option>
                                     ))
                                 }
                             </select>

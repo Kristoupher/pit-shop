@@ -19,6 +19,7 @@ import OrderScreen from "./screens/OrderScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import OrderConfirmScreen from "./screens/OrderConfirmScreen";
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,11 +31,15 @@ const router = createBrowserRouter(
             <Route path="/login" element={<LogInScreen />} />
             <Route path="signup" element={<SignUpScreen />} />
             <Route path="/cart" element={<CartScreen />} />
-            <Route path="/account" element={<AccountScreen />} />
-            <Route path="/account/order/:id" element={<OrderScreen />} />
-            <Route path="/cart/shipping" element={<ShippingScreen />} />
-            <Route path="/cart/payment" element={<PaymentScreen />} />
-            <Route path="/cart/confirm" element={<OrderConfirmScreen />} />
+
+
+            <Route path='' element={<PrivateRoute />}>
+                <Route path="/account" element={<AccountScreen />} />
+                <Route path="/account/order/:id" element={<OrderScreen />} />
+                <Route path="/cart/shipping" element={<ShippingScreen />} />
+                <Route path="/cart/payment" element={<PaymentScreen />} />
+                <Route path="/cart/confirm" element={<OrderConfirmScreen />} />
+            </Route>
         </Route>
     )
 );

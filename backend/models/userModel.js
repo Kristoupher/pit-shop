@@ -20,13 +20,13 @@ const userSchema = mongoose.Schema(
             required: true,
         },
         phone: {
-            type: Number,
+            type: String,
             required: true,
         },
         address: {
                 street: { type: String, required: true},
                 city: { type: String, required: true},
-                postalCode: { type: Number, required: true},
+                postalCode: { type: String, required: true},
         },
         password: {
             type: String,
@@ -35,6 +35,7 @@ const userSchema = mongoose.Schema(
         isAdmin: {
             type: Boolean,
             required: true,
+            default: false,
         }
     },
     {

@@ -1,6 +1,13 @@
 import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const TotalPrice = ({totalHt, tva, shipping, totalTtc, count, button}) => {
+    const navigate = useNavigate();
+
+    const checkoutHandler = () => {
+        navigate('/login?redirect=/cart/shipping');
+    };
+
     return (
         <div className="total-price">
             <p className="total">Total de {count} article{count > 1 ? 's' : ''}</p>
@@ -13,7 +20,7 @@ const TotalPrice = ({totalHt, tva, shipping, totalTtc, count, button}) => {
             {
                 button &&
                     <div className="btn-container">
-                        <Link to="/login?redirect=/cart/shipping" className="btn btn-primary">Valider le panier</Link>
+                        <button onClick={checkoutHandler}  className="btn btn-primary">Valider le panier</button>
                     </div>
             }
 

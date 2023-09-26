@@ -17,7 +17,10 @@ const authUser = asyncHandler(async (req, res) => {
             _id: user._id,
             lastname: user.lastname,
             firstname: user.firstname,
+            gender: user.gender,
             mail: user.mail,
+            phone: user.phone,
+            address: user.address,
             isAdmin: user.isAdmin,
         });
     } else {
@@ -30,7 +33,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-    const { lastname, firstname, mail, password } = req.body;
+    const { gender, lastname, firstname, mail, phone, address, password } = req.body;
 
     const userExists = await User.findOne({ mail });
 
@@ -42,7 +45,10 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         lastname,
         firstname,
+        gender,
         mail,
+        phone,
+        address,
         password,
     });
 
@@ -53,7 +59,10 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user._id,
             lastname: user.lastname,
             firstname: user.firstname,
+            gender: user.gender,
             mail: user.mail,
+            phone: user.phone,
+            address: user.address,
             isAdmin: user.isAdmin,
         });
     } else {
