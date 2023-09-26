@@ -1,7 +1,15 @@
 import {Link} from "react-router-dom";
 import { Trash2 } from "lucide-react";
+import {useDispatch} from "react-redux";
+import { removeFromCart } from "../slices/cartSlice";
 
-const CartList = ({img, title, size, price, qty, id, button}) => {
+const CartList = ({img, title, size, price, qty, id, button, qtyStock}) => {
+
+    const dispatch = useDispatch();
+
+    const removeFromCartHandler = async (id) => {
+        dispatch(removeFromCart(id));
+    };
     return (
         <div className="cart-list-item">
             <div>
@@ -20,11 +28,13 @@ const CartList = ({img, title, size, price, qty, id, button}) => {
                     button ? (
                         <>
                             <select name="qty" id="qty">
-                                <option value={qty} selected>{qty}</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                {
+                                    [...Array(qtyStock).keys()].map(x => (
+                                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                    ))
+                                }
                             </select>
-                        <button><Trash2 size={28} color="#fff"/></button>
+                        <button onClick={() => { removeFromCartHandler(id) }}><Trash2 size={28} color="#fff"/></button>
                         </>
                     ) : (
                         <p className="qty"><strong>Qté : </strong>{qty}</p>

@@ -43,29 +43,29 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             providesTags: ['Products'],
         }),
         getTeams: builder.query({
-            query: () => ({
-                url: `${PRODUCTS_URL}/teams`,
+            query: (id) => ({
+                url: `${PRODUCTS_URL}/teams/${id}`,
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
         }),
         getDrivers: builder.query({
-            query: () => ({
-                url: `${PRODUCTS_URL}/drivers`,
+            query: (id) => ({
+                url: `${PRODUCTS_URL}/drivers/${id}`,
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
         }),
         getTypes: builder.query({
-            query: () => ({
-                url: `${PRODUCTS_URL}/types`,
+            query: (id) => ({
+                url: `${PRODUCTS_URL}/types/${id}`,
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
         }),
         getSizes: builder.query({
-            query: () => ({
-                url: `${PRODUCTS_URL}/sizes`,
+            query: (id) => ({
+                url: `${PRODUCTS_URL}/sizes/${id}`,
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],

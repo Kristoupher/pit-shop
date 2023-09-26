@@ -1,7 +1,13 @@
 import {ChevronRight} from "lucide-react";
 import {useState} from "react";
-import { useGetTeamsQuery } from "../slices/productsApiSlice";
+import {useParams} from "react-router-dom";
+import { useGetTeamsQuery,
+            useGetDriversQuery,
+            useGetTypesQuery,
+            useGetSizesQuery
+        } from "../slices/productsApiSlice";
 import Loader from "./Loader";
+import formatString from "../utils/utils";
 
 const Filters = ({ button }) => {
     const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(false);
@@ -9,8 +15,16 @@ const Filters = ({ button }) => {
     const [accordionTypesOpen, setAccordionTypesOpen] = useState(false);
     const [accordionSizesOpen, setAccordionSizesOpen] = useState(false);
     const [filters, setFilters] = useState([]);
-    
 
+    const { category: id } = useParams();
+
+    const { data: teams } = useGetTeamsQuery(id);
+
+    const { data: drivers } = useGetDriversQuery(id);
+
+    const { data: types } = useGetTypesQuery(id);
+
+    const { data: sizes } = useGetSizesQuery(id);
 
 
     const handleSubmit = (e) => {
@@ -45,6 +59,7 @@ const Filters = ({ button }) => {
         values[3].sizes = sizes;
 
         setFilters(values);
+
     }
 
     return (
@@ -53,66 +68,69 @@ const Filters = ({ button }) => {
                 <div className="accordion">
                     <p className={`${accordionTeamsOpen ? 'active' : ''}`} onClick={() => setAccordionTeamsOpen(!accordionTeamsOpen)}>Équipes <ChevronRight size={20} color="#2E2E2E" strokeWidth={3}/></p>
                     <div className={`accordion-content ${accordionTeamsOpen ? 'active' : ''}`}>
-
+                        {
+                            teams && teams.length > 0 ? teams.map((team) => (
+                                <div className="input-group" key={team}>
+                                    <input type="checkbox" name="team" id={team} value={team}/>
+                                    <label htmlFor={team}>{formatString(team)}</label>
+                                </div>
+                            )) : (
+                                <div className="input-group">
+                                    <p>Aucune équipe.</p>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
                 <div className="accordion">
                     <p className={`${accordionDriversOpen ? 'active' : ''}`} onClick={() => setAccordionDriversOpen(!accordionDriversOpen)}>Pilotes <ChevronRight size={20} color="#2E2E2E" strokeWidth={3}/></p>
                     <div className={`accordion-content ${accordionDriversOpen ? 'active' : ''}`}>
-                        <div className="input-group">
-                            <input type="checkbox" name="driver" id="albon" value="1"/>
-                            <label htmlFor="albon">A.Albon</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="driver" id="alonso" value="1"/>
-                            <label htmlFor="alonso">F.Alonso</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="driver" id="bottas" value="1"/>
-                            <label htmlFor="bottas">V.Bottas</label>
-                        </div>
+                        {
+                            drivers && drivers.length > 0 ? drivers.map((driver) => (
+                                <div className="input-group" key={driver}>
+                                    <input type="checkbox" name="driver" id={driver} value={driver}/>
+                                    <label htmlFor={driver}>{formatString(driver)}</label>
+                                </div>
+                            )) : (
+                                <div className="input-group">
+                                    <p>Aucun pilote.</p>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
                 <div className="accordion">
                     <p className={`${accordionTypesOpen ? 'active' : ''}`} onClick={() => setAccordionTypesOpen(!accordionTypesOpen)}>Type <ChevronRight size={20} color="#2E2E2E" strokeWidth={3}/></p>
                     <div className={`accordion-content ${accordionTypesOpen ? 'active' : ''}`}>
-                        <div className="input-group">
-                            <input type="checkbox" name="type" id="t-shirt" value="1"/>
-                            <label htmlFor="t-shirt">T-shirt</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="type" id="sweat" value="1"/>
-                            <label htmlFor="sweat">Sweat</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="type" id="polo" value="1"/>
-                            <label htmlFor="polo">Polo</label>
-                        </div>
+                        {
+                            types && types.length > 0 ? types.map((type) => (
+                                <div className="input-group" key={type}>
+                                    <input type="checkbox" name="type" id={type} value={type}/>
+                                    <label htmlFor={type}>{formatString(type)}</label>
+                                </div>
+                            )) : (
+                                <div className="input-group">
+                                    <p>Aucun type.</p>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
                 <div className="accordion">
                     <p className={`${accordionSizesOpen ? 'active' : ''}`} onClick={() => setAccordionSizesOpen(!accordionSizesOpen)}>Taille <ChevronRight size={20} color="#2E2E2E" strokeWidth={3}/></p>
                     <div className={`accordion-content ${accordionSizesOpen ? 'active' : ''}`}>
-                        <div className="input-group">
-                            <input type="checkbox" name="size" id="xs" value="1"/>
-                            <label htmlFor="xs">XS</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="size" id="s" value="1"/>
-                            <label htmlFor="s">S</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="size" id="m" value="1"/>
-                            <label htmlFor="m">M</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="size" id="l" value="1"/>
-                            <label htmlFor="l">L</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="checkbox" name="size" id="xl" value="1"/>
-                            <label htmlFor="xl">XL</label>
-                        </div>
+                        {
+                            sizes && sizes.length > 0 ? sizes.map((size) => (
+                                <div className="input-group" key={size}>
+                                    <input type="checkbox" name="size" id={size} value={size}/>
+                                    <label htmlFor={size}>{formatString(size)}</label>
+                                </div>
+                            )) : (
+                                <div className="input-group">
+                                    <p>Aucune taille.</p>
+                                </div>
+                            )
+                        }
                     </div>
                     { button && (
                     <div className="btn-container">

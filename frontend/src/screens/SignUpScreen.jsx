@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
+import { useState } from "react";
 
 const SignUpScreen = () => {
+    const [gender, setGender] = useState('');
     return (
         <div className="signup section">
             <h1>Inscription</h1>

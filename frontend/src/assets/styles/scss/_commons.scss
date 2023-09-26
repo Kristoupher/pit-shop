@@ -250,6 +250,9 @@
       max-height: 100rem;
       padding: 1rem;
     }
+    p {
+      margin: 0;
+    }
     .input-group {
       margin-bottom: 2rem;
       display: flex;
@@ -279,5 +282,12 @@
     padding: 1rem 5rem;
     display: inline-block;
     border-radius: 1rem;
+  }
+}
+
+.Toastify__toast-body {
+  div {
+    font-size: 1.6rem;
+    color: $text;
   }
 }

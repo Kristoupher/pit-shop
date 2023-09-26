@@ -1,5 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Product from "../models/productModel.js";
+import sortSizes from "../utils/sortSizes.js";
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -86,7 +87,7 @@ const getProductsByCategoryAndSortByPriceDesc = asyncHandler(async (req, res) =>
 // @route   GET /api/products/teams
 // @access  Public
 const getTeams = asyncHandler(async (req, res) => {
-    const teams = await Product.distinct('team');
+    const teams = await Product.distinct('team', { category: req.params.id }).collation({ locale: "fr" }).sort();
     res.json(teams);
 });
 
@@ -94,7 +95,7 @@ const getTeams = asyncHandler(async (req, res) => {
 // @route   GET /api/products/drivers
 // @access  Public
 const getDrivers = asyncHandler(async (req, res) => {
-    const drivers = await Product.distinct('driver');
+    const drivers = await Product.distinct('driver', { category: req.params.id }).collation({ locale: "fr" }).sort();
     res.json(drivers);
 });
 
@@ -102,7 +103,7 @@ const getDrivers = asyncHandler(async (req, res) => {
 // @route   GET /api/products/types
 // @access  Public
 const getTypes = asyncHandler(async (req, res) => {
-    const types = await Product.distinct('type');
+    const types = await Product.distinct('type', { category: req.params.id }).collation({ locale: "fr" }).sort();
     res.json(types);
 });
 
@@ -110,8 +111,9 @@ const getTypes = asyncHandler(async (req, res) => {
 // @route   GET /api/products/sizes
 // @access  Public
 const getSizes = asyncHandler(async (req, res) => {
-    const sizes = await Product.distinct('sizes.name');
-    res.json(sizes);
+    const sizes = await Product.distinct('sizes.name', { category: req.params.id }).collation({ locale: "fr" }).sort();
+    const sortedSizes = sortSizes(sizes);
+    res.json(sortedSizes);
 });
 
 // @desc    Create a product

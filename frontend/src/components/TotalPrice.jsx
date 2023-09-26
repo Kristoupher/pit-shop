@@ -13,7 +13,7 @@ const TotalPrice = ({totalHt, tva, shipping, totalTtc, count, button}) => {
             {
                 button &&
                     <div className="btn-container">
-                        <Link to="/cart/shipping" className="btn btn-primary">Valider le panier</Link>
+                        <Link to="/login?redirect=/cart/shipping" className="btn btn-primary">Valider le panier</Link>
                     </div>
             }
 

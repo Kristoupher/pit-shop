@@ -7,8 +7,9 @@ import { addToCart} from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 
 const ProductScreen = () => {
-    const [qty, setQty] = useState(0);
+    const [qtyStock, setQtyStock] = useState(0);
     const [size, setSize] = useState('');
+    const [qty, setQty] = useState(1);
     const { id } = useParams();
 
     const dispatch = useDispatch();
@@ -20,12 +21,12 @@ const ProductScreen = () => {
     const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
 
     const handleInput = (e) => {
-        setQty(parseInt(e.target.value.split('-')[1]));
+        setQtyStock(parseInt(e.target.value.split('-')[1]));
         setSize(e.target.value.split('-')[0]);
     }
 
     const addToCartHandler = () => {
-        dispatch(addToCart({ ...product, qty }));
+        dispatch(addToCart({ ...product, qty, size, qtyStock }));
         navigate('/cart');
     };
 
@@ -54,12 +55,12 @@ const ProductScreen = () => {
                             </div>
                             <strong>Quantité :</strong>
                             {
-                                qty > 0 ? (
+                                qtyStock > 0 ? (
                                     <form>
-                                        <select name="qty" id="qty">
+                                        <select name="qty" id="qty" onChange={(e) => setQty(parseInt(e.target.value))}>
                                             {
-                                                [...Array(qty).keys()].map((x) => (
-                                                    <option key={x + 1} value={x + 1}>
+                                                [...Array(qtyStock).keys()].map((x) => (
+                                                    <option key={x + 1} defaultValue={x + 1}>
                                                         {x + 1}
                                                     </option>
                                                 ))
