@@ -7,7 +7,7 @@ import { useGetTeamsQuery,
             useGetSizesQuery
         } from "../slices/productsApiSlice";
 import Loader from "./Loader";
-import formatString from "../utils/utils";
+import { formatString } from "../utils/utils";
 
 const Filters = ({ button }) => {
     const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(false);

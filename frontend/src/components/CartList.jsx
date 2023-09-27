@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import {useDispatch} from "react-redux";
 import { removeFromCart } from "../slices/cartSlice";
+import {formatPrice, formatString} from "../utils/utils";
 
 const CartList = ({img, title, size, price, qty, id, button, qtyStock}) => {
 
@@ -19,11 +20,11 @@ const CartList = ({img, title, size, price, qty, id, button, qtyStock}) => {
                 <div className="title">
                     <Link to={`/product/${id}`}>{title}</Link>
                     <br/>
-                    <span>{size}</span>
+                    <span>{formatString(size)}</span>
                 </div>
             </div>
             <div>
-                <p className="price">{price}€</p>
+                <p className="price">{formatPrice(price)}</p>
                 {
                     button ? (
                         <>

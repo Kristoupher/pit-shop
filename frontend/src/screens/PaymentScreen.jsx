@@ -23,9 +23,27 @@ const { userInfo } = useSelector(state => state.auth);
 
 const { data: paypal, isLoading: loadingPayPal, error: errorPayPal  } = useGetPayPalClientIdQuery();
 
-    const deleteCart = () => {
+const dataOrder = {
+    orderItems: cartItems,
+    user: userInfo._id,
+    shippingAddress: userInfo.address,
+    itemsPrice: itemsPrice,
+    taxPrice: taxPrice,
+    shippingPrice: shippingPrice,
+    totalPrice: totalPrice,
+}
+
+console.log(userInfo._id);
+
+const addOrder = async () => {
+    try {
+        const res = await createOrder(dataOrder).unwrap();
         dispatch(clearCartItems());
+    } catch (err) {
+        toast.error(err?.data?.message || err.message);
     }
+}
+
 
 useEffect(() => {
     if(!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -46,18 +64,10 @@ useEffect(() => {
     function onApprove(data, actions) {
         return actions.order.capture().then(async function() {
             try {
-                await createOrder({
-                    orderItems: cartItems,
-                    user: userInfo._id,
-                    shippingAddress: userInfo.address,
-                    itemsPrice: itemsPrice,
-                    taxPrice: taxPrice,
-                    shippingPrice: shippingPrice,
-                    totalPrice: totalPrice,
-                });
+                await addOrder();
                 //vider le state du panier et le local storage
                 localStorage.removeItem("cart");
-                deleteCart();
+                dispatch(clearCartItems());
                 //rediriger vers la page de confirmation de commande
                 navigate('/cart/confirm');
             } catch (err) {

@@ -4,7 +4,7 @@ import { useParams} from "react-router-dom";
 import { Search, ShoppingCart, Mail, User2 } from "lucide-react";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
 import Logo from "../assets/images/logo.svg";
-import formatString from "../utils/utils";
+import {formatString} from "../utils/utils";
 import { useLogoutMutation} from "../slices/usersApiSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

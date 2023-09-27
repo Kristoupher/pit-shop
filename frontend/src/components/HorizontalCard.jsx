@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {formatPrice} from "../utils/utils";
 
 const HorizontalCard = ({ id, name, image, price }) => {
     return (
@@ -8,7 +9,7 @@ const HorizontalCard = ({ id, name, image, price }) => {
             </div>
             <div>
                 <p>{name}</p>
-                <p className="price">{price}€</p>
+                <p className="price">{formatPrice(price)}</p>
                 <div className='btn-container'>
                     <Link to={`/product/${id}`} className="btn btn-primary">Voir le produit</Link>
                 </div>

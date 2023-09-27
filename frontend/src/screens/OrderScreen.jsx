@@ -1,22 +1,34 @@
 import {useParams} from "react-router-dom";
 import CartList from "../components/CartList";
-import Mercedes from "../assets/images/mercedes.svg";
 import TotalPrice from "../components/TotalPrice";
+import { useGetOrderDetailsQuery} from "../slices/ordersApiSlice";
+import Loader from "../components/Loader";
+import {formatDate} from "../utils/utils";
 
 const OrderScreen = () => {
     const {id} = useParams();
+
+    const {data: order, isLoading, error} = useGetOrderDetailsQuery(id);
+
     return (
-        <div className="order section">
-            <h1>N° de commande : <span>{id} - 21/08/2023</span></h1>
-            <div className="cart-container section">
-                <div className="cart-list">
-                    <CartList img={Mercedes} title="Polo Mercedes f1 Team" size="M" price="45,00" qty={1} id="1jkj3jdk" button={false} />
-                    <CartList img={Mercedes} title="Polo Mercedes f1 Team" size="M" price="45,00" qty={1} id="1jkj3jdk" button={false} />
-                    <CartList img={Mercedes} title="Polo Mercedes f1 Team" size="M" price="45,00" qty={1} id="1jkj3jdk" button={false} />
+            isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
+                <div className="order section">
+                    <h1>N° de commande : <span>{order.orderNumber} - {formatDate(order.orderDate)}</span></h1>
+                    <div className="cart-container section">
+                        <div className="cart-list">
+                            {
+                                order.orderItems.map((item) => (
+                                    <CartList key={item._id} img={item.image} title={item.name} size={item.size} price={item.price} qty={item.qty} id={item._id} button={false} />
+                                ))
+                            }
+                        </div>
+                        {
+                            <TotalPrice totalHt={order.totalPrice} tva={order.taxPrice} shipping={order.shippingPrice} totalTtc={order.totalPrice} count={order.orderItems.length} button={false} />
+                        }
+                    </div>
                 </div>
-                <TotalPrice totalHt="135,00" tva="27,00" shipping="0,00" totalTtc="162,00" count="3" button={false} />
-            </div>
-        </div>
+            )
+
     );
 };
 

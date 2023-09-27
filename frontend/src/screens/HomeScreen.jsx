@@ -3,7 +3,7 @@ import { Mail } from "lucide-react";
 import Loader from "../components/Loader";
 import { useGetLastProductsQuery} from "../slices/productsApiSlice";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
-import formatString from "../utils/utils";
+import {formatString} from "../utils/utils";
 import Banner from "../assets/images/home-banner.jpg";
 import HorizontalCard from "../components/HorizontalCard";
 import Card from "../components/Card";

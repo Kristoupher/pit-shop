@@ -7,7 +7,7 @@ import { useGetProductsByCategoryQuery,
         useGetProductsByCategoryPriceAscQuery,
         useGetProductsByCategoryPriceDescQuery
         } from "../slices/productsApiSlice";
-import formatString from "../utils/utils";
+import {formatString} from "../utils/utils";
 import Loader from "../components/Loader";
 import FiltersModal from "../components/FiltersModal";
 import ProductCard from "../components/ProductCard";

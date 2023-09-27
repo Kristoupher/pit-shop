@@ -4,24 +4,11 @@ import {ORDERS_URL, PAYPAL_URL} from "../constants";
 export const ordersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         createOrder: builder.mutation({
-            query: (data) => ({
+            query: (dataOrder) => ({
                 url: ORDERS_URL,
                 method: "POST",
-                body: data
-            })
-        }),
-        getOrderDetails: builder.query({
-            query: (orderId) => ({
-                url: `${ORDERS_URL}/${orderId}`,
+                body: dataOrder
             }),
-            keepUnusedDataFor: 5
-        }),
-        payOrder: builder.mutation({
-            query: ({orderId, details}) => ({
-                url: `${ORDERS_URL}/${orderId}/pay`,
-                method: "PUT",
-                body: {...details}
-            })
         }),
         getPayPalClientId: builder.query({
             query: () => ({
@@ -30,24 +17,18 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5,
         }),
         getMyOrders: builder.query({
-            query: () => ({
-                url: `${ORDERS_URL}/mine`,
+            query: (id) => ({
+                url: `${ORDERS_URL}/mine/${id}`,
             }),
             keepUnusedDataFor: 5,
         }),
-        getOrders: builder.query({
-            query: () => ({
-                url: ORDERS_URL,
-            }),
-            keepUnusedDataFor: 5,
-        }),
-        deliverOrder: builder.mutation({
+        getOrderDetails: builder.query({
             query: (orderId) => ({
-                url: `${ORDERS_URL}/${orderId}/deliver`,
-                method: "PUT",
+                url: `${ORDERS_URL}/${orderId}`,
             }),
+            keepUnusedDataFor: 5
         }),
     })
 });
 
-export const { useCreateOrderMutation, useGetOrderDetailsQuery, usePayOrderMutation, useGetPayPalClientIdQuery, useGetMyOrdersQuery, useGetOrdersQuery, useDeliverOrderMutation} = ordersApiSlice;
+export const { useCreateOrderMutation, useGetPayPalClientIdQuery, useGetMyOrdersQuery, useGetOrderDetailsQuery } = ordersApiSlice;

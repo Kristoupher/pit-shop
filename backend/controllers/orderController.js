@@ -5,7 +5,6 @@ import Order from "../models/orderModel.js";
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
-    console.log(req.body);
     const { user, orderItems, shippingAddress, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
 
     if (orderItems && orderItems.length === 0) {
@@ -16,7 +15,11 @@ const addOrderItems = asyncHandler(async (req, res) => {
             orderItems: orderItems.map((x) => ({
                 ...x,
                 product: x._id,
-                _id: undefined,
+                name: x.name,
+                qty: x.qty,
+                image: x.image,
+                price: x.price,
+                size: x.size,
             })),
             user,
             shippingAddress,
@@ -40,7 +43,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @route   GET /api/orders/mine
 // @access  Private
 const getMyOrders = asyncHandler(async (req, res) => {
-    const orders = await Order.find({ user: req.user._id });
+    const id = req.params.id;
+    const orders = await Order.find({ user: id }).sort({ orderDate: -1 });
     res.status(200).json(orders);
 });
 

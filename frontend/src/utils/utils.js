@@ -1,7 +1,19 @@
 // Mettre en majualscule la première lettre et remplacer les - par des espaces
-const formatString = (string) => {
+export const formatString = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).replace(/-/g, ' ');
 }
 
+export const formatPrice = (price) => {
+    // Renvoyer le prix sous forme 0,00 €
+    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(price);
 
-export default formatString;
+}
+
+export const formatDate = (date) => {
+    // Renvoyer la date sous forme jj/mm/aaaa
+    const newDate = new Date(date);
+    const day = newDate.getDate();
+    const month = (newDate.getMonth() + 1).toString().padStart(2, '0'); // Ajoute un zéro devant le mois si nécessaire
+    const year = newDate.getFullYear();
+    return `${day}/${month}/${year}`;
+}

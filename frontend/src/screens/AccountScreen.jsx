@@ -1,9 +1,15 @@
 import {Link} from "react-router-dom";
 import { useSelector} from "react-redux";
-import formatString from "../utils/utils";
+import {formatString, formatDate, formatPrice} from "../utils/utils";
+import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
+import Loader from "../components/Loader";
 
 const AccountScreen = () => {
     const { userInfo } = useSelector(state => state.auth);
+
+    const id = userInfo && userInfo._id;
+
+    const { data: orders, isLoading, error } = useGetMyOrdersQuery(id);
 
 
     return (
@@ -23,42 +29,37 @@ const AccountScreen = () => {
                         )
                     }
                     <h2>Mes commandes</h2>
-                    <div className="table-responsive">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>N° de commande</th>
-                                <th>Date de commande</th>
-                                <th>Prix</th>
-                                <th>statut</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>15edg1t551f15d</td>
-                                <td>21/08/2023</td>
-                                <td>75,00€</td>
-                                <td>Livrée</td>
-                                <td><Link className="btn btn-primary" to="/account/order/15edg1t551f15d">Voir</Link></td>
-                            </tr>
-                            <tr>
-                                <td>15edg1t551f15d</td>
-                                <td>21/08/2023</td>
-                                <td>75,00€</td>
-                                <td>Livrée</td>
-                                <td><Link className="btn btn-primary" to="/account/order/15edg1t551f15d">Voir</Link></td>
-                            </tr>
-                            <tr>
-                                <td>15edg1t551f15d</td>
-                                <td>21/08/2023</td>
-                                <td>75,00€</td>
-                                <td>Livrée</td>
-                                <td><Link className="btn btn-primary" to="/account/order/15edg1t551f15d">Voir</Link></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    {
+                        isLoading ? <Loader /> : error ? <p>{error.message}</p> :
+                            (
+                                <div className="table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>N° de commande</th>
+                                            <th>Date de commande</th>
+                                            <th>Prix</th>
+                                            <th>statut</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {
+                                            orders && orders.map(order => (
+                                                <tr key={order._id}>
+                                                    <td>{order.orderNumber}</td>
+                                                    <td>{formatDate(order.createdAt)}</td>
+                                                    <td>{formatPrice(order.totalPrice)}</td>
+                                                    <td>{formatString(order.status)}</td>
+                                                    <td><Link className="btn btn-primary" to={`/account/order/${order._id}`}>Voir</Link></td>
+                                                </tr>
+                                            ))
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                        )
+                    }
                 </div>
     );
 };

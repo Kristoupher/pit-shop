@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
-import formatString from "../utils/utils";
+import {formatString} from "../utils/utils";
 
 const Footer = () => {
     const year = new Date().getFullYear();
