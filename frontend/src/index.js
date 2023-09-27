@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import './assets/styles/normalize.css';
 import './assets/styles/scss/main.scss';
 import store from "./store";
@@ -49,7 +50,9 @@ root.render(
   <React.StrictMode>
       <HelmetProvider>
           <Provider store={store}>
-              <RouterProvider router={router} />
+                <PayPalScriptProvider deferLoading={ true }>
+                    <RouterProvider router={router} />
+                </PayPalScriptProvider>
           </Provider>
       </HelmetProvider>
   </React.StrictMode>

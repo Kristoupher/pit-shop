@@ -5,19 +5,29 @@ import Order from "../models/orderModel.js";
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
-    const { orderDate, orderNumber, price, products, shippingAddress, status } = req.body;
+    console.log(req.body);
+    const { user, orderItems, shippingAddress, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
 
-    if (products && products.length === 0) {
+    if (orderItems && orderItems.length === 0) {
         res.status(400);
         throw new Error("Aucun produit dans la commande");
     } else {
         const order = new Order({
-            orderDate,
-            orderNumber,
-            price,
-            products,
+            orderItems: orderItems.map((x) => ({
+                ...x,
+                product: x._id,
+                _id: undefined,
+            })),
+            user,
             shippingAddress,
-            status,
+            itemsPrice,
+            taxPrice,
+            shippingPrice,
+            totalPrice,
+            orderDate: Date.now(),
+            orderNumber: Math.floor(Math.random() * 1000000).toString(),
+            status: "payé",
+            paidAt: Date.now(),
         });
 
         const createdOrder = await order.save();

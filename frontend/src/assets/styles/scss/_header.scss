@@ -219,6 +219,9 @@
   }
   .header-cart {
     position: relative;
+    span {
+      display: none;
+    }
     &.active {
       span {
         position: absolute;

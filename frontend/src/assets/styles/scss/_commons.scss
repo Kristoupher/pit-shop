@@ -291,3 +291,10 @@
     color: $text;
   }
 }
+
+.paypal-container {
+  & > div {
+    margin: 0 auto;
+    max-width: 40rem;
+  }
+}

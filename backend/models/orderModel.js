@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 
 const orderSchema = mongoose.Schema(
     {
+        user: {
+            type: String,
+            required: true,
+        },
         orderDate: {
             type: Date,
             required: true,
@@ -10,19 +14,39 @@ const orderSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        price: {
-            priceHt: { type: Number, required: true},
-            taxe: { type: Number, required: true},
-            shipping: { type: Number, required: true},
-            priceTotal: { type: Number, required: true},
-        },
-        products: [
+        orderItems: [
             {
-                productId: { type: String, required: true},
-                quantity: { type: Number, required: true},
-                size: { type: String, required: true},
-            }
+                name: { type: String, required: true},
+                qty: { type: Number, required: true},
+                image: { type: String, required: true},
+                price: { type: Number, required: true},
+                product: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    required: true,
+                    ref: "Product",
+                }
+            },
         ],
+        itemsPrice: {
+            type: Number,
+            required: true,
+            default: 0.0,
+        },
+        taxPrice: {
+            type: Number,
+            required: true,
+            default: 0.0,
+        },
+        shippingPrice: {
+            type: Number,
+            required: true,
+            default: 0.0,
+        },
+        totalPrice: {
+            type: Number,
+            required: true,
+            default: 0.0,
+        },
         shippingAddress: {
             street: { type: String, required: true},
             city: { type: String, required: true},
@@ -32,11 +56,10 @@ const orderSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'User',
-        }
+        paidAt: {
+            type: Date,
+        },
+
     },
     {
         timestamps: true,
