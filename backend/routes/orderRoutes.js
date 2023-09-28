@@ -9,7 +9,7 @@ import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').post( addOrderItems).get(protect, admin, getOrders);
+router.route('/').post( addOrderItems).get(getOrders);
 router.route('/mine/:id').get(getMyOrders);
 router.route('/:id').get(getOrderById);
 export default router;

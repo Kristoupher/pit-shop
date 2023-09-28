@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Link} from "react-router-dom";
 import { useParams} from "react-router-dom";
-import { Search, ShoppingCart, Mail, User2 } from "lucide-react";
+import { Search, ShoppingCart, Mail, User2, Settings } from "lucide-react";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
 import Logo from "../assets/images/logo.svg";
 import {formatString} from "../utils/utils";
@@ -24,6 +24,7 @@ const Header = () => {
     const { userInfo } = useSelector(state => state.auth);
 
     const logoutHandler = async () => {
+        setToggle(false);
         try {
             await logoutApiCall().unwrap();
             dispatch(logout());
@@ -61,6 +62,11 @@ const Header = () => {
                         userInfo ? (
                             <>
                                 <Link to="/account"><User2 color="#2E2E2E" size={30} strokeWidth={3}/></Link>
+                                {
+                                    userInfo.isAdmin && (
+                                        <Link to='/admin' ><Settings color="#2E2E2E" size={30} strokeWidth={3} /></Link>
+                                    )
+                                }
                                 <button onClick={logoutHandler} className="btn btn-primary">Déconnexion</button>
                             </>
                         ) : (
@@ -83,7 +89,16 @@ const Header = () => {
                 <div className="nav-btns">
                     <Link to="/contact" className="btn btn-secondary" onClick={() => setToggle(false)}>Contact</Link>
                     <Link to="/cart" className="btn btn-tertiary" onClick={() => setToggle(false)}>Panier</Link>
-                    <Link to="/login" className="btn btn-primary" onClick={() => setToggle(false)}>Connexion</Link>'
+                    {
+                        userInfo ? (
+                            <>
+                                <Link to="/account" className="btn btn-primary" onClick={() => setToggle(false)}>Mon compte</Link>
+                                <button className="btn btn-primary w-100" onClick={logoutHandler}>Déconnexion</button>
+                            </>)
+                            : (
+                                <Link to="/login" className="btn btn-primary" onClick={() => setToggle(false)}>Connexion</Link>
+                        )
+                    }
                 </div>
             {/*    Fin du menu pour la version mobile*/}
             </nav>

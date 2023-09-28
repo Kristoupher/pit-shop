@@ -311,3 +311,53 @@
     border-bottom: 2px solid $text;
     padding-bottom: 1.2rem;
 }
+
+.w-100 {
+    width: 100%;
+}
+
+.circle-btn {
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex!important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  &-primary {
+    background-color: #3a86ff;
+    transition: all .3s ease-in-out;
+    &:hover {
+      background-color: darken(#3a86ff, 10%);
+    }
+    svg {
+        stroke: $white;
+    }
+  }
+    &-secondary {
+        background-color: #1dd3b0;
+        transition: all .3s ease-in-out;
+        &:hover {
+            background-color: darken(#1dd3b0, 10%);
+        }
+      svg {
+        stroke: $white;
+      }
+    }
+  &-danger {
+    background-color: #e71d36;
+    transition: all .3s ease-in-out;
+    &:hover {
+      background-color: darken(#e71d36, 10%);
+    }
+    svg {
+      stroke: $white;
+    }
+  }
+}
+
+.mb-5 {
+    margin-bottom: 2rem!important;
+}

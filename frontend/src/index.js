@@ -22,6 +22,12 @@ import PaymentScreen from "./screens/PaymentScreen";
 import OrderConfirmScreen from "./screens/OrderConfirmScreen";
 import PrivateRoute from "./components/PrivateRoute";
 import AccountEdit from "./screens/AccountEdit";
+import AdminRoute from "./components/AdminRoute";
+import AdminScreen from "./screens/admin/AdminScreen";
+import UsersPanel from "./screens/admin/UsersPanel";
+import OrdersPanel from "./screens/admin/OrdersPanel";
+import ProductsPanel from "./screens/admin/ProductsPanel";
+import CategoriesPanel from "./screens/admin/CategoriesPanel";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -42,6 +48,14 @@ const router = createBrowserRouter(
                 <Route path="/cart/payment" element={<PaymentScreen />} />
                 <Route path="/cart/confirm" element={<OrderConfirmScreen />} />
                 <Route path="account/edit" element={<AccountEdit />} />
+            </Route>
+
+            <Route path='' element={<AdminRoute />}>
+                <Route path="/admin" element={<AdminScreen/>} />
+                <Route path="admin/users" element={<UsersPanel />} />
+                <Route path="admin/orders" element={<OrdersPanel />} />
+                <Route path="admin/products" element={<ProductsPanel />} />
+                <Route path="admin/categories" element={<CategoriesPanel />} />
             </Route>
         </Route>
     )
