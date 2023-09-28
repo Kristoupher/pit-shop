@@ -1,5 +1,4 @@
 import CartList from "../components/CartList";
-import Mercedes from "../assets/images/mercedes.svg";
 import TotalPrice from "../components/TotalPrice";
 import { toast } from "react-toastify";
 import { clearCartItems, removeFromCart} from "../slices/cartSlice";
@@ -33,7 +32,7 @@ const CartScreen = () => {
                         <div className="cart-list">
                             {
                                 cartItems.map(item => (
-                                    <CartList key={item._id} img={item.image} title={item.name} size={item.size} price={item.price} qty={item.qty} id={item._id} qtyStock={item.qtyStock} button={true} />
+                                    <CartList item={item} key={item._id} img={item.image} title={item.name} size={item.size} price={item.price} qty={item.qty} id={item._id} qtyStock={item.qtyStock} button={true} />
                                 ))
                             }
                             <div className="center">

@@ -1,16 +1,21 @@
 import {Link} from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import {useDispatch} from "react-redux";
-import { removeFromCart } from "../slices/cartSlice";
 import {formatPrice, formatString} from "../utils/utils";
+import { addToCart, removeFromCart } from "../slices/cartSlice";
 
-const CartList = ({img, title, size, price, qty, id, button, qtyStock}) => {
+const CartList = ({img, title, size, price, qty, id, button, qtyStock, item}) => {
 
     const dispatch = useDispatch();
 
     const removeFromCartHandler = async (id) => {
         dispatch(removeFromCart(id));
     };
+
+    const addToCartHandler = async (product, qty) => {
+        dispatch(addToCart({ ...product, qty }));
+    };
+
     return (
         <div className="cart-list-item">
             <div>
@@ -28,7 +33,7 @@ const CartList = ({img, title, size, price, qty, id, button, qtyStock}) => {
                 {
                     button ? (
                         <>
-                            <select name="qty" id="qty">
+                            <select name="qty" id="qty" onChange={(e) =>  addToCartHandler(item, Number(e.target.value))}>
                                 {
                                     [...Array(qtyStock).keys()].map(x => (
                                         <option selected={qty === x + 1} key={x + 1} value={x + 1}>{x + 1}</option>
