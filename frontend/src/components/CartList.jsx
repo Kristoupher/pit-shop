@@ -25,7 +25,7 @@ const CartList = ({img, title, size, price, qty, id, button, qtyStock, item}) =>
                 <div className="title">
                     <Link to={`/product/${id}`}>{title}</Link>
                     <br/>
-                    <span>{formatString(size)}</span>
+                    <span>{size.toUpperCase()}</span>
                 </div>
             </div>
             <div>
