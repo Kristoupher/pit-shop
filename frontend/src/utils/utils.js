@@ -17,3 +17,8 @@ export const formatDate = (date) => {
     const year = newDate.getFullYear();
     return `${day}/${month}/${year}`;
 }
+
+//Enlever le premier caractère d'une chaîne de caractères
+export const removeFirstChar = (string) => {
+    return string.slice(1);
+}

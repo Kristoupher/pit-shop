@@ -21,6 +21,7 @@ const ProductsPanel = () => {
                                 <table>
                                     <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Nom</th>
                                         <th>Prix</th>
                                         <th>Date de création</th>
@@ -31,10 +32,11 @@ const ProductsPanel = () => {
                                     {
                                         products && products.products.map(product => (
                                             <tr>
+                                                <td><img src={product.image} alt={product.name}/></td>
                                                 <td>{formatString(product.name)}</td>
                                                 <td>{formatPrice(product.price)}</td>
                                                 <td>{formatDate(product.createdAt)}</td>
-                                                <td className="flex flex-center">
+                                                <td className="flex flex-center btns">
                                                     <Link className="circle-btn circle-btn-primary" to={`/admin/product/${product._id}`}><Eye size={30} color="#2E2E2E" /></Link>
                                                     <Link className="circle-btn circle-btn-secondary" to={`/admin/product/edit/${product._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
                                                     <button className="circle-btn circle-btn-danger" onClick={() => deleteHandler(product._id)}><Trash2 size={30} color="#2E2E2E" /></button>

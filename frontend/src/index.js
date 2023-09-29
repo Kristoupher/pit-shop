@@ -28,6 +28,7 @@ import UsersPanel from "./screens/admin/UsersPanel";
 import OrdersPanel from "./screens/admin/OrdersPanel";
 import ProductsPanel from "./screens/admin/ProductsPanel";
 import CategoriesPanel from "./screens/admin/CategoriesPanel";
+import OrderAdminScreen from "./screens/admin/OrderAdminScreen";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -56,6 +57,7 @@ const router = createBrowserRouter(
                 <Route path="admin/orders" element={<OrdersPanel />} />
                 <Route path="admin/products" element={<ProductsPanel />} />
                 <Route path="admin/categories" element={<CategoriesPanel />} />
+                <Route path="admin/order/:id" element={<OrderAdminScreen />} />
             </Route>
         </Route>
     )
