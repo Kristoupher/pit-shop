@@ -4,7 +4,7 @@ import {formatDate, formatPrice, formatString} from "../../utils/utils";
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import Loader from "../../components/Loader";
 
-const OrdersPanel = () => {
+const OrdersPanelScreen = () => {
     const { data: orders, isLoading, error } = useGetOrdersQuery();
 
     return (
@@ -45,4 +45,4 @@ const OrdersPanel = () => {
     );
 };
 
-export default OrdersPanel;
+export default OrdersPanelScreen;

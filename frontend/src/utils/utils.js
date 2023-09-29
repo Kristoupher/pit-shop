@@ -27,3 +27,8 @@ export const formatInsertion = (string) => {
 //     renvoyer le string avec que des minusucules et des tirets a la place des espaces
     return string.toLowerCase().replace(/ /g, '-');
 }
+
+// prendre ce qu'il y a après le dernier \
+export const getFileName = (string) => {
+return string.split('\\').pop();
+}

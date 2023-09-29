@@ -21,16 +21,17 @@ import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import OrderConfirmScreen from "./screens/OrderConfirmScreen";
 import PrivateRoute from "./components/PrivateRoute";
-import AccountEdit from "./screens/AccountEdit";
+import AccountEditScreen from "./screens/AccountEditScreen";
 import AdminRoute from "./components/AdminRoute";
 import AdminScreen from "./screens/admin/AdminScreen";
-import UsersPanel from "./screens/admin/UsersPanel";
-import OrdersPanel from "./screens/admin/OrdersPanel";
-import ProductsPanel from "./screens/admin/ProductsPanel";
-import CategoriesPanel from "./screens/admin/CategoriesPanel";
+import UsersPanelScreen from "./screens/admin/UsersPanelScreen";
+import OrdersPanelScreen from "./screens/admin/OrdersPanelScreen";
+import ProductsPanelScreen from "./screens/admin/ProductsPanelScreen";
+import CategoriesPanelScreen from "./screens/admin/CategoriesPanelScreen";
 import OrderAdminScreen from "./screens/admin/OrderAdminScreen";
-import UserEdit from "./screens/admin/UserEdit";
-import ProductEdit from "./screens/admin/ProductEdit";
+import UserEditScreen from "./screens/admin/UserEditScreen";
+import ProductEditScreen from "./screens/admin/ProductEditScreen";
+import ProductCreateScreen from "./screens/admin/ProductCreateScreen";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -50,18 +51,19 @@ const router = createBrowserRouter(
                 <Route path="/cart/shipping" element={<ShippingScreen />} />
                 <Route path="/cart/payment" element={<PaymentScreen />} />
                 <Route path="/cart/confirm" element={<OrderConfirmScreen />} />
-                <Route path="account/edit" element={<AccountEdit />} />
+                <Route path="account/edit" element={<AccountEditScreen />} />
             </Route>
 
             <Route path='' element={<AdminRoute />}>
                 <Route path="/admin" element={<AdminScreen/>} />
-                <Route path="admin/users" element={<UsersPanel />} />
-                <Route path="admin/orders" element={<OrdersPanel />} />
-                <Route path="admin/products" element={<ProductsPanel />} />
-                <Route path="admin/categories" element={<CategoriesPanel />} />
+                <Route path="admin/users" element={<UsersPanelScreen />} />
+                <Route path="admin/orders" element={<OrdersPanelScreen />} />
+                <Route path="admin/products" element={<ProductsPanelScreen />} />
+                <Route path="admin/categories" element={<CategoriesPanelScreen />} />
                 <Route path="admin/order/:id" element={<OrderAdminScreen />} />
-                <Route path="admin/user/edit/:id" element={<UserEdit />} />
-                <Route path="admin/product/edit/:id" element={<ProductEdit />} />
+                <Route path="admin/user/edit/:id" element={<UserEditScreen />} />
+                <Route path="admin/product/edit/:id" element={<ProductEditScreen />} />
+                <Route path="admin/product/create" element={<ProductCreateScreen />} />
             </Route>
         </Route>
     )

@@ -38,10 +38,9 @@ router.post('/', upload.single('image'), (req, res) => {
     });
 });
 
-router.delete('/:filename', (req, res) => {
-    const filename = req.params.filename;
-    const filepath = path.join(__dirname, `uploads/products/images/${filename}`);
-
+router.delete('/:path', (req, res) => {
+    const filename = req.params.path;
+    const filepath =`uploads/products/images/${filename}`;
     fs.unlink(filepath, (err) => {
         if (err) {
             console.error(err);

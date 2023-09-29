@@ -23,7 +23,7 @@ router.route("/drivers/:id").get(getDrivers);
 router.route("/types/:id").get(getTypes);
 router.route("/sizes/:id").get(getSizes);
 router.route("/last").get(getLastProducts);
-router.route("/:id").get(getProductById).put(updateProduct).delete(protect, admin, deleteProduct);
+router.route("/:id").get(getProductById).put(updateProduct).delete(deleteProduct);
 router.get("/category/:category", getProductsByCategory);
 router.get("/category/:category/price/asc", getProductsByCategoryAndSortByPriceAsc);
 router.get("/category/:category/price/desc", getProductsByCategoryAndSortByPriceDesc);

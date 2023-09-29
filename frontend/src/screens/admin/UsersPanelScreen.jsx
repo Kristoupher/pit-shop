@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import {toast} from "react-toastify";
 
-const UsersPanel = () => {
+const UsersPanelScreen = () => {
 
     const { data: users, refetch, isLoading, error } = useGetUsersQuery();
     const { userInfo } = useSelector((state) => state.auth);
@@ -122,4 +122,4 @@ const UsersPanel = () => {
     );
 };
 
-export default UsersPanel;
+export default UsersPanelScreen;

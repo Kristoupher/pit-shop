@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useUpdateUserMutation } from "../../slices/usersApiSlice";
 
 
-const UserEdit = () => {
+const UserEditScreen = () => {
     const { id } = useParams();
 
     const { data: user, refetch, isLoading, error } = useGetUserByIdQuery(id);
@@ -42,7 +42,7 @@ const UserEdit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(gender !== "" && lastname !== "" && firstname !== "" && mail !== "" && phone !== "" && street !== "" && city !== "" && postalCode !== "") {
-            if(gender != user.gender || lastname != user.lastname || firstname != user.firstname || mail != user.mail || phone != user.phone || street != user.address.street || city != user.address.city || postalCode != user.address.postalCode || isAdmin != user.isAdmin) {
+            if(gender !== user.gender || lastname !== user.lastname || firstname !== user.firstname || mail !== user.mail || phone !== user.phone || street !== user.address.street || city !== user.address.city || postalCode !== user.address.postalCode || isAdmin !== user.isAdmin) {
                 try {
                     await updateUser({
                         id: user._id,
@@ -141,4 +141,4 @@ const UserEdit = () => {
     );
 };
 
-export default UserEdit;
+export default UserEditScreen;

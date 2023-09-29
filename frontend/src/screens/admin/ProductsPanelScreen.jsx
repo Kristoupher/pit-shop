@@ -3,13 +3,15 @@ import {Link} from "react-router-dom";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
-import {formatPrice, formatString, formatDate, removeFirstChar} from "../../utils/utils";
-import { useGetProductsQuery } from "../../slices/productsApiSlice";
+import {formatPrice, formatString, formatDate} from "../../utils/utils";
+import { useGetProductsQuery, useDeleteProductMutation } from "../../slices/productsApiSlice";
 import {toast} from "react-toastify";
 
-const ProductsPanel = () => {
+const ProductsPanelScreen = () => {
     const { pageNumber, keyword  } = useParams();
-    const { data: products, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
+    const { data: products, refetch, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
+
+    const [ deleteProduct, { isLoading: loadingDelete } ] = useDeleteProductMutation();
 
     const [userModals, setUserModals] = useState({});
     const [deleteModal, setDeleteModal] = useState({});
@@ -19,6 +21,10 @@ const ProductsPanel = () => {
             ...prevUserModals,
             [productId]: true,
         }));
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     };
 
     const openDeleteModal = (productId) => {
@@ -26,6 +32,10 @@ const ProductsPanel = () => {
             ...prevDeleteModal,
             [productId]: true,
         }));
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 
     const closeModal = (userId) => {
@@ -44,7 +54,10 @@ const ProductsPanel = () => {
 
     const deleteHandler  = async (id) => {
         try {
-
+            await deleteProduct(id);
+            closeDeleteModal(id);
+            toast.success("Produit supprimé");
+            refetch();
         } catch (err) {
             toast(err?.data?.message || err.error);
         }
@@ -53,7 +66,10 @@ const ProductsPanel = () => {
     return (
                 <section className="account">
                     <Link className="btn btn-primary mb-5" to="/admin">Retour</Link>
-                    <h1 className="flex flex-align-center"><Shirt size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des Produits</h1>
+                    <div className="flex-between-desktop">
+                        <h1 className="flex flex-align-center"><Shirt size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des Produits</h1>
+                        <Link to="/admin/product/create" className="btn btn-primary">Ajouter un produit</Link>
+                    </div>
                     {
                         isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
                             <div className="table-responsive section">
@@ -130,4 +146,4 @@ const ProductsPanel = () => {
     );
 };
 
-export default ProductsPanel;
+export default ProductsPanelScreen;

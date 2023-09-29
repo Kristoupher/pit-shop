@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {formatDate, formatString} from "../../utils/utils";
 import { useGetCategoriesQuery} from "../../slices/categoriesApiSlice";
 
-const CategoriesPanel = () => {
+const CategoriesPanelScreen = () => {
     const { data: categories, isLoading, error } = useGetCategoriesQuery();
 
     const deleteHandler = (id) => {
@@ -49,4 +49,4 @@ const CategoriesPanel = () => {
     );
 };
 
-export default CategoriesPanel;
+export default CategoriesPanelScreen;

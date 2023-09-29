@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-const AccountEdit = () => {
+const AccountEditScreen = () => {
     const { userInfo } = useSelector(state => state.auth);
     return (
         <div className="edit section shipping">
@@ -45,4 +45,4 @@ const AccountEdit = () => {
     );
 };
 
-export default AccountEdit;
+export default AccountEditScreen;

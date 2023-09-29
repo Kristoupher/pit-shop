@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useGetProductDetailsQuery, useUpdateProductMutation, useUploadProductImageMutation} from "../../slices/productsApiSlice";
+import { useGetProductDetailsQuery,
+            useUpdateProductMutation,
+            useUploadProductImageMutation,
+            useDeleteProductImageMutation,
+        } from "../../slices/productsApiSlice";
 import {Link, useParams, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
-import { formatString, formatInsertion} from "../../utils/utils";
+import {formatString, formatInsertion, getFileName} from "../../utils/utils";
 
-const ProductEdit = () => {
+const ProductEditScreen = () => {
     const navigate = useNavigate();
     const { id: productId } = useParams();
 
@@ -14,6 +18,8 @@ const ProductEdit = () => {
     const [updateProduct, { isLoading: loadingUpdate }] = useUpdateProductMutation();
 
     const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
+
+    const [deleteProductImage, { isLoading: loadingDelete }] = useDeleteProductImageMutation();
 
     const [image, setImage] = useState(product && product.image);
     const [uploading, setUploading] = useState(null);
@@ -45,10 +51,19 @@ const ProductEdit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const formData = new FormData();
-            formData.append('image', uploading);
-            const res = await uploadProductImage(formData).unwrap();
-            await updateProduct({ productId, name, price, description, sizes, category, image: res.image, team: formatInsertion(team), driver: formatInsertion(driver)  });
+            let img;
+            if(uploading !== null) {
+                const fileName = getFileName(image);
+                const formData = new FormData();
+                formData.append('image', uploading);
+                await deleteProductImage(fileName).unwrap();
+                const res = await uploadProductImage(formData).unwrap();
+                img = res.image;
+            } else {
+                img = product.image;
+            }
+
+            await updateProduct({ productId, name, price, description, sizes, category, image: img, team: formatInsertion(team), driver: formatInsertion(driver)  });
             toast.success('Le produit a été modifié avec succès');
             refetch();
             navigate('/admin/products');
@@ -130,4 +145,4 @@ const ProductEdit = () => {
     );
 };
 
-export default ProductEdit;
+export default ProductEditScreen;

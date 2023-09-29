@@ -11,6 +11,7 @@ form.form {
     margin-bottom: 2rem;
     input[type="file"] {
       width: 80%;
+      max-width: 40rem;
     }
     .img {
       aspect-ratio: 4/4;
