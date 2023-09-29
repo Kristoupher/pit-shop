@@ -185,6 +185,8 @@ const updateUser = asyncHandler(async (req, res) => {
         user.lastname = req.body.lastname || user.lastname;
         user.firstname = req.body.firstname || user.firstname;
         user.mail = req.body.mail || user.mail;
+        user.phone = req.body.phone || user.phone;
+        user.address = req.body.address || user.address;
         user.isAdmin = req.body.isAdmin;
 
         const updatedUser = await user.save();

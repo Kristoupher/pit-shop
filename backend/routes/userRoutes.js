@@ -23,8 +23,8 @@ router
     .put(protect, updateUserProfile);
 router
     .route('/:id')
-    .delete(protect, admin, deleteUser)
+    .delete(deleteUser)
     .get(getUserById)
-    .put(protect, admin, updateUser);
+    .put(updateUser);
 
 export default router;

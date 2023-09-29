@@ -362,6 +362,10 @@
     margin-bottom: 2rem!important;
 }
 
+.mt-6 {
+    margin-top: 3rem!important;
+}
+
 //Modal
 
 .modal {
@@ -379,7 +383,7 @@
     display: inline-block;
     padding: 2.5rem;
     width: 80%;
-    max-width: 40rem;
+    max-width: 60rem;
     position: absolute;
     top: -100%;
     left: 50%;
@@ -388,6 +392,20 @@
     overflow: hidden;
     text-align: left;
     transition: all .3s ease-in-out;
+    .img {
+      aspect-ratio: 4/4;
+      margin: 2rem 0;
+      width: 100%;
+      max-width: 10rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $lightgrey;
+       img {
+         width: 90%;
+       }
+    }
     & > span {
       position: absolute;
       top: 1rem;
@@ -440,5 +458,25 @@
     .modal-content {
         top: 30%;
     }
+  }
+}
+
+.sizes-container {
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+  gap: 2rem;
+  .size {
+    font-size: 1.8rem;
+    @include lg {
+      font-size: 2rem;
+    }
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: .5rem 1rem;
+    border: 2px solid $text;
+    display: inline-block;
+    width: 6rem;
+    text-align: center;
   }
 }

@@ -22,3 +22,8 @@ export const formatDate = (date) => {
 export const removeFirstChar = (string) => {
     return string.slice(1);
 }
+
+export const formatInsertion = (string) => {
+//     renvoyer le string avec que des minusucules et des tirets a la place des espaces
+    return string.toLowerCase().replace(/ /g, '-');
+}

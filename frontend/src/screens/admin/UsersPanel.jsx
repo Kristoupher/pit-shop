@@ -1,18 +1,20 @@
 import { Eye, Pencil, Trash2, User2, XCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useGetUsersQuery } from "../../slices/usersApiSlice";
+import { useGetUsersQuery, useDeleteUserMutation } from "../../slices/usersApiSlice";
 import Loader from "../../components/Loader";
 import { formatString, removeFirstChar } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import {toast} from "react-toastify";
 
 const UsersPanel = () => {
-    const { data: users, isLoading, error } = useGetUsersQuery();
-    const { userInfo } = useSelector((state) => state.auth);
 
-    const deleteHandler = (id) => {};
+    const { data: users, refetch, isLoading, error } = useGetUsersQuery();
+    const { userInfo } = useSelector((state) => state.auth);
+    const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
     const [userModals, setUserModals] = useState({});
+    const [deleteModal, setDeleteModal] = useState({});
 
     const openModal = (userId) => {
         setUserModals((prevUserModals) => ({
@@ -21,12 +23,38 @@ const UsersPanel = () => {
         }));
     };
 
+    const openDeleteModal = (userId) => {
+        setDeleteModal((prevDeleteModal) => ({
+            ...prevDeleteModal,
+            [userId]: true,
+        }));
+    }
+
     const closeModal = (userId) => {
         setUserModals((prevUserModals) => ({
             ...prevUserModals,
             [userId]: false,
         }));
     };
+
+    const closeDeleteModal = (userId) => {
+        setDeleteModal((prevDeleteModal) => ({
+            ...prevDeleteModal,
+            [userId]: false,
+        }));
+    }
+
+    const deleteHandler  = async (id) => {
+        try {
+            await deleteUser(id);
+            closeDeleteModal(id);
+            toast.success('Utilisateur supprimé avec succès');
+            refetch();
+        } catch (err) {
+            toast(err?.data?.message || err.error);
+        }
+    };
+
 
     return (
         <section className="account">
@@ -42,6 +70,7 @@ const UsersPanel = () => {
                             <th>Rôle</th>
                             <th>Actions</th>
                             <th></th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -55,7 +84,7 @@ const UsersPanel = () => {
                                     <td className="flex flex-center">
                                         <button onClick={() => openModal(user._id)} className="circle-btn circle-btn-primary"><Eye size={30} color="#2E2E2E" /></button>
                                         <Link className="circle-btn circle-btn-secondary" to={`/admin/user/edit/${user._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
-                                        <button className="circle-btn circle-btn-danger" onClick={() => deleteHandler(user._id)}><Trash2 size={30} color="#2E2E2E" /></button>
+                                        <button className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(user._id)}><Trash2 size={30} color="#2E2E2E" /></button>
                                     </td>
                                     <td>
                                         <div className={`modal ${userModals[user._id] ? 'active' : ''}`}>
@@ -67,6 +96,19 @@ const UsersPanel = () => {
                                                 <p>{user.address.postalCode}{" "}{formatString(user.address.city)}</p>
                                                 <Link title={`Contacter ${user.mail}`} className="mail" to={`mailto:${user.mail}`}>{user.mail}</Link>
                                                 <Link title={`Appeler ${user.phone}`} to={`tel:+33${removeFirstChar(user.phone)}`}>{user.phone}</Link>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className={`modal ${deleteModal[user._id] ? 'active' : ''}`}>
+                                            <div className="modal-content">
+                                                <span onClick={() => closeDeleteModal(user._id)}><XCircle size={35} color="#2E2E2E" /></span>
+                                                <p className='mb-5 mt-6'><strong>Êtes-vous sûr de vouloir supprimer l'utilisateur suivant ?</strong></p>
+                                                <p>{formatString(user.firstname)} {formatString(user.lastname)}</p>
+                                                <div className="flex flex-center mt-6">
+                                                    <button className="btn btn-primary mr-5" onClick={() => deleteHandler(user._id)}>Supprimer</button>
+                                                    <button className="btn btn-danger" onClick={() => closeDeleteModal(user._id)}>Annuler</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
