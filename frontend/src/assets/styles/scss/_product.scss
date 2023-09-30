@@ -51,7 +51,7 @@
             border: 2px solid $text;
             cursor: pointer;
             padding: 1rem 2rem;
-            width: 7rem;
+            min-width: 7rem;
             text-align: center;
             transition: all 0.3s ease-in-out;
             &:hover {

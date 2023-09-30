@@ -207,6 +207,9 @@
   }
 }
 
+.pointer {
+    cursor: pointer;
+}
 //Accordéon
 
 .accordion {
@@ -315,6 +318,9 @@
 .w-100 {
     width: 100%;
 }
+.w-25 {
+    width: 25%;
+}
 
 .circle-btn {
   width: 4.5rem;
@@ -396,7 +402,7 @@
       aspect-ratio: 4/4;
       margin: 2rem 0;
       width: 100%;
-      max-width: 10rem;
+      max-width: 15rem;
       border-radius: 1rem;
       display: flex;
       align-items: center;
@@ -405,6 +411,18 @@
        img {
          width: 90%;
        }
+    }
+    .banner {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 1rem;
+      aspect-ratio: 16/6;
+      img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
     }
     & > span {
       position: absolute;
@@ -464,6 +482,7 @@
 .sizes-container {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   padding-left: 0;
   gap: 2rem;
   .size {
@@ -476,7 +495,7 @@
     padding: .5rem 1rem;
     border: 2px solid $text;
     display: inline-block;
-    width: 6rem;
+    min-width: 6rem;
     text-align: center;
   }
 }

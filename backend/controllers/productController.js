@@ -120,21 +120,18 @@ const getSizes = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
+    const { name, description, price, image, sizes, team, driver, type, category } = req.body;
+
     const product = new Product({
-        name: 'Sample name',
-        description: 'Sample description',
-        price: 0,
-        image: '/images/sample.jpg',
-        sizes: [
-            {
-                name: 'Sample size',
-                quantityInStock: 0,
-            }
-        ],
-        team: 'Sample team',
-        driver: 'Sample driver',
-        type: 'Sample type',
-        category: 'Sample category',
+        name,
+        description,
+        price,
+        image,
+        sizes,
+        team,
+        driver,
+        type,
+        category
     });
 
     const createdProduct = await product.save();

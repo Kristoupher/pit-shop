@@ -56,7 +56,7 @@ const ProductsPanelScreen = () => {
         try {
             await deleteProduct(id);
             closeDeleteModal(id);
-            toast.success("Produit supprimé");
+            toast.success("Produit supprimé avec succès");
             refetch();
         } catch (err) {
             toast(err?.data?.message || err.error);
@@ -110,6 +110,21 @@ const ProductsPanelScreen = () => {
                                                                     <span className="price-title">{formatPrice(product.price)}</span>
                                                             </div>
                                                             <p>{product.description}</p>
+                                                            {
+                                                                product.team && (
+                                                                    <p className="mt-6"><strong>Équipe :</strong> {formatString(product.team)}</p>
+                                                                )
+                                                            }
+                                                            {
+                                                                product.driver && (
+                                                                    <p><strong>Pilote :</strong> {formatString(product.driver)}</p>
+                                                                )
+                                                            }
+                                                            {
+                                                                product.type && (
+                                                                    <p><strong>Type :</strong> {formatString(product.type)}</p>
+                                                                )
+                                                            }
                                                             <p className="mt-6"><strong>Tailles :</strong></p>
                                                             <ul className="sizes-container">
                                                                 {

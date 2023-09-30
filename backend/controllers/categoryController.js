@@ -27,10 +27,12 @@ const getCategoryById = asyncHandler(async (req, res) => {
 // @route   POST /api/categories
 // @access  Private/Admin
 const createCategory = asyncHandler(async (req, res) => {
+    const { name, image, banner } = req.body;
+
     const category = new Category({
-        name: 'Sample name',
-        description: 'Sample description',
-        image: '/images/sample.jpg',
+        name,
+        image,
+        banner
     });
 
     const createdCategory = await category.save();
@@ -66,7 +68,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
     const category = await Category.findById(req.params.id);
 
     if(category) {
-        await category.remove();
+        await category.deleteOne({ _id: category._id });
         res.json({ message: 'Category removed' });
     } else {
         res.status(404);

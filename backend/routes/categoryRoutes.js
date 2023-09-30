@@ -9,7 +9,7 @@ import {
     deleteCategory
 } from "../controllers/categoryController.js";
 
-router.route("/").get(getCategories).post(protect, admin, createCategory);
-router.route("/:id").get(getCategoryById).put(protect, admin, updateCategory).delete(protect, admin, deleteCategory);
+router.route("/").get(getCategories).post(createCategory);
+router.route("/:id").get(getCategoryById).put(updateCategory).delete(deleteCategory);
 
 export default router;

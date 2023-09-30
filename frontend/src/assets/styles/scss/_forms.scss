@@ -9,6 +9,15 @@ form.form {
   }
   .form-group {
     margin-bottom: 2rem;
+    select {
+      width: 80%;
+      max-width: 30rem;
+      background-color: $white;
+      outline: none;
+      border: 1px solid $text;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+    }
     input[type="file"] {
       width: 80%;
       max-width: 40rem;
@@ -86,7 +95,7 @@ form.form {
       padding: .5rem 1rem;
       border: 2px solid $text;
       display: inline-block;
-      width: 6rem;
+      min-width: 6rem;
       text-align: center;
     }
   }
@@ -104,6 +113,31 @@ form.form {
      text-align: right;
    }
  }
+  &.category {
+    .form-group {
+      max-width: 40rem;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+      input {
+        width: 100%;
+      }
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 4rem;
+      button {
+        width: 100%;
+        max-width: 40rem;
+      }
+    }
+  }
 }
 
 // Page contact width formlaire

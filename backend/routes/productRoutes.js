@@ -17,7 +17,7 @@ import {
     deleteProduct
 } from "../controllers/productController.js";
 
-router.route("/").get(getProducts).post(protect, admin, createProduct);
+router.route("/").get(getProducts).post(createProduct);
 router.route("/teams/:id").get(getTeams);
 router.route("/drivers/:id").get(getDrivers);
 router.route("/types/:id").get(getTypes);

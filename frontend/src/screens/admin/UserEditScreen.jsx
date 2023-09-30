@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useGetUserByIdQuery} from "../../slices/usersApiSlice";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
@@ -70,6 +70,7 @@ const UserEditScreen = () => {
     return (
         <>
             <section>
+                <Link to="/admin/users" className="btn btn-primary mb-5">Retour</Link>
                 <h1>Modification d'un utilisateur</h1>
             </section>
             {

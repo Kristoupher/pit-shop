@@ -4,6 +4,7 @@ import { useGetProductDetailsQuery,
             useUploadProductImageMutation,
             useDeleteProductImageMutation,
         } from "../../slices/productsApiSlice";
+import { useGetCategoriesQuery } from "../../slices/categoriesApiSlice";
 import {Link, useParams, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
@@ -12,6 +13,8 @@ import {formatString, formatInsertion, getFileName} from "../../utils/utils";
 const ProductEditScreen = () => {
     const navigate = useNavigate();
     const { id: productId } = useParams();
+
+    const { data: categories } = useGetCategoriesQuery();
 
     const { data: product, refetch, isLoading, error } = useGetProductDetailsQuery(productId);
 
@@ -30,6 +33,7 @@ const ProductEditScreen = () => {
     const [category, setCategory] = useState(product && product.category);
     const [team, setTeam] = useState(product && product.team);
     const [driver, setDriver] = useState(product && product.driver);
+    const [type, setType] = useState(product && product.type);
 
     useEffect(() => {
         if(product) {
@@ -41,6 +45,7 @@ const ProductEditScreen = () => {
             setCategory(product.category);
             setTeam(product.team);
             setDriver(product.driver);
+            setType(product.type);
         }
     }, [product]);
 
@@ -53,17 +58,19 @@ const ProductEditScreen = () => {
         try {
             let img;
             if(uploading !== null) {
-                const fileName = getFileName(image);
-                const formData = new FormData();
-                formData.append('image', uploading);
-                await deleteProductImage(fileName).unwrap();
-                const res = await uploadProductImage(formData).unwrap();
-                img = res.image;
+                if(image !== null && name !== '' && description !== '' && price !== '' && category !== '' && sizes.length > 0) {
+                    const fileName = getFileName(image);
+                    const formData = new FormData();
+                    formData.append('image', uploading);
+                    await deleteProductImage(fileName).unwrap();
+                    const res = await uploadProductImage(formData).unwrap();
+                    img = res.image;
+                }
             } else {
                 img = product.image;
             }
 
-            await updateProduct({ productId, name, price, description, sizes, category, image: img, team: formatInsertion(team), driver: formatInsertion(driver)  });
+            await updateProduct({ productId, name, price, description, sizes, category, type, image: img, team: formatInsertion(team), driver: formatInsertion(driver)  });
             toast.success('Le produit a été modifié avec succès');
             refetch();
             navigate('/admin/products');
@@ -118,6 +125,27 @@ const ProductEditScreen = () => {
                                 <label htmlFor="description">Description</label>
                                 <textarea rows={8} name="description" id="description" placeholder="Description du produit" defaultValue={description} onChange={(e) => setDescription(e.target.value)} />
                             </div>
+                            <p><strong>Catégorie</strong></p>
+                            <div className="form-duo">
+                                <div className="form-group flex flex-center">
+                                    <label htmlFor="type">Type</label>
+                                    <input type="text" name="type" id="type" defaultValue={product.type} placeholder="Type" onChange={(e) => setType(e.target.value)} />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="category">Catégorie</label>
+                                    {
+                                        <select className="w-100" name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
+                                            <option value="">Choisir une catégorie</option>
+                                            {
+                                                categories?.map((category) => (
+                                                    <option selected={category._id === product.category} key={category._id} value={category._id}>{formatString(category.name)}</option>
+                                                ))
+                                            }
+                                        </select>
+                                    }
+                                </div>
+                            </div>
+                            <p><strong>Tailles</strong></p>
                             <ul className="sizes-edit">
                                 {
                                     product.sizes.map((size) => (

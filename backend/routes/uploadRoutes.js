@@ -14,6 +14,26 @@ const storage = multer.diskStorage({
     }
 });
 
+//Import image pour la bannière d'une catégorie
+const storageBanner = multer.diskStorage({
+    destination(req, file, cb) {
+        cb(null, "uploads/categories/banners/");
+    },
+    filename(req, file, cb) {
+        cb(null, `category-${Date.now()}${path.extname(file.originalname)}`);
+    }
+});
+
+//Import image pour l'image d'une catégorie
+const storageImage = multer.diskStorage({
+    destination(req, file, cb) {
+        cb(null, "uploads/categories/images/");
+    },
+    filename(req, file, cb) {
+        cb(null, `category-${Date.now()}${path.extname(file.originalname)}`);
+    }
+});
+
 function checkFileType(file, cb) {
     const fileTypes = /jpg|jpeg|png|svg/;
     const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
@@ -31,7 +51,29 @@ const upload = multer({
     storage,
 })
 
+const uploadBanner = multer({
+    storage: storageBanner,
+})
+
+const uploadImage = multer({
+    storage: storageImage,
+})
+
 router.post('/', upload.single('image'), (req, res) => {
+    res.send({
+        message: 'Image téléchargée',
+        image: `/${req.file.path}`
+    });
+});
+
+router.post('/banner', uploadBanner.single('image'), (req, res) => {
+    res.send({
+        message: 'Image téléchargée',
+        image: `/${req.file.path}`
+    });
+});
+
+router.post('/image', uploadImage.single('image'), (req, res) => {
     res.send({
         message: 'Image téléchargée',
         image: `/${req.file.path}`
@@ -41,6 +83,42 @@ router.post('/', upload.single('image'), (req, res) => {
 router.delete('/:path', (req, res) => {
     const filename = req.params.path;
     const filepath =`uploads/products/images/${filename}`;
+    fs.unlink(filepath, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send({
+                message: 'Erreur lors de la suppression du fichier'
+            });
+        }
+        else {
+            res.send({
+                message: 'Fichier supprimé'
+            });
+        }
+    });
+});
+
+router.delete('/banner/:path', (req, res) => {
+    const filename = req.params.path;
+    const filepath =`uploads/categories/banners/${filename}`;
+    fs.unlink(filepath, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send({
+                message: 'Erreur lors de la suppression du fichier'
+            });
+        }
+        else {
+            res.send({
+                message: 'Fichier supprimé'
+            });
+        }
+    });
+});
+
+router.delete('/images/:path', (req, res) => {
+    const filename = req.params.path;
+    const filepath =`uploads/categories/images/${filename}`;
     fs.unlink(filepath, (err) => {
         if (err) {
             console.error(err);

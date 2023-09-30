@@ -32,6 +32,8 @@ import OrderAdminScreen from "./screens/admin/OrderAdminScreen";
 import UserEditScreen from "./screens/admin/UserEditScreen";
 import ProductEditScreen from "./screens/admin/ProductEditScreen";
 import ProductCreateScreen from "./screens/admin/ProductCreateScreen";
+import CategoryEditScreen from "./screens/admin/CategoryEditScreen";
+import CategoryCreateScreen from "./screens/admin/CategoryCreateScreen";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -64,6 +66,8 @@ const router = createBrowserRouter(
                 <Route path="admin/user/edit/:id" element={<UserEditScreen />} />
                 <Route path="admin/product/edit/:id" element={<ProductEditScreen />} />
                 <Route path="admin/product/create" element={<ProductCreateScreen />} />
+                <Route path="admin/category/edit/:id" element={<CategoryEditScreen />} />
+                <Route path="admin/category/create" element={<CategoryCreateScreen />} />
             </Route>
         </Route>
     )
