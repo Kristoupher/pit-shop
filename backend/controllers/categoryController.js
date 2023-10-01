@@ -43,13 +43,13 @@ const createCategory = asyncHandler(async (req, res) => {
 // @route   PUT /api/categories/:id
 // @access  Private/Admin
 const updateCategory = asyncHandler(async (req, res) => {
-    const { name, description, image } = req.body;
+    const { name, banner, image } = req.body;
 
     const category = await Category.findById(req.params.id);
 
     if(category) {
         category.name = name;
-        category.description = description;
+        category.banner = banner;
         category.image = image;
 
         const updatedCategory = await category.save();
@@ -59,6 +59,7 @@ const updateCategory = asyncHandler(async (req, res) => {
         throw new Error('Resource not found');
     }
 });
+
 
 // @desc    Delete a category
 // @route   DELETE /api/categories/:id

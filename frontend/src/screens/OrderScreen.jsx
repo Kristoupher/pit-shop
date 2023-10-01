@@ -18,6 +18,7 @@ const OrderScreen = () => {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
                     <div className="order section">
                         <h1>N° de commande : <span>{order.orderNumber} - {formatDate(order.orderDate)}</span></h1>
+                        <p className="badge">{order.status}</p>
                         <div className="cart-container section">
                             <div className="cart-list">
                                 {

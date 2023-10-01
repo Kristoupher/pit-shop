@@ -37,8 +37,8 @@ const CategoryEditScreen = () => {
         e.preventDefault();
         if(name !== "") {
             try {
-                let img;
-                let banner;
+                let img = null;
+                let bannerImg = null;
                 if(image){
                     await deleteCategoryImage(getFileName(imgFileName)).unwrap();
                     const formDataImg = new FormData();
@@ -47,17 +47,17 @@ const CategoryEditScreen = () => {
                     img = resImg.image;
                 }
                 if(banner){
-                    await deleteCategoryBanner(getFileName(imgFileName)).unwrap();
+                    await deleteCategoryBanner(getFileName(bannerFileName)).unwrap();
                     const formDataBanner = new FormData();
                     formDataBanner.append('image', banner);
                     const resBanner = await uploadCategoryBanner(formDataBanner).unwrap();
-                    banner = resBanner.image;
+                    bannerImg = resBanner.image;
                 }
                 const data = {
                     id: category._id,
                     name,
                     image: img || category.image,
-                    banner: banner || category.banner
+                    banner: bannerImg || category.banner
                 };
                 await updateCategory(data).unwrap();
                 toast.success("Catégorie modifiée avec succès");

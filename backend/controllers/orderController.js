@@ -29,7 +29,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
             totalPrice,
             orderDate: Date.now(),
             orderNumber: Math.floor(Math.random() * 1000000).toString(),
-            status: "payé",
+            status: "payée",
             paidAt: Date.now(),
         });
 
@@ -69,9 +69,26 @@ const getOrders = asyncHandler(async (req, res) => {
     res.status(200).json(orders);
 });
 
+// @desc    Update order status
+// @route   PUT /api/orders/:id
+// @access  Private/Admin
+const updateOrderStatus = asyncHandler(async (req, res) => {
+    const { status } = req.body;
+    const order = await Order.findById(req.params.id);
+
+    if(order) {
+        order.status = status;
+        order.save();
+        res.status(200).json(order);
+    } else {
+        throw new Error("Commande introuvable");
+    }
+});
+
 export {
     addOrderItems,
     getMyOrders,
     getOrderById,
     getOrders,
+    updateOrderStatus,
 };

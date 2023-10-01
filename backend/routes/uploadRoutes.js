@@ -116,7 +116,7 @@ router.delete('/banner/:path', (req, res) => {
     });
 });
 
-router.delete('/images/:path', (req, res) => {
+router.delete('/image/:path', (req, res) => {
     const filename = req.params.path;
     const filepath =`uploads/categories/images/${filename}`;
     fs.unlink(filepath, (err) => {
