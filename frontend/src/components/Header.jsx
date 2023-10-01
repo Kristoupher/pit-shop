@@ -56,8 +56,8 @@ const Header = () => {
                     <button> <Search color="#fff" size={25} strokeWidth={3} /> </button>
                 </form>
                 <div className="navbar-btns-desktop">
-                    <Link className={`header-cart ${cartItems.length > 0 ? 'active' : ''}`} to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/><span>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</span></Link>
-                    <Link to="/contact"><Mail color="#2E2E2E" size={30} strokeWidth={3}/></Link>
+                    <Link title="Panier" className={`header-cart ${cartItems.length > 0 ? 'active' : ''}`} to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/><span>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</span></Link>
+                    <Link title="Contact" to="/contact"><Mail color="#2E2E2E" size={30} strokeWidth={3}/></Link>
                     {
                         userInfo ? (
                             <>
