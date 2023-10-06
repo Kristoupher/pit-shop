@@ -6,6 +6,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         getCategories: builder.query({
             query: () => ({
                 url: CATEGORIES_URL,
+                credentials: "include",
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Category'],
@@ -13,6 +14,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         getCategoryById: builder.query({
             query: (id) => ({
                 url: `${CATEGORIES_URL}/${id}`,
+                credentials: "include",
             }),
             keepUnusedDataFor: 5,
         }),
@@ -20,6 +22,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `${CATEGORIES_URL}/${id}`,
                 method: "DELETE",
+                credentials: "include",
             }),
             invalidatesTags: ['Categories'],
         }),
@@ -28,6 +31,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: `${UPLOAD_URL}/image`,
                 method: 'POST',
                 body: data,
+                credentials: "include",
             }),
         }),
         uploadCategoryBanner: builder.mutation({
@@ -35,13 +39,15 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: `${UPLOAD_URL}/banner`,
                 method: 'POST',
                 body: data,
+                credentials: "include",
             }),
         }),
         createCategory: builder.mutation({
             query: (data) => ({
                 url: `${CATEGORIES_URL}`,
                 method: 'POST',
-                body: data
+                body: data,
+                credentials: "include",
             }),
             invalidatesTags: ['Categories'],
         }),
@@ -49,6 +55,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             query: (fileName) => ({
                 url: `${UPLOAD_URL}/image/${fileName}`,
                 method: 'DELETE',
+                credentials: "include",
             }),
             invalidatesTags: ['Categories'],
         }),
@@ -56,6 +63,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             query: (fileName) => ({
                 url: `${UPLOAD_URL}/banner/${fileName}`,
                 method: 'DELETE',
+                credentials: "include",
             }),
             invalidatesTags: ['Categories'],
         }),
@@ -64,6 +72,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: `${CATEGORIES_URL}/${data.id}`,
                 method: 'PUT',
                 body: data,
+                credentials: "include",
             }),
         }),
     }),

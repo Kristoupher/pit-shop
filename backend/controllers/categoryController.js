@@ -5,7 +5,7 @@ import Category from "../models/categoryModel.js";
 // @route   GET /api/categories
 // @access  Public
 const getCategories = asyncHandler(async (req, res) => {
-    const categories = await Category.find({});
+    const categories = await Category.find({}).sort({ createdAt: 1 });
     res.json(categories);
 });
 

@@ -1,18 +1,18 @@
 import { useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useParams} from "react-router-dom";
 import { Search, ShoppingCart, Mail, User2, Settings } from "lucide-react";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
 import Logo from "../assets/images/logo.svg";
 import {formatString} from "../utils/utils";
 import { useLogoutMutation} from "../slices/usersApiSlice";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/authSlice";
 
 const Header = () => {
     const { category: categoryId } = useParams();
     const [toggle, setToggle] = useState(false);
+    const [search, setSearch] = useState('');
     const body = document.querySelector('body');
 
     const dispatch = useDispatch();
@@ -40,6 +40,14 @@ const Header = () => {
     //Récupération des catégories
     const { data: categories } = useGetCategoriesQuery();
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if(search !== '') {
+            setSearch(search.toLowerCase());
+            navigate(`/products/search/${search}`);
+        }
+    }
+
 
     return (
         <header className="container header-nav">
@@ -52,8 +60,8 @@ const Header = () => {
                     <div id="nav-toggle" className={`${toggle ? 'active' : ''}`} onClick={() => setToggle(!toggle)}></div>
                 </div>
                 <form>
-                    <input type="text" placeholder="Rechercher un produit..." />
-                    <button> <Search color="#fff" size={25} strokeWidth={3} /> </button>
+                    <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Rechercher un produit..." />
+                    <button onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
                 </form>
                 <div className="navbar-btns-desktop">
                     <Link title="Panier" className={`header-cart ${cartItems.length > 0 ? 'active' : ''}`} to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/><span>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</span></Link>
@@ -87,6 +95,10 @@ const Header = () => {
                     }
                 </ul>
                 <div className="nav-btns">
+                    <form>
+                        <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Rechercher un produit..." />
+                        <button onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
+                    </form>
                     <Link to="/contact" className="btn btn-secondary" onClick={() => setToggle(false)}>Contact</Link>
                     <Link to="/cart" className="btn btn-tertiary" onClick={() => setToggle(false)}>Panier</Link>
                     {

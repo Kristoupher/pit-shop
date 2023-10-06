@@ -7,12 +7,14 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
             query: (dataOrder) => ({
                 url: ORDERS_URL,
                 method: "POST",
-                body: dataOrder
+                body: dataOrder,
+                credentials: "include",
             }),
         }),
         getPayPalClientId: builder.query({
             query: () => ({
-                url: PAYPAL_URL
+                url: PAYPAL_URL,
+                credentials: "include",
             }),
             keepUnusedDataFor: 5,
         }),
@@ -20,24 +22,28 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: `${ORDERS_URL}/${data.orderId}`,
                 method: "PUT",
-                body: data
+                body: data,
+                credentials: "include",
             }),
         }),
         getMyOrders: builder.query({
             query: (id) => ({
                 url: `${ORDERS_URL}/mine/${id}`,
+                credentials: "include",
             }),
             keepUnusedDataFor: 5,
         }),
         getOrderDetails: builder.query({
             query: (orderId) => ({
                 url: `${ORDERS_URL}/${orderId}`,
+                credentials: "include",
             }),
             keepUnusedDataFor: 5
         }),
         getOrders: builder.query({
             query: () => ({
                 url: ORDERS_URL,
+                credentials: "include",
             }),
         }),
         keepUnusedDataFor: 5,

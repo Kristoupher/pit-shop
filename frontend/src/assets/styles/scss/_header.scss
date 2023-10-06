@@ -157,6 +157,36 @@
       }
     }
     .nav-btns {
+      form {
+        display: flex;
+        gap: 1rem;
+        input {
+          width: 75%;
+          margin-bottom: 1rem;
+          background-color: $lightgrey;
+          outline: none;
+          border: 2px solid transparent;
+          padding: 1rem 2rem;
+          border-radius: 1rem;
+          transition: all .3s ease-in-out;
+            &:focus {
+              border-color: $primary;
+            }
+
+        }
+        button {
+            margin-bottom: 1rem;
+            background-color: $primary;
+            outline: none;
+            border: 2px solid transparent;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            transition: all .3s ease-in-out;
+                &:focus {
+                border-color: $primary;
+                }
+        }
+      }
       width: 80%;
       max-width: 40rem;
       margin-top: 2rem;

@@ -11,6 +11,7 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/UploadRoutes.js";
+import {admin, protect} from "./middleware/authMiddleware.js";
 const port = process.env.PORT || 5000;
 
 connectDB(); // Connexion à MongoDB
@@ -20,11 +21,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors({
+const corsOptions = {
     origin: 'http://localhost:3000',
-    credentials: true
-}));
+    credentials: true,
+};
 
+app.use(cors(corsOptions));
 
 
 // Routes
