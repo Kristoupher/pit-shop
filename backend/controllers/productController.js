@@ -5,7 +5,6 @@ import sortSizes from "../utils/sortSizes.js";
 // @desc    Fetch all products
 // @route   GET /api/products
 // @access  Public
-
 const getProducts = asyncHandler(async (req, res) => {
     const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
@@ -18,6 +17,16 @@ const getProducts = asyncHandler(async (req, res) => {
 
     const products = await Product.find({...keyword}).limit(pageSize).skip(pageSize * (page - 1));
     res.json({products, page, pages: Math.ceil(count / pageSize)});
+});
+
+// @desc    Fetch all products from search
+// @route   GET /api/products/:keyword
+// @access  Public
+
+const getProductsSearch = asyncHandler(async (req, res) => {
+    const keyword = req.params.keyword;
+    const products = await Product.find({ name: { $regex: keyword, $options: 'i' } });
+    res.json(products);
 });
 
 // @desc    Fetch last 4 products
@@ -183,6 +192,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 });
 
 export { getProducts,
+    getProductsSearch,
     getLastProducts,
     getProductById,
     getProductsByCategoryAndSortByPriceAsc,

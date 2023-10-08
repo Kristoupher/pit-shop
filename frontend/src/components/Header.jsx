@@ -45,6 +45,7 @@ const Header = () => {
         if(search !== '') {
             setSearch(search.toLowerCase());
             navigate(`/products/search/${search}`);
+            setSearch('');
         }
     }
 
@@ -60,7 +61,7 @@ const Header = () => {
                     <div id="nav-toggle" className={`${toggle ? 'active' : ''}`} onClick={() => setToggle(!toggle)}></div>
                 </div>
                 <form>
-                    <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Rechercher un produit..." />
+                    <input onChange={(e) => setSearch(e.target.value)} value={search} type="text" placeholder="Rechercher un produit..." />
                     <button onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
                 </form>
                 <div className="navbar-btns-desktop">
