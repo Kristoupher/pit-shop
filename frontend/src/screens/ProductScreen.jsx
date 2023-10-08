@@ -5,7 +5,7 @@ import { useGetProductDetailsQuery} from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import { addToCart} from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
-import {formatPrice} from "../utils/utils";
+import {formatPrice, formatString} from "../utils/utils";
 
 const ProductScreen = () => {
     const [qtyStock, setQtyStock] = useState(0);
@@ -44,6 +44,12 @@ const ProductScreen = () => {
                             <h1>{product.name}</h1>
                             <strong className="m-0">{formatPrice(product.price)}</strong>
                             <p className="description">{product.description}</p>
+                            {
+                                product.team && <p><strong className="m-0">Équipe :</strong> {formatString(product.team)}</p>
+                            }
+                            {
+                                product.driver && <p><strong className="m-0">Pilote :</strong> {formatString(product.driver)}</p>
+                            }
                             <strong>Choisir une taille :</strong>
                             <div className="sizes">
                                 {

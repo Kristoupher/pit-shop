@@ -19,6 +19,12 @@ const OrderScreen = () => {
                     <div className="order section">
                         <h1>N° de commande : <span>{order.orderNumber} - {formatDate(order.orderDate)}</span></h1>
                         <p className="badge">{order.status}</p>
+                        <p><strong>Adresse de livraison :</strong></p>
+                        <span>
+                            {order.shippingAddress.street}, {order.shippingAddress.city},
+                            <br/>
+                            {order.shippingAddress.postalCode}
+                        </span>
                         <div className="cart-container section">
                             <div className="cart-list">
                                 {
@@ -28,7 +34,7 @@ const OrderScreen = () => {
                                 }
                             </div>
                             {
-                                <TotalPrice totalHt={order.totalPrice} tva={order.taxPrice} shipping={order.shippingPrice} totalTtc={order.totalPrice} count={order.orderItems.length} button={false} />
+                                <TotalPrice totalHt={order.itemsPrice} tva={order.taxPrice} shipping={order.shippingPrice} totalTtc={order.totalPrice} count={order.orderItems.length} button={false} />
                             }
                         </div>
                     </div>

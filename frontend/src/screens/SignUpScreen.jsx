@@ -55,7 +55,7 @@ const SignUpScreen = () => {
         <div className="signup section">
             <h1>Inscription</h1>
             <form className="form section">
-                <p>Vous avez déjà un compte, <Link to="/signup">se connecter</Link> !</p>
+                <p>Vous avez déjà un compte, <Link to="/login">se connecter</Link> !</p>
                 <div className="form-duo">
                     <div className="gender">
                         <p>Genre :</p>

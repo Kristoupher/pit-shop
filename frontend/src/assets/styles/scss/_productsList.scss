@@ -133,7 +133,7 @@
         display: block;
       }
     }
-    & > div:last-child {
+    & > div:last-child, &.products-search-list {
       @include smd {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -147,6 +147,10 @@
   }
 }
 
+.products-search-list > div:last-child {
+  display: inline-block!important;
+}
+
 //Card produit
 
 .product-card {
@@ -154,6 +158,7 @@
   overflow: hidden;
   box-shadow: 3px 3px 10px rgba(#000, .1);
   margin-bottom: 3rem;
+  min-height: 40rem;
   @include md {
     margin-bottom: 0;
   }
@@ -164,6 +169,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 100%;
     img {
       width: 90%;
       max-width: 30rem;

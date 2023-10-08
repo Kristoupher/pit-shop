@@ -270,3 +270,29 @@ form.form {
     border-radius: 1rem;
   }
 }
+
+.gender {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.8rem;
+        @include lg {
+          font-size: 2rem;
+        }
+      }
+    }
+  .radio-group {
+    display: flex;
+    align-items: center;
+    input {
+      margin-right: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetUserByIdQuery} from "../../slices/usersApiSlice";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
@@ -7,6 +7,7 @@ import { useUpdateUserMutation } from "../../slices/usersApiSlice";
 
 
 const UserEditScreen = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const { data: user, refetch, isLoading, error } = useGetUserByIdQuery(id);
@@ -56,6 +57,7 @@ const UserEditScreen = () => {
                     });
                     toast.success('Utilisateur modifié avec succès');
                     refetch();
+                    navigate('/admin/users');
                 } catch (err) {
                     toast.error(err?.data?.message || err.error);
                 }

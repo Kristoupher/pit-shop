@@ -107,24 +107,27 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id);
+    const { id, gender, lastname, firstname, mail, phone, address } = req.body;
+    const user = await User.findById(id);
 
     if(user) {
-        user.lastname = req.body.lastname || user.lastname;
-        user.firstname = req.body.firstname || user.firstname;
-        user.mail = req.body.mail || user.mail;
-
-        if(req.body.password) {
-            user.password = req.body.password;
-        }
+        user.gender = gender || user.gender
+        user.lastname = lastname || user.lastname;
+        user.firstname = firstname || user.firstname;
+        user.mail = mail || user.mail;
+        user.phone = phone || user.phone;
+        user.address = address || user.address;
 
         const updatedUser = await user.save();
 
         res.json({
             _id: updatedUser._id,
+            gender: updatedUser.gender,
             lastname: updatedUser.lastname,
             firstname: updatedUser.firstname,
             mail: updatedUser.mail,
+            phone: updatedUser.phone,
+            address: updatedUser.address,
             isAdmin: updatedUser.isAdmin,
         });
     } else {
@@ -179,15 +182,17 @@ const getUserById = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/:id
 // @access  Private/Admin
 const updateUser = asyncHandler(async (req, res) => {
+    const { gender, lastname, firstname, mail, phone, address, isAdmin } = req.body;
     const user = await User.findById(req.params.id);
 
     if(user) {
-        user.lastname = req.body.lastname || user.lastname;
-        user.firstname = req.body.firstname || user.firstname;
-        user.mail = req.body.mail || user.mail;
-        user.phone = req.body.phone || user.phone;
-        user.address = req.body.address || user.address;
-        user.isAdmin = req.body.isAdmin;
+        user.gender = gender || user.gender;
+        user.lastname = lastname || user.lastname;
+        user.firstname = firstname || user.firstname;
+        user.mail = mail || user.mail;
+        user.phone = phone || user.phone;
+        user.address = address || user.address;
+        user.isAdmin = isAdmin;
 
         const updatedUser = await user.save();
 

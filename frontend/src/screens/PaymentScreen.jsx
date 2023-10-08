@@ -17,7 +17,7 @@ const [ createOrder, { isLoading, error } ] = useCreateOrderMutation();
 const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
 
-const { cartItems, itemsPrice, shippingPrice, taxPrice, totalPrice } = useSelector(state => state.cart);
+const { cartItems, itemsPrice, shippingPrice, shippingAddress, taxPrice, totalPrice } = useSelector(state => state.cart);
 
 const { userInfo } = useSelector(state => state.auth);
 
@@ -26,14 +26,13 @@ const { data: paypal, isLoading: loadingPayPal, error: errorPayPal  } = useGetPa
 const dataOrder = {
     orderItems: cartItems,
     user: userInfo._id,
-    shippingAddress: userInfo.address,
+    shippingAddress: shippingAddress,
     itemsPrice: itemsPrice,
     taxPrice: taxPrice,
     shippingPrice: shippingPrice,
     totalPrice: totalPrice,
 }
 
-console.log(userInfo._id);
 
 const addOrder = async () => {
     try {
