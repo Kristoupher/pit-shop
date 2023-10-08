@@ -1,0 +1,42 @@
+.pagination-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    & > div {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 1rem;
+      color: $white;
+      background-color: $grey;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      font-size: 1.8rem;
+      @include lg {
+        font-size: 2rem;
+      }
+      &.nav {
+        background-color: $primary;
+      }
+      &.disabled {
+        opacity: 0.5;
+        cursor: initial;
+        pointer-events: none;
+      }
+    }
+  }
+}

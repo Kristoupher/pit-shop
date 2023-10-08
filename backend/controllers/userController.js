@@ -1,6 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
+import Product from "../models/productModel.js";
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
@@ -140,8 +141,13 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-   const users = await User.find({});
-   res.json(users);
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await User.countDocuments({});
+
+    const users = await User.find({}).limit(pageSize).skip(pageSize * (page - 1));
+    res.json({users, page, pages: Math.ceil(count / pageSize)});
 });
 
 // @desc    Delete user

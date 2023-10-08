@@ -1,11 +1,15 @@
 import { BadgeEuro} from "lucide-react";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {formatDate, formatPrice, formatString} from "../../utils/utils";
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import Loader from "../../components/Loader";
+import Pagination from "../../components/Pagination";
 
 const OrdersPanelScreen = () => {
-    const { data: orders, isLoading, error } = useGetOrdersQuery();
+    const { pageNumber } = useParams() || 1;
+
+    const currentPage = pageNumber ? pageNumber : 1;
+    const { data, isLoading, error } = useGetOrdersQuery(pageNumber);
 
     return (
         <section className="account">
@@ -26,7 +30,7 @@ const OrdersPanelScreen = () => {
                             </thead>
                             <tbody>
                             {
-                                orders && orders.map(order => (
+                                data && data.orders.map(order => (
                                     <tr key={order._id}>
                                         <td>{order.orderNumber}</td>
                                         <td>{formatDate(order.createdAt)}</td>
@@ -41,6 +45,7 @@ const OrdersPanelScreen = () => {
                     </div>
                 )
             }
+            <Pagination currentPage={currentPage} totalPages={data && data.pages} url="/admin/orders/page/" />
         </section>
     );
 };

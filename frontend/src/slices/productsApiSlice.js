@@ -3,10 +3,20 @@ import { apiSlice} from "./apiSlice";
 
 export const productsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getProducts: builder.query({
+        getProductsSearch: builder.query({
             query: (keyword) => ({
                 url: `${PRODUCTS_URL}/search/${keyword}`,
                 credentials: "include",
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ['Products'],
+        }),
+        getProducts: builder.query({
+            query: (pageNumber ) => ({
+                url: PRODUCTS_URL,
+                params: {
+                    pageNumber,
+                },
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
@@ -20,9 +30,12 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             providesTags: ['Products'],
         }),
         getProductsByCategory: builder.query({
-            query: (id) => ({
+            query: (id, pageNumber) => ({
                 url: `${PRODUCTS_URL}/category/${id}`,
                 credentials: "include",
+                params: {
+                    pageNumber,
+                }
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
@@ -128,6 +141,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {  useGetProductsQuery,
+                useGetProductsSearchQuery,
                 useGetLastProductsQuery,
                 useGetProductsByCategoryQuery,
                 useGetProductsByCategoryPriceAscQuery,

@@ -12,8 +12,14 @@ import Loader from "../components/Loader";
 import FiltersModal from "../components/FiltersModal";
 import ProductCard from "../components/ProductCard";
 import Filters from "../components/Filters";
+import Pagination from "../components/Pagination";
 
 const ProductsListScreen = () => {
+    const { pageNumber } = useParams() || 1;
+
+    const currentPage = pageNumber ? pageNumber : 1;
+
+
     const [filterOpen, setFilterOpen] = useState(false);
     const [priceAsc, setPriceAsc] = useState(false);
     const [priceDesc, setPriceDesc] = useState(false);
@@ -33,7 +39,8 @@ const ProductsListScreen = () => {
         }
     }
 
-    const { data: products, isLoading: loadingProducts } = useGetProductsByCategoryQuery(id);
+    const { data, isLoading: loadingProducts } = useGetProductsByCategoryQuery(id, pageNumber);
+
 
     //Trier les produits par prix croissant ou décroissant
     const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(id);
@@ -49,7 +56,7 @@ const ProductsListScreen = () => {
                 category && <BannerCategory category={formatString(category.name)} image={category.banner}/>
             }
             {
-                loadingProducts ? <Loader /> : products.products.length === 0 ? (
+                loadingProducts ? <Loader /> : data && data.products.length === 0 ? (
                     <div className="alert section">
                         <p>Il n'y a pas de produits dans cette catégorie</p>
                         <div className="center">
@@ -85,7 +92,7 @@ const ProductsListScreen = () => {
                                         : priceDesc ? productsDesc.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
-                                        : products.products.map(product => (
+                                        : data && data.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
                                     }
@@ -95,6 +102,7 @@ const ProductsListScreen = () => {
                     </>
                 )
             }
+            <Pagination currentPage={currentPage} totalPages={data && data.pages} url={`/products/category/${id}/page/`} />
 
         </div>
     );

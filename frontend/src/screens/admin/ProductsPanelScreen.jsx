@@ -6,15 +6,20 @@ import Loader from "../../components/Loader";
 import {formatPrice, formatString, formatDate} from "../../utils/utils";
 import { useGetProductsQuery, useDeleteProductMutation } from "../../slices/productsApiSlice";
 import {toast} from "react-toastify";
+import Pagination from "../../components/Pagination";
 
 const ProductsPanelScreen = () => {
-    const { pageNumber, keyword  } = useParams();
-    const { data: products, refetch, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
+    const { pageNumber } = useParams() || 1;
+
+    const currentPage = pageNumber ? pageNumber : 1;
+
+    const { data, refetch, isLoading, error } = useGetProductsQuery(pageNumber);
 
     const [ deleteProduct, { isLoading: loadingDelete } ] = useDeleteProductMutation();
 
     const [userModals, setUserModals] = useState({});
     const [deleteModal, setDeleteModal] = useState({});
+
 
     const openModal = (productId) => {
         setUserModals((prevUserModals) => ({
@@ -87,7 +92,7 @@ const ProductsPanelScreen = () => {
                                     </thead>
                                     <tbody>
                                     {
-                                        products && products.products.map(product => (
+                                        data && data.products.map(product => (
                                             <tr>
                                                 <td><img src={product.image} alt={product.name}/></td>
                                                 <td>{formatString(product.name)}</td>
@@ -157,6 +162,7 @@ const ProductsPanelScreen = () => {
                             </div>
                         )
                     }
+                    <Pagination currentPage={currentPage} totalPages={data && data.pages} url="/admin/products/page/" />
                 </section>
     );
 };

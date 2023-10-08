@@ -38,13 +38,13 @@ const Filters = ({ button }) => {
 
         inputs.forEach(input => {
             if(input.checked){
-                if(input.name === "team"){
+                if(input.name === "team" && input.value !== ""){
                     teams.push(input.value);
-                } else if(input.name === "driver"){
+                } else if(input.name === "driver" && input.value !== ""){
                     drivers.push(input.value);
-                } else if(input.name === "type"){
+                } else if(input.name === "type" && input.value !== ""){
                     types.push(input.value);
-                } else if(input.name === "size"){
+                } else if(input.name === "size" && input.value !== ""){
                     sizes.push(input.value);
                 }
             }

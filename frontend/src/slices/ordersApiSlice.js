@@ -27,9 +27,12 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         getMyOrders: builder.query({
-            query: (id) => ({
+            query: (id, pageNumber) => ({
                 url: `${ORDERS_URL}/mine/${id}`,
                 credentials: "include",
+                params: {
+                    pageNumber,
+                }
             }),
             keepUnusedDataFor: 5,
         }),
@@ -41,9 +44,12 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5
         }),
         getOrders: builder.query({
-            query: () => ({
+            query: (pageNumber) => ({
                 url: ORDERS_URL,
                 credentials: "include",
+                params: {
+                    pageNumber,
+                }
             }),
         }),
         keepUnusedDataFor: 5,

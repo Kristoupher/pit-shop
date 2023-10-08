@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useGetProductsQuery } from "../slices/productsApiSlice";
+import { useGetProductsSearchQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import ProductCard from "../components/ProductCard";
 
 const SearchResults = () => {
     const { keyword } = useParams();
 
-    const { data: products, isLoading, error } = useGetProductsQuery(keyword);
+    const { data: products, isLoading, error } = useGetProductsSearchQuery(keyword);
 
 
     return (

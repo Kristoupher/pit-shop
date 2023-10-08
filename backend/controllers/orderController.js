@@ -1,5 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Order from "../models/orderModel.js";
+import Product from "../models/productModel.js";
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -44,8 +45,13 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @access  Private
 const getMyOrders = asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const orders = await Order.find({ user: id }).sort({ orderDate: -1 });
-    res.status(200).json(orders);
+
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Order.countDocuments({user: id});
+    const orders = await Order.find({ user: id }).sort({ orderDate: -1 }).limit(pageSize).skip(pageSize * (page - 1));
+    res.json({orders, page, pages: Math.ceil(count / pageSize)});
 });
 
 // @desc    Get order by ID
@@ -65,8 +71,13 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
-    const orders = await Order.find({}).populate("user", "lastname firstname email");
-    res.status(200).json(orders);
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Order.countDocuments({});
+
+    const orders = await Order.find({}).populate("user", "lastname firstname email").limit(pageSize).skip(pageSize * (page - 1));
+    res.json({orders, page, pages: Math.ceil(count / pageSize)});
 });
 
 // @desc    Update order status

@@ -41,6 +41,7 @@ const router = createBrowserRouter(
         <Route path="/" element={<App />}>
             <Route index={true} path="/" element={<HomeScreen />} />
             <Route path="/products/category/:category" element={<ProductsListScreen />} />
+            <Route path="/products/category/:category/page/:pageNumber" element={<ProductsListScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/contact" element={<ContactScreen />} />
             <Route path="/login" element={<LogInScreen />} />
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
 
             <Route path='' element={<PrivateRoute />}>
                 <Route path="/account" element={<AccountScreen />} />
+                <Route path="/account/page/:pageNumber" element={<OrdersPanelScreen />} />
                 <Route path="/account/order/:id" element={<OrderScreen />} />
                 <Route path="/cart/shipping" element={<ShippingScreen />} />
                 <Route path="/cart/payment" element={<PaymentScreen />} />
@@ -62,7 +64,9 @@ const router = createBrowserRouter(
                 <Route path="/admin" element={<AdminScreen/>} />
                 <Route path="admin/users" element={<UsersPanelScreen />} />
                 <Route path="admin/orders" element={<OrdersPanelScreen />} />
+                <Route path="admin/orders/page/:pageNumber" element={<OrdersPanelScreen />} />
                 <Route path="admin/products" element={<ProductsPanelScreen />} />
+                <Route path="admin/products/page/:pageNumber" element={<ProductsPanelScreen />} />
                 <Route path="admin/categories" element={<CategoriesPanelScreen />} />
                 <Route path="admin/order/:id" element={<OrderAdminScreen />} />
                 <Route path="admin/user/edit/:id" element={<UserEditScreen />} />

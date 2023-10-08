@@ -1,15 +1,19 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { useSelector} from "react-redux";
 import {formatString, formatDate, formatPrice} from "../utils/utils";
 import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
 
 const AccountScreen = () => {
+    const { pageNumber } = useParams() || 1;
+
+    const currentPage = pageNumber ? pageNumber : 1;
     const { userInfo } = useSelector(state => state.auth);
 
     const id = userInfo && userInfo._id;
 
-    const { data: orders, isLoading, error } = useGetMyOrdersQuery(id);
+    const { data, isLoading, error } = useGetMyOrdersQuery(id, pageNumber);
 
 
     return (
@@ -45,7 +49,7 @@ const AccountScreen = () => {
                                         </thead>
                                         <tbody>
                                         {
-                                            orders && orders.map(order => (
+                                            data && data.orders.map(order => (
                                                 <tr key={order._id}>
                                                     <td>{order.orderNumber}</td>
                                                     <td>{formatDate(order.createdAt)}</td>
@@ -60,6 +64,7 @@ const AccountScreen = () => {
                                 </div>
                         )
                     }
+                    <Pagination currentPage={currentPage} totalPages={data && data.pages} url="/account/page/" />
                 </div>
     );
 };

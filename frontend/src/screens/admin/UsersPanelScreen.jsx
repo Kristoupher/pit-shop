@@ -1,15 +1,19 @@
 import { Eye, Pencil, Trash2, User2, XCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetUsersQuery, useDeleteUserMutation } from "../../slices/usersApiSlice";
 import Loader from "../../components/Loader";
 import { formatString, removeFirstChar } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import {toast} from "react-toastify";
+import Pagination from "../../components/Pagination";
 
 const UsersPanelScreen = () => {
+    const { pageNumber } = useParams() || 1;
 
-    const { data: users, refetch, isLoading, error } = useGetUsersQuery();
+    const currentPage = pageNumber ? pageNumber : 1;
+
+    const { data, refetch, isLoading, error } = useGetUsersQuery(pageNumber);
     const { userInfo } = useSelector((state) => state.auth);
     const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
@@ -74,8 +78,8 @@ const UsersPanelScreen = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {users &&
-                            users.map((user) => (
+                        {data &&
+                            data.users.map((user) => (
                                 userInfo._id !== user._id &&
                                 <tr key={user._id}>
                                     <td>{formatString(user.lastname)}</td>
@@ -118,6 +122,7 @@ const UsersPanelScreen = () => {
                     </table>
                 </div>
             )}
+            <Pagination currentPage={currentPage} totalPages={data && data.pages} url="/admin/users/page/" />
         </section>
     );
 };
