@@ -79,10 +79,11 @@ const OrderAdminScreen = () => {
                                     <div className="form-group center">
                                         <select name="status" id="" className="mt-6 w-75" onChange={(e) => setStatus(e.target.value)}>
                                             <option value="">Choisir un statut</option>
-                                            <option value="en-cours-de-traitement">En cours de traitement</option>
-                                            <option value="expédiée">Expédiée</option>
-                                            <option value="en-cours-de-livraison">En cours de livraison</option>
-                                            <option value="livrée">Livrée</option>
+                                            <option selected={order.status === "en-cours-de-traitement"} value="en-cours-de-traitement">En cours de traitement</option>
+                                            <option selected={order.status === "expédiée"} value="expédiée">Expédiée</option>
+                                            <option selected={order.status === "en-cours-de-livraison"} value="en-cours-de-livraison">En cours de livraison</option>
+                                            <option selected={order.status === "livrée"} value="livrée">Livrée</option>
+                                            <option selected={order.status === "payée"} value="payée">Payée</option>
                                         </select>
                                     </div>
                                     <div className="center">
