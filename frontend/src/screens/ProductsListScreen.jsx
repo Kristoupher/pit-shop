@@ -19,7 +19,6 @@ const ProductsListScreen = () => {
 
     const currentPage = pageNumber ? pageNumber : 1;
 
-
     const [filterOpen, setFilterOpen] = useState(false);
     const [priceAsc, setPriceAsc] = useState(false);
     const [priceDesc, setPriceDesc] = useState(false);
@@ -27,6 +26,11 @@ const ProductsListScreen = () => {
     const { category: id } = useParams();
 
     const { data: category } = useGetCategoryByIdQuery(id);
+
+    const urlData = {
+        id: id,
+        pageNumber: pageNumber
+    }
 
     const handlePriceAsc = (e) => {
         let value = e.target.value;
@@ -39,13 +43,13 @@ const ProductsListScreen = () => {
         }
     }
 
-    const { data, isLoading: loadingProducts } = useGetProductsByCategoryQuery(id, pageNumber);
+    const { data, isLoading: loadingProducts } = useGetProductsByCategoryQuery(urlData);
 
 
     //Trier les produits par prix croissant ou décroissant
-    const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(id);
+    const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(urlData);
 
-    const { data: productsDesc } = useGetProductsByCategoryPriceDescQuery(id);
+    const { data: productsDesc } = useGetProductsByCategoryPriceDescQuery(urlData);
 
 
 

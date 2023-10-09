@@ -56,6 +56,7 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
     const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
 
+
     const count = await Product.countDocuments({ category: id });
 
     const products = await Product.find({ category: id }).limit(pageSize).skip(pageSize * (page - 1));
@@ -68,6 +69,7 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
 // @route   GET /api/products/category/:category/price/asc
 // @access  Public
 const getProductsByCategoryAndSortByPriceAsc = asyncHandler(async (req, res) => {
+    const id = req.params.category;
     const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
 
@@ -82,6 +84,7 @@ const getProductsByCategoryAndSortByPriceAsc = asyncHandler(async (req, res) => 
 // @route   GET /api/products/category/:category/price/desc
 // @access  Public
 const getProductsByCategoryAndSortByPriceDesc = asyncHandler(async (req, res) => {
+    const id = req.params.category;
     const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
 

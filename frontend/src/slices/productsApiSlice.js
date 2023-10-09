@@ -30,28 +30,34 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             providesTags: ['Products'],
         }),
         getProductsByCategory: builder.query({
-            query: (id, pageNumber) => ({
-                url: `${PRODUCTS_URL}/category/${id}`,
+            query: (urlData) => ({
+                url: `${PRODUCTS_URL}/category/${urlData.id}`,
                 credentials: "include",
                 params: {
-                    pageNumber,
+                    pageNumber: urlData.pageNumber,
                 }
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
         }),
         getProductsByCategoryPriceAsc: builder.query({
-            query: (id) => ({
-                url: `${PRODUCTS_URL}/category/${id}/price/asc`,
+            query: (urlData) => ({
+                url: `${PRODUCTS_URL}/category/${urlData.id}/price/asc`,
                 credentials: "include",
+                params: {
+                    pageNumber: urlData.pageNumber,
+                }
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],
         }),
         getProductsByCategoryPriceDesc: builder.query({
-            query: (id) => ({
-                url: `${PRODUCTS_URL}/category/${id}/price/desc`,
+            query: (urlData) => ({
+                url: `${PRODUCTS_URL}/category/${urlData.id}/price/desc`,
                 credentials: "include",
+                params: {
+                    pageNumber: urlData.pageNumber,
+                }
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Products'],

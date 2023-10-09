@@ -5,8 +5,13 @@ import Category from "../models/categoryModel.js";
 // @route   GET /api/categories
 // @access  Public
 const getCategories = asyncHandler(async (req, res) => {
-    const categories = await Category.find({}).sort({ createdAt: 1 });
-    res.json(categories);
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Category.countDocuments({});
+
+    const categories = await Category.find({}).sort({ createdAt: 1 }).limit(pageSize).skip(pageSize * (page - 1));
+    res.json({categories, page, pages: Math.ceil(count / pageSize)});
 });
 
 // @desc    Fetch a category

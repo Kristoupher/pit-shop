@@ -1,11 +1,12 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
 import {formatString} from "../utils/utils";
 
 const Footer = () => {
+    const { pageNumber } = useParams() || 1;
     const year = new Date().getFullYear();
-    const { data: categories } = useGetCategoriesQuery();
+    const { data } = useGetCategoriesQuery(pageNumber);
     return (
         <footer className="footer">
             <div className="top">
@@ -22,7 +23,7 @@ const Footer = () => {
                                     <Link to="/">Accueil</Link>
                                 </li>
                                 {
-                                    categories && categories.map((category) => (
+                                    data && data.categories.map((category) => (
                                         <li key={category._id}>
                                             <Link to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
                                         </li>

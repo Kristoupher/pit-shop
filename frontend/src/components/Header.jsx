@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/authSlice";
 
 const Header = () => {
+    const { pageNumber } = useParams() || 1;
     const { category: categoryId } = useParams();
     const [toggle, setToggle] = useState(false);
     const [search, setSearch] = useState('');
@@ -38,7 +39,7 @@ const Header = () => {
     toggle ? body.style.overflow = 'hidden' : body.style.overflow = 'auto';
 
     //Récupération des catégories
-    const { data: categories } = useGetCategoriesQuery();
+    const { data } = useGetCategoriesQuery(pageNumber);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -88,7 +89,7 @@ const Header = () => {
             <nav className={`nav-mobile ${toggle ? 'active' : ''}`}>
                 <ul>
                     {
-                        categories && categories.map((category) => (
+                        data && data.categories.map((category) => (
                             <li key={category._id}>
                                 <Link className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`} onClick={() => setToggle(false)}>{formatString(category.name)}</Link>
                             </li>
@@ -118,7 +119,7 @@ const Header = () => {
             <nav className="nav-desktop">
                 <ul>
                     {
-                        categories && categories.map((category) => (
+                        data && data.categories.map((category) => (
                             <li key={category._id}>
                                 <Link className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
                             </li>

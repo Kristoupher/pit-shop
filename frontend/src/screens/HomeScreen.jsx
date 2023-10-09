@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Mail } from "lucide-react";
 import Loader from "../components/Loader";
 import { useGetLastProductsQuery} from "../slices/productsApiSlice";
@@ -9,6 +9,9 @@ import HorizontalCard from "../components/HorizontalCard";
 import Card from "../components/Card";
 
 const HomeScreen = () => {
+    const { pageNumber } = useParams() || 1;
+
+    const currentPage = pageNumber ? pageNumber : 1;
     //Au clic sur catégories dans la bannière on scroll vers la section catégories
     const categoriesSection = document.getElementById('categories');
 
@@ -17,10 +20,11 @@ const HomeScreen = () => {
     }
 
     //Récupération des derniers produits
-    const { data, isLoading, error } = useGetLastProductsQuery();
+    const { data: lastProducts, isLoading, error } = useGetLastProductsQuery();
 
     //Récupération des catégories
-    const { data: categories, isLoading: isLoadingCategories, error: errorCategories } = useGetCategoriesQuery();
+    const { data, isLoading: isLoadingCategories, error: errorCategories } = useGetCategoriesQuery(pageNumber);
+
 
     return (
         <div className="home">
@@ -45,7 +49,7 @@ const HomeScreen = () => {
                     isLoading ? <Loader /> : error ? <p>{error}</p> : (
                         <div className="cols-2">
                             {
-                                data.map((product) => (
+                                lastProducts.map((product) => (
                                     <HorizontalCard key={product._id} image={product.image} name={product.name} price={product.price} id={product._id} />
                                 ))
                             }
@@ -59,7 +63,7 @@ const HomeScreen = () => {
                     isLoadingCategories ? <Loader /> : errorCategories ? <p>{errorCategories}</p> : (
                         <div className="cols-3">
                             {
-                                categories.map((category) => (
+                                data.categories.map((category) => (
                                     <Card key={category._id} image={category.image} name={formatString(category.name)} category={category._id}  />
                                 ))
                             }
