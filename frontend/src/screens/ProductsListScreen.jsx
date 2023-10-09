@@ -5,7 +5,7 @@ import {SlidersHorizontal} from 'lucide-react';
 import { useGetCategoryByIdQuery} from "../slices/categoriesApiSlice";
 import { useGetProductsByCategoryQuery,
         useGetProductsByCategoryPriceAscQuery,
-        useGetProductsByCategoryPriceDescQuery
+        useGetProductsByCategoryPriceDescQuery,
         } from "../slices/productsApiSlice";
 import {formatString} from "../utils/utils";
 import Loader from "../components/Loader";
@@ -24,9 +24,7 @@ const ProductsListScreen = () => {
     const [priceDesc, setPriceDesc] = useState(false);
     const [filters, setFilters] = useState([{teams: [], drivers: [], types: [], sizes: []}]);
     const [filterApplied, setFilterApplied] = useState(false);
-
     const { category: id } = useParams();
-
     const { data: category } = useGetCategoryByIdQuery(id);
 
     const urlData = {
@@ -45,21 +43,38 @@ const ProductsListScreen = () => {
         }
     }
 
-    const { data, isLoading: loadingProducts } = useGetProductsByCategoryQuery(urlData);
+    const handleFilterChange = (values) => {
+        setFilters(values);
+        setFilterApplied(true);
+    }
 
+    const { data: products, isLoading: loadingProducts } = useGetProductsByCategoryQuery(urlData);
 
     //Trier les produits par prix croissant ou décroissant
     const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(urlData);
 
     const { data: productsDesc } = useGetProductsByCategoryPriceDescQuery(urlData);
 
-    const handleFilterChange = (values) => {
-        setFilters(values);
-        setFilterApplied(true);
+    // Filter les products en fonction de filtres appliqués (teams, drivers, types, sizes)
+    const filterProducts = (products) => {
+        let filteredProducts = products;
+        if(filters.teams.length > 0){
+            filteredProducts = filteredProducts.filter(product => filters.teams.includes(product.team));
+        }
+        if(filters.drivers.length > 0){
+            filteredProducts = filteredProducts.filter(product => filters.drivers.includes(product.driver));
+        }
+        if(filters.types.length > 0){
+            filteredProducts = filteredProducts.filter(product => filters.types.includes(product.type));
+        }
+        if(filters.sizes.length > 0){
+            filteredProducts = filteredProducts.filter(product => {
+                let sizes = product.sizes.map(size => size.name);
+                return filters.sizes.some(size => sizes.includes(size));
+            });
+        }
+        return filteredProducts;
     }
-
-
-
 
     return (
         <div className="products-list">
@@ -67,7 +82,7 @@ const ProductsListScreen = () => {
                 category && <BannerCategory category={formatString(category.name)} image={category.banner}/>
             }
             {
-                loadingProducts ? <Loader /> : data && data.products.length === 0 ? (
+                loadingProducts ? <Loader /> : products && products.products.length === 0 ? (
                     <div className="alert section">
                         <p>Il n'y a pas de produits dans cette catégorie</p>
                         <div className="center">
@@ -88,7 +103,7 @@ const ProductsListScreen = () => {
                                     <button onClick={() => setFilterOpen(!filterOpen)}>Filtrer <SlidersHorizontal size={25} color="#2E2E2E"/></button>
                                 </div>
                             </div>
-                            <FiltersModal filterOpen={filterOpen} setFilterOpen={setFilterOpen}/>
+                            <FiltersModal filterOpen={filterOpen} setFilterOpen={setFilterOpen} setFilters={handleFilterChange} filters={filters}/>
                         </div>
                         <div className="products-container">
                             <div className="section products">
@@ -103,7 +118,10 @@ const ProductsListScreen = () => {
                                         : priceDesc ? productsDesc.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
-                                        : data && data.products.map(product => (
+                                        : filterApplied ? filterProducts(products.products).map(product => (
+                                            <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
+                                        ))
+                                        : products && products.products.map(product => (
                                             <ProductCard key={product._id} image={product.image} name={product.name} id={product._id} price={product.price} />
                                         ))
                                     }
@@ -113,7 +131,7 @@ const ProductsListScreen = () => {
                     </>
                 )
             }
-            <Pagination currentPage={currentPage} totalPages={data && data.pages} url={`/products/category/${id}/page/`} />
+            <Pagination currentPage={currentPage} totalPages={products && products.pages} url={`/products/category/${id}/page/`} />
 
         </div>
     );

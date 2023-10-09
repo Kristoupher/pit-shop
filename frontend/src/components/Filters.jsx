@@ -56,8 +56,6 @@ const Filters = ({ button, filters, setFilters }) => {
         };
 
         setFilters(newFilters);
-
-
     }
 
     return (
