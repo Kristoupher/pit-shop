@@ -51,9 +51,6 @@ const LogInScreen = () => {
                     <label htmlFor="password">Mot de passe</label>
                     <input type="password" name="password" id="password" placeholder="Mot de passe" onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div className="link">
-                    <Link to="/forgotpassword">Mot de passe oublié ?</Link>
-                </div>
                 <div className="btn-container">
                     <button className="btn btn-primary">Connexion</button>
                 </div>

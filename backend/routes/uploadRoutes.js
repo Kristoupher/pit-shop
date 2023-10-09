@@ -49,14 +49,23 @@ function checkFileType(file, cb) {
 
 const upload = multer({
     storage,
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
 })
 
 const uploadBanner = multer({
     storage: storageBanner,
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
 })
 
 const uploadImage = multer({
     storage: storageImage,
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
 })
 
 router.post('/', upload.single('image'), (req, res) => {
