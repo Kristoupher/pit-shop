@@ -24,7 +24,7 @@ const CategoryCreateScreen = () => {
                 const resImg = await uploadCategoryImage(formDataImg).unwrap();
                 const resBanner = await uploadCategoryBanner(formDataBanner).unwrap();
                 const data = {
-                    name,
+                    name: name.toLowerCase(),
                     image: resImg.image,
                     banner: resBanner.image
                 };

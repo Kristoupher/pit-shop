@@ -55,7 +55,7 @@ const CategoryEditScreen = () => {
                 }
                 const data = {
                     id: category._id,
-                    name,
+                    name: name.toLowerCase(),
                     image: img || category.image,
                     banner: bannerImg || category.banner
                 };

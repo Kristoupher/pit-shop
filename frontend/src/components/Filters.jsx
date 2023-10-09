@@ -9,12 +9,11 @@ import { useGetTeamsQuery,
 import Loader from "./Loader";
 import { formatString } from "../utils/utils";
 
-const Filters = ({ button }) => {
+const Filters = ({ button, filters, setFilters }) => {
     const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(false);
     const [accordionDriversOpen, setAccordionDriversOpen] = useState(false);
     const [accordionTypesOpen, setAccordionTypesOpen] = useState(false);
     const [accordionSizesOpen, setAccordionSizesOpen] = useState(false);
-    const [filters, setFilters] = useState([]);
 
     const { category: id } = useParams();
 
@@ -29,7 +28,6 @@ const Filters = ({ button }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let values = [{teams: []}, {drivers: []}, {types: []}, {sizes: []}];
         let teams = [];
         let drivers = [];
         let types = [];
@@ -38,27 +36,27 @@ const Filters = ({ button }) => {
 
         inputs.forEach(input => {
             if(input.checked){
-                if(input.name === "team" && input.value !== ""){
+                if(input.name === "team"){
                     teams.push(input.value);
-                } else if(input.name === "driver" && input.value !== ""){
+                } else if(input.name === "driver"){
                     drivers.push(input.value);
-                } else if(input.name === "type" && input.value !== ""){
+                } else if(input.name === "type"){
                     types.push(input.value);
-                } else if(input.name === "size" && input.value !== ""){
+                } else if(input.name === "size"){
                     sizes.push(input.value);
                 }
             }
         });
 
-        values[0].teams = teams;
+        const newFilters = {
+            teams: teams,
+            drivers: drivers,
+            types: types,
+            sizes: sizes
+        };
 
-        values[1].drivers = drivers;
+        setFilters(newFilters);
 
-        values[2].types = types;
-
-        values[3].sizes = sizes;
-
-        setFilters(values);
 
     }
 

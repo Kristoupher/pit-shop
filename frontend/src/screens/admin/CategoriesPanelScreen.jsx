@@ -1,13 +1,17 @@
 import {Bookmark, Eye, Pencil, Trash2, XCircle} from "lucide-react";
 import Loader from "../../components/Loader";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {formatDate, formatPrice, formatString} from "../../utils/utils";
 import { useGetCategoriesQuery, useDeleteCategoryMutation} from "../../slices/categoriesApiSlice";
 import {useState} from "react";
 import {toast} from "react-toastify";
+import Pagination from "../../components/Pagination";
 
 const CategoriesPanelScreen = () => {
-    const { data: categories, refetch, isLoading, error } = useGetCategoriesQuery();
+    const { pageNumber } = useParams() || 1;
+
+    const currentPage = pageNumber ? pageNumber : 1;
+    const { data, refetch, isLoading, error } = useGetCategoriesQuery(pageNumber);
 
     const [deleteCategory, { isLoading: loadingDelete }] = useDeleteCategoryMutation();
 
@@ -83,7 +87,7 @@ const CategoriesPanelScreen = () => {
                             </thead>
                             <tbody>
                             {
-                                categories && categories.map(category => (
+                                data && data.categories.map(category => (
                                     <tr key={category._id}>
                                         <td>{formatString(category.name)}</td>
                                         <td>{formatDate(category.createdAt)}</td>
@@ -128,6 +132,7 @@ const CategoriesPanelScreen = () => {
                     </div>
                 )
             }
+            <Pagination currentPage={currentPage} totalPages={data?.totalPages} url="/admin/categories/" />
         </section>
     );
 };

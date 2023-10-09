@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import { useGetCategoriesQuery } from "../../slices/categoriesApiSlice";
 import { useCreateProductMutation, useUploadProductImageMutation } from "../../slices/productsApiSlice";
 import {formatString} from "../../utils/utils";
@@ -7,6 +7,8 @@ import { XCircle } from "lucide-react";
 import { toast } from "react-toastify";
 
 const ProductCreateScreen = () => {
+    const { pageNumber } = useParams() || 1;
+    const { category: categoryId } = useParams();
     const navigate = useNavigate();
 
     const[name, setName] = useState('');
@@ -21,7 +23,7 @@ const ProductCreateScreen = () => {
     const [sizeQuantity, setSizeQuantity] = useState(0);
     const [type, setType] = useState('');
 
-    const { data: categories } = useGetCategoriesQuery();
+    const { data } = useGetCategoriesQuery(pageNumber);
 
     const [createProduct, { isLoading: loadingCreate }] = useCreateProductMutation();
 
@@ -53,12 +55,12 @@ const ProductCreateScreen = () => {
                     name,
                     price,
                     description,
-                    team,
-                    driver,
+                    team: team.toLowerCase(),
+                    driver: driver.toLowerCase(),
                     image: res.image,
                     category,
                     sizes,
-                    type
+                    type: type.toLowerCase()
                 }
                 await createProduct(data).unwrap();
                 toast.success("Produit ajouté avec succès");
@@ -117,7 +119,7 @@ const ProductCreateScreen = () => {
                                 <select className="w-100" name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
                                     <option value="">Choisir une catégorie</option>
                                     {
-                                        categories?.map((category) => (
+                                        data.categories?.map((category) => (
                                                 <option key={category._id} value={category._id}>{formatString(category.name)}</option>
                                         ))
                                     }

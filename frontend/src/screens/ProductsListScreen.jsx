@@ -22,6 +22,8 @@ const ProductsListScreen = () => {
     const [filterOpen, setFilterOpen] = useState(false);
     const [priceAsc, setPriceAsc] = useState(false);
     const [priceDesc, setPriceDesc] = useState(false);
+    const [filters, setFilters] = useState([{teams: [], drivers: [], types: [], sizes: []}]);
+    const [filterApplied, setFilterApplied] = useState(false);
 
     const { category: id } = useParams();
 
@@ -50,6 +52,11 @@ const ProductsListScreen = () => {
     const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(urlData);
 
     const { data: productsDesc } = useGetProductsByCategoryPriceDescQuery(urlData);
+
+    const handleFilterChange = (values) => {
+        setFilters(values);
+        setFilterApplied(true);
+    }
 
 
 
@@ -86,7 +93,7 @@ const ProductsListScreen = () => {
                         <div className="products-container">
                             <div className="section products">
                                 <div>
-                                    <Filters button={true} />
+                                    <Filters button={true} setFilters={handleFilterChange} filters={filters} />
                                 </div>
                                 <div>
                                     {

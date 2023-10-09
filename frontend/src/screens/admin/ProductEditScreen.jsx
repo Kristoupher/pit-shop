@@ -11,10 +11,12 @@ import { toast } from "react-toastify";
 import {formatString, formatInsertion, getFileName} from "../../utils/utils";
 
 const ProductEditScreen = () => {
+    const { pageNumber } = useParams() || 1;
+    const { category: categoryId } = useParams();
     const navigate = useNavigate();
     const { id: productId } = useParams();
 
-    const { data: categories } = useGetCategoriesQuery();
+    const { data } = useGetCategoriesQuery(pageNumber);
 
     const { data: product, refetch, isLoading, error } = useGetProductDetailsQuery(productId);
 
@@ -70,7 +72,7 @@ const ProductEditScreen = () => {
                 img = product.image;
             }
 
-            await updateProduct({ productId, name, price, description, sizes, category, type, image: img, team: formatInsertion(team), driver: formatInsertion(driver)  });
+            await updateProduct({ productId, name, price, description, sizes, category, type: type.toLowerCase(), image: img, team: formatInsertion(team), driver: formatInsertion(driver)  });
             toast.success('Le produit a été modifié avec succès');
             refetch();
             navigate('/admin/products');
@@ -137,7 +139,7 @@ const ProductEditScreen = () => {
                                         <select className="w-100" name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
                                             <option value="">Choisir une catégorie</option>
                                             {
-                                                categories?.map((category) => (
+                                                data && data.categories?.map((category) => (
                                                     <option selected={category._id === product.category} key={category._id} value={category._id}>{formatString(category.name)}</option>
                                                 ))
                                             }
