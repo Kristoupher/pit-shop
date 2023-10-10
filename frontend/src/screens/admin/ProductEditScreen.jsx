@@ -9,6 +9,7 @@ import {Link, useParams, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import {formatString, formatInsertion, getFileName} from "../../utils/utils";
+import { checkImageType } from "../../utils/utils";
 
 //Edition d'un produit
 const ProductEditScreen = () => {
@@ -70,6 +71,11 @@ const ProductEditScreen = () => {
             let img;
             if(uploading !== null) {
                 if(image !== null && name !== '' && description !== '' && price !== '' && category !== '' && sizes.length > 0) {
+                    //Vérification du type de l'image
+                    if(!checkImageType(uploading.type)) {
+                        toast.error("Le format de l'image n'est pas valide");
+                        return;
+                    }
                     //Suppression de l'ancienne image et upload de la nouvelle
                     const fileName = getFileName(image);
                     const formData = new FormData();
@@ -111,6 +117,7 @@ const ProductEditScreen = () => {
                                 <div className="form-group center">
                                     <label htmlFor="image">Image</label>
                                     <input type="file" name="image" id="image" onChange={handleUpload} />
+                                    <p className="fileType">Formats acceptés : jpeg, png, svg, webp.</p>
                                 </div>
                             </div>
                             <div className="form-duo">

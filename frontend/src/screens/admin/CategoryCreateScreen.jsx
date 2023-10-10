@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {toast} from "react-toastify";
 import { useUploadCategoryImageMutation, useUploadCategoryBannerMutation, useCreateCategoryMutation } from "../../slices/categoriesApiSlice";
+import { checkImageType } from "../../utils/utils";
 
 //Création d'une catégorie
 const CategoryCreateScreen = () => {
@@ -18,6 +19,10 @@ const CategoryCreateScreen = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(name !== "" && image !== null && banner !== null) {
+            if(!checkImageType(image.type) || !checkImageType(banner.type)){
+                toast.error("Veuillez choisir des images aux formats jpeg, png, svg, webp");
+                return;
+            }
             try {
                 //Upload des images
                 const formDataImg = new FormData();
@@ -54,11 +59,13 @@ const CategoryCreateScreen = () => {
                     <div className="form-group">
                         <label htmlFor="name">Nom de la catégorie</label>
                         <input type="text" name="name" id="name" placeholder="Nom" value={name} onChange={(e) => setName(e.target.value)} />
+                        <p className="fileType">Formats acceptés : jpeg, png, svg, webp.</p>
                     </div>
                     <div className="inputs-container">
                         <div className="form-group">
                             <label htmlFor="image">Image de la catégorie</label>
                             <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} />
+                            <p className="fileType">Formats acceptés : jpeg, png, svg, webp.</p>
                         </div>
                         <div className="form-group">
                             <label htmlFor="banner">Bannière de la catégorie</label>

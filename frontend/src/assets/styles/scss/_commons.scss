@@ -444,3 +444,14 @@
     font-size: 1.6rem;
   }
 }
+
+//Texte en dessous des inputs pour les images
+.fileType {
+  font-weight: 300;
+  color: $paragraph;
+  font-size: 1.4rem;
+  font-style: italic;
+    @include lg {
+      font-size: 1.6rem;
+    }
+}

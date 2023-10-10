@@ -28,3 +28,13 @@ export const formatInsertion = (string) => {
 export const getFileName = (string) => {
 return string.split('\\').pop();
 }
+
+//Vérifier le type d'image
+export const checkImageType = (type) => {
+    const imageTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/webp'];
+    if(imageTypes.includes(type)) {
+        return true;
+    } else {
+        return false;
+    }
+}

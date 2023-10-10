@@ -5,6 +5,7 @@ import { useCreateProductMutation, useUploadProductImageMutation } from "../../s
 import {formatString} from "../../utils/utils";
 import { XCircle } from "lucide-react";
 import { toast } from "react-toastify";
+import { checkImageType } from "../../utils/utils";
 
 //Création d'un produit
 const ProductCreateScreen = () => {
@@ -55,6 +56,11 @@ const ProductCreateScreen = () => {
         e.preventDefault();
         try {
             if (image !== null && name !== '' && description !== '' && price !== '' && category !== '' && sizes.length > 0) {
+                //Vérification du type de l'image
+                if(!checkImageType(image.type)) {
+                    toast.error("Le format de l'image n'est pas valide");
+                    return;
+                }
                 //Upload de l'image
                 const formData = new FormData();
                 formData.append('image', image);
@@ -91,6 +97,7 @@ const ProductCreateScreen = () => {
                     <div className="form-group center">
                         <label htmlFor="image">Image</label>
                         <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} />
+                        <p className="fileType">Formats acceptés : jpeg, png, svg, webp.</p>
                     </div>
                     <div className="form-duo">
                         <div className="form-group">
@@ -128,7 +135,7 @@ const ProductCreateScreen = () => {
                                 <select className="w-100" name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
                                     <option value="">Choisir une catégorie</option>
                                     {
-                                        data.categories?.map((category) => (
+                                        data && data.categories?.map((category) => (
                                                 <option key={category._id} value={category._id}>{formatString(category.name)}</option>
                                         ))
                                     }

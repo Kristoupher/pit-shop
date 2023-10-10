@@ -10,6 +10,7 @@ import { useGetCategoryByIdQuery,
 import { useParams } from "react-router-dom";
 import {formatString, getFileName} from "../../utils/utils";
 import {toast} from "react-toastify";
+import  {checkImageType} from "../../utils/utils";
 
 //Edition d'une catégorie
 const CategoryEditScreen = () => {
@@ -41,6 +42,14 @@ const CategoryEditScreen = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(name !== "") {
+            if(image !== null && !checkImageType(image.type)){
+                toast.error("Veuillez choisir une image aux formats jpeg, png, svg, webp");
+                return;
+            }
+            if(banner !== null && !checkImageType(banner.type)){
+                toast.error("Veuillez choisir une image aux formats jpeg, png, svg, webp");
+                return;
+            }
             try {
                 let img = null;
                 let bannerImg = null;
@@ -94,10 +103,12 @@ const CategoryEditScreen = () => {
                                 <div className="form-group">
                                     <label htmlFor="image">Image de la catégorie</label>
                                     <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} />
+                                    <p className="fileType">Formats acceptés : jpeg, png, svg, webp.</p>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="banner">Bannière de la catégorie</label>
                                     <input type="file" name="banner" id="banner" onChange={(e) => setBanner(e.target.files[0])} />
+                                    <p className="fileType">Formats acceptés : jpeg, png, svg, webp.</p>
                                 </div>
                             </div>
                             <div className="btn-container">
