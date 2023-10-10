@@ -8,13 +8,14 @@ import Banner from "../assets/images/home-banner.jpg";
 import HorizontalCard from "../components/HorizontalCard";
 import Card from "../components/Card";
 
+//PAge d'accueil
 const HomeScreen = () => {
+    //Récupération du numéro de page dans l'url
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
+
     //Au clic sur catégories dans la bannière on scroll vers la section catégories
     const categoriesSection = document.getElementById('categories');
-
     const goToCategories = () => {
         categoriesSection.scrollIntoView({behavior: 'smooth'});
     }

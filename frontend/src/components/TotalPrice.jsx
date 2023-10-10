@@ -2,9 +2,11 @@ import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 import {formatPrice} from "../utils/utils";
 
+//Composant qui affiche le total du panier dans la page panier et dans la page commande
 const TotalPrice = ({totalHt, tva, shipping, totalTtc, count, button}) => {
     const navigate = useNavigate();
 
+    //Fonction qui permet de rediriger l'utilisateur vers la page de connexion si il n'est pas connecté ou alors vers la page de livraison si il est connecté
     const checkoutHandler = () => {
         navigate('/login?redirect=/cart/shipping');
     };

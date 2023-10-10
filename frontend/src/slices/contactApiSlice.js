@@ -1,6 +1,7 @@
 import {CONTACT_URL} from "../constants";
 import { apiSlice} from "./apiSlice";
 
+//Requête pour envoyer un email
 export const productsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         sendEmail: builder.mutation({

@@ -9,23 +9,21 @@ import { useGetTeamsQuery,
 import Loader from "./Loader";
 import { formatString } from "../utils/utils";
 
+// Liste des filtres pour la page de catégorie avec les produits
 const Filters = ({ button, filters, setFilters }) => {
+    // States
     const [accordionTeamsOpen, setAccordionTeamsOpen] = useState(false);
     const [accordionDriversOpen, setAccordionDriversOpen] = useState(false);
     const [accordionTypesOpen, setAccordionTypesOpen] = useState(false);
     const [accordionSizesOpen, setAccordionSizesOpen] = useState(false);
-
+    // Récupération des filtres
     const { category: id } = useParams();
-
     const { data: teams } = useGetTeamsQuery(id);
-
     const { data: drivers } = useGetDriversQuery(id);
-
     const { data: types } = useGetTypesQuery(id);
-
     const { data: sizes } = useGetSizesQuery(id);
 
-
+    //Fonction pour soumettre les filtres
     const handleSubmit = (e) => {
         e.preventDefault();
         let teams = [];

@@ -34,6 +34,11 @@ const getCategoryById = asyncHandler(async (req, res) => {
 const createCategory = asyncHandler(async (req, res) => {
     const { name, image, banner } = req.body;
 
+    if(name === "" && image === "" && banner === "") {
+        res.status(400);
+        throw new Error('Veuillez remplir tous les champs');
+    }
+
     const category = new Category({
         name,
         image,

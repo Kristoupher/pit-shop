@@ -1,0 +1,12 @@
+.sitemap {
+  ul li {
+    margin-bottom: 2rem;
+    a {
+      color: $text;
+      transition: all .3s ease-in-out;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}

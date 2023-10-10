@@ -5,14 +5,16 @@ import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import Loader from "../components/Loader";
 import Pagination from "../components/Pagination";
 
+//Page de compte utilisateur
 const AccountScreen = () => {
+    //Réccupération du numéro de page dans l'url
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
+    //Réccupération des informations de l'utilisateur dans le state
     const { userInfo } = useSelector(state => state.auth);
 
+    //Récupération des commandes de l'utilisateur
     const id = userInfo && userInfo._id;
-
     const { data, isLoading, error } = useGetMyOrdersQuery(id, pageNumber);
 
 

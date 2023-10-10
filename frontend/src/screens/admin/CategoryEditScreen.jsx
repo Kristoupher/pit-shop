@@ -11,28 +11,33 @@ import { useParams } from "react-router-dom";
 import {formatString, getFileName} from "../../utils/utils";
 import {toast} from "react-toastify";
 
+//Edition d'une catégorie
 const CategoryEditScreen = () => {
     const navigate = useNavigate();
+    //Récupération de l'id de la catégorie et de la catégorie
     const { id: categoryId } = useParams();
     const { data: category, isLoading, error } = useGetCategoryByIdQuery(categoryId);
+    //States
     const [uploadCategoryImage, { isLoading: isUploading }] = useUploadCategoryImageMutation();
     const [uploadCategoryBanner, { isLoading: isUploadingBanner }] = useUploadCategoryBannerMutation();
     const [deleteCategoryImage, { isLoading: isDeleting }] = useDeleteCategoryImageMutation();
     const [deleteCategoryBanner, { isLoading: isDeletingBanner }] = useDeleteCategoryBannerMutation();
     const [updateCategory, { isLoading: isUpdating }] = useUpdateCategoryMutation();
-
     const [name, setName] = useState(category ? category.name : "");
     const [image, setImage] = useState(null);
     const [banner, setBanner] = useState(null);
+    //Récupération du nom de l'image et de la bannière
     const imgFileName = category ? category.image.split("/")[category.image.split("/").length - 1] : "";
     const bannerFileName = category ? category.banner.split("/")[category.banner.split("/").length - 1] : "";
 
+    //Si la catégorie est en cours de chargement
     useEffect(() => {
         if(category){
             setName(category.name);
         }
     }, [category]);
 
+    //Fonction de soumission du formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(name !== "") {
@@ -40,6 +45,7 @@ const CategoryEditScreen = () => {
                 let img = null;
                 let bannerImg = null;
                 if(image){
+                    //Suppression de l'ancienne image et ajout de la nouvelle
                     await deleteCategoryImage(getFileName(imgFileName)).unwrap();
                     const formDataImg = new FormData();
                     formDataImg.append('image', image);
@@ -47,12 +53,14 @@ const CategoryEditScreen = () => {
                     img = resImg.image;
                 }
                 if(banner){
+                    //Suppression de l'ancienne bannière et ajout de la nouvelle
                     await deleteCategoryBanner(getFileName(bannerFileName)).unwrap();
                     const formDataBanner = new FormData();
                     formDataBanner.append('image', banner);
                     const resBanner = await uploadCategoryBanner(formDataBanner).unwrap();
                     bannerImg = resBanner.image;
                 }
+                //Mise à jour de la catégorie
                 const data = {
                     id: category._id,
                     name: name.toLowerCase(),

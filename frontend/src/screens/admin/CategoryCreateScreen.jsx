@@ -3,26 +3,30 @@ import { useState } from "react";
 import {toast} from "react-toastify";
 import { useUploadCategoryImageMutation, useUploadCategoryBannerMutation, useCreateCategoryMutation } from "../../slices/categoriesApiSlice";
 
+//Création d'une catégorie
 const CategoryCreateScreen = () => {
     const navigate = useNavigate();
+    //States
     const [name, setName] = useState("");
     const [image, setImage] = useState(null);
     const [banner, setBanner] = useState(null);
-
     const [uploadCategoryImage, { isLoading: isUploading }] = useUploadCategoryImageMutation();
     const [uploadCategoryBanner, { isLoading: isUploadingBanner }] = useUploadCategoryBannerMutation();
     const [createCategory, { isLoading: isCreating }] = useCreateCategoryMutation();
 
+    //Fonction de soumission du formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(name !== "" && image !== null && banner !== null) {
             try {
+                //Upload des images
                 const formDataImg = new FormData();
                 const formDataBanner = new FormData();
                 formDataImg.append('image', image);
                 formDataBanner.append('image', banner);
                 const resImg = await uploadCategoryImage(formDataImg).unwrap();
                 const resBanner = await uploadCategoryBanner(formDataBanner).unwrap();
+                //Création de la catégorie
                 const data = {
                     name: name.toLowerCase(),
                     image: resImg.image,

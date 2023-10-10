@@ -2,6 +2,7 @@ import React from 'react';
 import PanelCard from "../../components/PanelCard";
 import { User2, BadgeEuro, Shirt, Bookmark } from "lucide-react";
 
+// Page d'accueil du panneau d'administration
 const AdminScreen = () => {
     return (
         <section className="admin">

@@ -8,18 +8,23 @@ import { useState } from "react";
 import {toast} from "react-toastify";
 import Pagination from "../../components/Pagination";
 
+//Gestion des utilisateurs
 const UsersPanelScreen = () => {
+    //Récupération du numéro de page
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
 
+    //Récupération des utilisateurs
     const { data, refetch, isLoading, error } = useGetUsersQuery(pageNumber);
+    //Récupération des informations de l'utilisateur connecté
     const { userInfo } = useSelector((state) => state.auth);
+    //Suppression d'un utilisateur
     const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
-
+    //Gestion des modales
     const [userModals, setUserModals] = useState({});
     const [deleteModal, setDeleteModal] = useState({});
 
+    //Ouverture des modales de visualisation
     const openModal = (userId) => {
         setUserModals((prevUserModals) => ({
             ...prevUserModals,
@@ -27,6 +32,7 @@ const UsersPanelScreen = () => {
         }));
     };
 
+    //Ouverture des modales de suppression
     const openDeleteModal = (userId) => {
         setDeleteModal((prevDeleteModal) => ({
             ...prevDeleteModal,
@@ -34,6 +40,7 @@ const UsersPanelScreen = () => {
         }));
     }
 
+    //Fermeture des modales de visualisation
     const closeModal = (userId) => {
         setUserModals((prevUserModals) => ({
             ...prevUserModals,
@@ -41,6 +48,7 @@ const UsersPanelScreen = () => {
         }));
     };
 
+    //Fermeture des modales de suppression
     const closeDeleteModal = (userId) => {
         setDeleteModal((prevDeleteModal) => ({
             ...prevDeleteModal,
@@ -48,6 +56,7 @@ const UsersPanelScreen = () => {
         }));
     }
 
+    //Suppression d'un utilisateur
     const deleteHandler  = async (id) => {
         try {
             await deleteUser(id);

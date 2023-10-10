@@ -14,24 +14,30 @@ import ProductCard from "../components/ProductCard";
 import Filters from "../components/Filters";
 import Pagination from "../components/Pagination";
 
+//Page de la liste des produits d'une catégorie
 const ProductsListScreen = () => {
+    //Récupérer le numéro de la page dans l'URL
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
 
+    //Filtres
     const [filterOpen, setFilterOpen] = useState(false);
     const [priceAsc, setPriceAsc] = useState(false);
     const [priceDesc, setPriceDesc] = useState(false);
     const [filters, setFilters] = useState([{teams: [], drivers: [], types: [], sizes: []}]);
     const [filterApplied, setFilterApplied] = useState(false);
+
+    //Récupérer l'id de la catégorie dans l'URL
     const { category: id } = useParams();
     const { data: category } = useGetCategoryByIdQuery(id);
 
+    //Données à envoyer à l'API
     const urlData = {
         id: id,
         pageNumber: pageNumber
     }
 
+    //Trier les produits par prix croissant ou décroissant
     const handlePriceAsc = (e) => {
         let value = e.target.value;
         if(value === "asc"){
@@ -43,16 +49,18 @@ const ProductsListScreen = () => {
         }
     }
 
+    //Filtrer les produits
     const handleFilterChange = (values) => {
         setFilters(values);
         setFilterApplied(true);
     }
 
+    //Récupérer les produits de la catégorie
     const { data: products, isLoading: loadingProducts } = useGetProductsByCategoryQuery(urlData);
 
-    //Trier les produits par prix croissant ou décroissant
+    //Trier les produits par prix croissant
     const { data: productsAsc } = useGetProductsByCategoryPriceAscQuery(urlData);
-
+    //Trier les produits par prix décroissant
     const { data: productsDesc } = useGetProductsByCategoryPriceDescQuery(urlData);
 
     // Filter les products en fonction de filtres appliqués (teams, drivers, types, sizes)

@@ -9,6 +9,11 @@ import Product from "../models/productModel.js";
 const authUser = asyncHandler(async (req, res) => {
     const { mail, password } = req.body;
 
+    if(!mail || !password) {
+        res.status(400);
+        throw new Error('Veuillez saisir une adresse mail et un mot de passe');
+    }
+
     const user = await User.findOne({ mail });
 
     if (user && (await user.matchPassword(password))) {
@@ -35,6 +40,11 @@ const authUser = asyncHandler(async (req, res) => {
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
     const { gender, lastname, firstname, mail, phone, address, password } = req.body;
+
+    if(gender === '' || lastname === '' || firstname === '' || mail === '' || phone === '' || address === '' || password === '') {
+        res.status(400);
+        throw new Error('Veuillez remplir tous les champs');
+    }
 
     const userExists = await User.findOne({ mail });
 

@@ -1,6 +1,7 @@
 import { Outlet, Navigate} from "react-router-dom";
 import { useSelector } from "react-redux";
 
+//Protéger les routes privées
 const PrivateRoute = () => {
     const { userInfo } = useSelector(state => state.auth);
 

@@ -9,21 +9,25 @@ import {formatDate, formatString, removeFirstChar} from "../../utils/utils";
 import {XCircle} from "lucide-react";
 import {toast} from "react-toastify";
 
+//Liste des commandes
 const OrderAdminScreen = () => {
+    //Récupération de l'id de la commande et de la commande et de la fonction de mise à jour du statut de la commande
     const {id} = useParams();
-
     const {data: order, refetch, isLoading, error} = useGetOrderDetailsQuery(id);
     const [updateOrderStatus, {isLoading: loadingUpdate}] = useUpdateOrderStatusMutation();
 
+    //States pour le modal et le statut de la commande
     const [modal, setModal] = useState(false);
     const [status, setStatus] = useState(order && order.status);
 
+    //Mise à jour du statut de la commande
     useEffect(() => {
         if(order){
             setStatus(order.status);
         }
     }, [order]);
 
+    //Fonction de mise à jour du statut de la commande
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

@@ -1,3 +1,4 @@
+// Bannière de catégorie
 const BannerCategory = ({ category, image }) => {
     return (
         <div className="banner-category">

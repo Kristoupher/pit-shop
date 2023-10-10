@@ -4,14 +4,16 @@ import {useDispatch} from "react-redux";
 import {formatPrice, formatString} from "../utils/utils";
 import { addToCart, removeFromCart } from "../slices/cartSlice";
 
+//Liste des produits dans le panier et dans la page de commande
 const CartList = ({img, title, size, price, qty, id, button, qtyStock, item}) => {
-
     const dispatch = useDispatch();
 
+    // Supprimer un produit du panier
     const removeFromCartHandler = async (id) => {
         dispatch(removeFromCart(id));
     };
 
+    // Ajouter un produit au panier
     const addToCartHandler = async (product, qty) => {
         dispatch(addToCart({ ...product, qty }));
     };

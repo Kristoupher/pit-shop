@@ -1,3 +1,4 @@
+//Composant Stepper pour la commande
 const Stepper = ({step}) => {
     return (
         <div className="stepper">

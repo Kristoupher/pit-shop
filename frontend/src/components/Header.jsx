@@ -10,20 +10,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/authSlice";
 
 const Header = () => {
-    const { pageNumber } = useParams() || 1;
-    const { category: categoryId } = useParams();
+    // States
     const [toggle, setToggle] = useState(false);
     const [search, setSearch] = useState('');
+    // Récupération du numéro de page et de la catégorie dans l'url
+    const { pageNumber } = useParams() || 1;
+    const { category: categoryId } = useParams();
+
     const body = document.querySelector('body');
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    //Appel de la fonction logout
     const [logoutApiCall] = useLogoutMutation();
 
+    // Récupération du panier et de l'utilisateur
     const { cartItems } = useSelector(state => state.cart);
     const { userInfo } = useSelector(state => state.auth);
 
+    // Fonction de déconnexion
     const logoutHandler = async () => {
         setToggle(false);
         try {
@@ -41,6 +46,7 @@ const Header = () => {
     //Récupération des catégories
     const { data } = useGetCategoriesQuery(pageNumber);
 
+    // Fonction de recherche
     const handleSearch = (e) => {
         e.preventDefault();
         if(search !== '') {

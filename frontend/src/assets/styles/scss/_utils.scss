@@ -40,3 +40,72 @@
 .none {
     display: none!important;
 }
+
+.cols-2 {
+    @include lg {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+.cols-2-80 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    div:first-child {
+        width: 20%;
+    }
+    div:last-child {
+        width: 80%;
+    }
+}
+
+.cols-3 {
+    @include lg {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.m-0 {
+    margin: 0!important;
+}
+
+.mw-400 {
+    max-width: 40rem;
+}
+
+.bb_total {
+    border-bottom: 2px solid $text;
+    padding-bottom: 1.2rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+.w-75 {
+    width: 75%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.mb-5 {
+    margin-bottom: 2rem!important;
+}
+
+.mt-6 {
+    margin-top: 3rem!important;
+}

@@ -5,13 +5,16 @@ import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import { useUpdateUserMutation } from "../../slices/usersApiSlice";
 
-
+//Modification d'un utilisateur
 const UserEditScreen = () => {
     const navigate = useNavigate();
+    //Récupération de l'id de l'utilisateur
     const { id } = useParams();
 
+    //Récupération des données de l'utilisateur
     const { data: user, refetch, isLoading, error } = useGetUserByIdQuery(id);
 
+    //States
     const [gender, setGender] = useState(user && user.gender || '');
     const [lastname, setLastname] = useState(user && user.lastname || '');
     const [firstname, setFirstname] = useState(user && user.firstname || '');
@@ -22,9 +25,10 @@ const UserEditScreen = () => {
     const [postalCode, setPostalCode] = useState(user && user.postalCode || '');
     const [isAdmin, setIsAdmin] = useState(user && user.gender || false);
     const address = { street, city, postalCode };
-
+    //Modification de l'utilisateur
     const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
 
+    //On récupère les données de l'utilisateur
     useEffect(() => {
         if(user) {
             setGender(user.gender);
@@ -40,11 +44,13 @@ const UserEditScreen = () => {
     }, [user]);
 
 
+    //On soumet le formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(gender !== "" && lastname !== "" && firstname !== "" && mail !== "" && phone !== "" && street !== "" && city !== "" && postalCode !== "") {
             if(gender !== user.gender || lastname !== user.lastname || firstname !== user.firstname || mail !== user.mail || phone !== user.phone || street !== user.address.street || city !== user.address.city || postalCode !== user.address.postalCode || isAdmin !== user.isAdmin) {
                 try {
+                    //On met à jour l'utilisateur
                     await updateUser({
                         id: user._id,
                         gender,

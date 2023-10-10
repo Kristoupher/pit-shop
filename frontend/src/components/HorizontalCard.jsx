@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {formatPrice} from "../utils/utils";
 
+// Composant pour afficher un produit sous forme de carte horizontale
 const HorizontalCard = ({ id, name, image, price }) => {
     return (
         <div className="card-hz">

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import { ArrowRightCircle } from "lucide-react";
 
+//Composant pour les cartes du tableau de bord admin
 const PanelCard = ({ link, name, logo }) => {
     return (
             <Link title={name} to={link} className="card-panel">

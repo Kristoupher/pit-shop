@@ -1,3 +1,4 @@
+//Panier
 .cart-container {
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@
   }
 }
 
+//Liste des produits
 .cart-list-item {
   padding: 2rem 0;
   border-bottom: 2px solid $grey;
@@ -107,6 +109,7 @@
   }
 }
 
+//Total panier
 .total-price {
   padding: 2rem;
   border: 2px solid $text;
@@ -144,8 +147,7 @@
   }
 }
 
-// Stepper page panier
-
+// Stepper page commande
 .stepper {
   display: flex;
   justify-content: center;
@@ -228,7 +230,7 @@
     }
   }
 }
-
+// Page confirmation commande
 .order-confirm {
   h1, p {
     text-align: center;

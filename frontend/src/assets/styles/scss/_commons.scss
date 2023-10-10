@@ -66,7 +66,6 @@
 }
 
 //Cards horizontales
-
 .card-hz {
   background-color: $white;
   padding: 3rem 1rem;
@@ -134,7 +133,6 @@
 }
 
 //Cards verticales
-
 .card {
   border-radius: 10px;
   overflow: hidden;
@@ -178,40 +176,7 @@
   }
 }
 
-.cols-2 {
-  @include lg {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
-}
-
-.cols-2-80 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3rem;
-  div:first-child {
-    width: 20%;
-  }
-  div:last-child {
-    width: 80%;
-  }
-}
-
-.cols-3 {
-  @include lg {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-}
-
-.pointer {
-    cursor: pointer;
-}
-//Accordéon
-
+//Accordéon pour les filtres
 .accordion {
   > p {
     display: flex;
@@ -275,6 +240,7 @@
   }
 }
 
+//Div alerte pour les erreurs
 .alert {
   text-align: center;
   p {
@@ -288,6 +254,7 @@
   }
 }
 
+//Personnalisation des toasts
 .Toastify__toast-body {
   div {
     font-size: 1.6rem;
@@ -295,41 +262,14 @@
   }
 }
 
+//Module paypal
 .paypal-container {
   & > div {
     margin: 0 auto;
     max-width: 40rem;
   }
 }
-
-.m-0 {
-    margin: 0!important;
-}
-
-.mw-400 {
-    max-width: 40rem;
-}
-
-.bb_total {
-    border-bottom: 2px solid $text;
-    padding-bottom: 1.2rem;
-}
-
-.w-100 {
-    width: 100%;
-}
-.w-75 {
-    width: 75%;
-}
-
-.w-50 {
-    width: 50%;
-}
-
-.w-25 {
-    width: 25%;
-}
-
+//Boutons ronds pour les actions dans les listes admin
 .circle-btn {
   width: 4.5rem;
   height: 4.5rem;
@@ -372,16 +312,7 @@
   }
 }
 
-.mb-5 {
-    margin-bottom: 2rem!important;
-}
-
-.mt-6 {
-    margin-top: 3rem!important;
-}
-
 //Modal
-
 .modal {
   position: absolute;
   top: 0;
@@ -477,6 +408,7 @@
   }
 }
 
+//Container pour les tailles
 .sizes-container {
   list-style: none;
   display: flex;
@@ -498,6 +430,7 @@
   }
 }
 
+//Badge pour les infos des users
 .badge {
   padding: .5rem 1rem;
   background-color: $success;

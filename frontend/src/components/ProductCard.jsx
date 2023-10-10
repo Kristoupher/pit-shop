@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import {formatPrice} from "../utils/utils";
 
+// Composant ProductCard pour afficher les produits
 const ProductCard = ({ image, name, price, id }) => {
     const [size, setSize] = useState('');
     return (

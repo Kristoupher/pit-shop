@@ -3,9 +3,11 @@ import { useGetProductsSearchQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import ProductCard from "../components/ProductCard";
 
+//Page de recherche
 const SearchResults = () => {
+    //Récupération du mot clé de recherche
     const { keyword } = useParams();
-
+    //Récupération des produits correspondant au mot clé
     const { data: products, isLoading, error } = useGetProductsSearchQuery(keyword);
 
 

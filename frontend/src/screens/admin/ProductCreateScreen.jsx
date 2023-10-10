@@ -6,11 +6,15 @@ import {formatString} from "../../utils/utils";
 import { XCircle } from "lucide-react";
 import { toast } from "react-toastify";
 
+//Création d'un produit
 const ProductCreateScreen = () => {
+    //Récupération des paramètres de l'URL
     const { pageNumber } = useParams() || 1;
     const { category: categoryId } = useParams();
+
     const navigate = useNavigate();
 
+    //States
     const[name, setName] = useState('');
     const[price, setPrice] = useState('');
     const[description, setDescription] = useState('');
@@ -23,12 +27,14 @@ const ProductCreateScreen = () => {
     const [sizeQuantity, setSizeQuantity] = useState(0);
     const [type, setType] = useState('');
 
+    //Récupération des catégories
     const { data } = useGetCategoriesQuery(pageNumber);
-
+    //Mutation pour créer un produit
     const [createProduct, { isLoading: loadingCreate }] = useCreateProductMutation();
-
+    //Mutation pour uploader une image
     const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
 
+    //Ajout d'une taille
     const addSizeHandler = (e) => {
         e.preventDefault();
         if(sizeName !== '' && sizeQuantity !== 0 && sizeQuantity > 0 && !sizes.find(size => size.name === sizeName)) {
@@ -38,19 +44,22 @@ const ProductCreateScreen = () => {
         }
     }
 
+    //Suppression d'une taille
     const handleDeleteSize = (name) => (e) => {
         e.preventDefault();
         setSizes(sizes.filter(size => size.name !== name));
     }
 
-
+    //Soumission du formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             if (image !== null && name !== '' && description !== '' && price !== '' && category !== '' && sizes.length > 0) {
+                //Upload de l'image
                 const formData = new FormData();
                 formData.append('image', image);
                 const res = await uploadProductImage(formData).unwrap();
+                //Création du produit
                 const data = {
                     name,
                     price,

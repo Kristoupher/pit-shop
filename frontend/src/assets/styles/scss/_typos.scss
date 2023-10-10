@@ -19,6 +19,13 @@ h2 {
     margin-bottom: 4rem;
 }
 
+h3 {
+    font-size: 2rem;
+    @include lg {
+        font-size: 2.4rem;
+    }
+}
+
 p, a , li, input, select, option, button, label, strong, span, textarea, table, th, td {
     font-size: 1.6rem;
     @include lg {
@@ -35,5 +42,11 @@ span.light {
     font-size: 3.2rem;
     @include lg {
         font-size: 3.5rem;
+    }
+}
+
+.cgv, .legal {
+    a {
+        color: #1734af;
     }
 }

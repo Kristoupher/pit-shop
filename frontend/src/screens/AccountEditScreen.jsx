@@ -6,10 +6,13 @@ import {useNavigate} from "react-router-dom";
 import { useProfileMutation } from "../slices/usersApiSlice";
 import { updateCredentials } from "../slices/authSlice";
 
+//Modifier le profil de l'utilisateur
 const AccountEditScreen = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    //Récupération des informations de l'utilisateur
     const { userInfo } = useSelector(state => state.auth);
+    //States
     const [gender,setGender] = useState(userInfo.gender || '');
     const [lastname, setLastname] = useState(userInfo.lastname || '');
     const [firstname, setFirstname] = useState(userInfo.firstname || '');
@@ -18,15 +21,17 @@ const AccountEditScreen = () => {
     const [city, setCity] = useState(userInfo.address.city || '');
     const [mail, setMail] = useState(userInfo.mail || '');
     const [phone, setPhone] = useState(userInfo.phone || '');
-
+    //Mise à jour du profil
     const [updateUser, { isLoading: isUpdating }] = useProfileMutation();
 
 
+    //Soumission du formulaire
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
             if(gender !== "" && lastname !== "" && firstname !== "" && street !== "" && postalCode !== "" && city !== "" && mail !== "" && phone !== "") {
                 if(gender !== userInfo.gender || lastname !== userInfo.lastname || firstname !== userInfo.firstname || street !== userInfo.address.street || postalCode !== userInfo.address.postalCode || city !== userInfo.address.city || mail !== userInfo.mail || phone !== userInfo.phone) {
+                    //Mise à jour du profil
                     await updateUser({
                         id: userInfo._id,
                         gender,
@@ -36,7 +41,7 @@ const AccountEditScreen = () => {
                         mail,
                         phone
                     });
-                    //update credentials userInfo
+                    //Mise à jour du state
                     dispatch(updateCredentials({
                         _id: userInfo._id,
                         gender,

@@ -2,24 +2,30 @@ import { useState } from "react";
 import {toast} from "react-toastify";
 import { useSendEmailMutation } from "../slices/contactApiSlice";
 
+//Page de contact
 const ContactScreen = () => {
+    //States
     const [fullname, setFullname] = useState("");
     const [mail, setMail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
 
+    //Envoyer un email
     const [sendEmail] = useSendEmailMutation();
 
+    //Soumettre le formulaire
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
             if(fullname !== "" && mail !== "" && subject !== "" && message !== ""){
+                //Données à envoyer
                 const data = {
                     fullname,
                     mail,
                     subject,
                     message
                 };
+                //Envoi de l'email
                 await sendEmail(data).unwrap();
                 toast.success("Votre message a bien été envoyé");
                 setFullname("");

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+// Carte de présentation pour un produit
 const Card = ({ name, image, category }) => {
     return (
         <div className="card">

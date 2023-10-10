@@ -5,15 +5,19 @@ import {useSelector, useDispatch} from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+//Page de livraison
 const ShippingScreen = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    //Récupération des informations de l'utilisateur et de l'adresse de livraison dans le state
     const { userInfo } = useSelector(state => state.auth);
     const { shippingAddress } = useSelector(state => state.cart);
+    //States
     const [street, setStreet] = useState(shippingAddress.street || userInfo.address.street);
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || userInfo.address.postalCode);
     const [city, setCity] = useState(shippingAddress.city || userInfo.address.city);
 
+    //Soumission du formulaire
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(saveShippingAddress({ street, postalCode, city }));

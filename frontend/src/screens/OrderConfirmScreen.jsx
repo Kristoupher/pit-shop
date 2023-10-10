@@ -1,6 +1,7 @@
 import Stepper from "../components/Stepper";
 import {Link} from "react-router-dom";
 
+// Page de confirmation de commande
 const OrderConfirmScreen = () => {
     return (
         <div className="order-confirm section">

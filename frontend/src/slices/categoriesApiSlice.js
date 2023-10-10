@@ -1,6 +1,7 @@
 import {CATEGORIES_URL, PRODUCTS_URL, UPLOAD_URL} from "../constants";
 import { apiSlice} from "./apiSlice";
 
+//Requêtes pour les catégories
 export const productsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getCategories: builder.query({

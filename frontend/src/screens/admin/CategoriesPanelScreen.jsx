@@ -7,17 +7,23 @@ import {useState} from "react";
 import {toast} from "react-toastify";
 import Pagination from "../../components/Pagination";
 
+//Panneau de gestion des catégories
 const CategoriesPanelScreen = () => {
+    //Récupération du numéro de page dans l'URL
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
+
+    // Récupération des catégories
     const { data, refetch, isLoading, error } = useGetCategoriesQuery(pageNumber);
 
+    // Suppression d'une catégorie
     const [deleteCategory, { isLoading: loadingDelete }] = useDeleteCategoryMutation();
 
+    //States pour la modal de visualisation d'une catégorie et la modal de suppression d'une catégorie
     const [catModals, setCatModals] = useState({});
     const [deleteModal, setDeleteModal] = useState({});
 
+    //Ouverture des modales de visualisation
     const openModal = (productId) => {
         setCatModals((prevCatModals) => ({
             ...prevCatModals,
@@ -29,6 +35,7 @@ const CategoriesPanelScreen = () => {
         });
     };
 
+    //Ouverture des modales de suppression
     const openDeleteModal = (productId) => {
         setDeleteModal((prevDeleteModal) => ({
             ...prevDeleteModal,
@@ -40,6 +47,7 @@ const CategoriesPanelScreen = () => {
         });
     }
 
+    //Fermeture des modales de visualisation
     const closeModal = (userId) => {
         setCatModals((prevCatModals) => ({
             ...prevCatModals,
@@ -47,6 +55,7 @@ const CategoriesPanelScreen = () => {
         }));
     };
 
+    //Fermeture des modales de suppression
     const closeDeleteModal = (userId) => {
         setDeleteModal((prevDeleteModal) => ({
             ...prevDeleteModal,
@@ -54,6 +63,7 @@ const CategoriesPanelScreen = () => {
         }));
     }
 
+    //Suppression d'une catégorie
     const deleteHandler = async (id) => {
         try {
             await deleteCategory(id);

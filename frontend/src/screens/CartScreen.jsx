@@ -4,17 +4,20 @@ import { toast } from "react-toastify";
 import { clearCartItems, removeFromCart} from "../slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+// Page panier
 const CartScreen = () => {
-
     const dispatch = useDispatch();
+    // Récupération des données du panier dans le state
     const cart = useSelector(state => state.cart);
     const { cartItems, itemsPrice, shippingPrice, taxPrice, totalPrice } = cart;
 
+    // Suppression de tous les articles du panier
     const deleteCart = () => {
         dispatch(clearCartItems());
         toast.success('Panier vidé avec succès');
     }
 
+    // Suppression d'un article du panier
     const removeFromCartHandler = async (id) => {
         dispatch(removeFromCart(id));
     };

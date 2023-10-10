@@ -10,22 +10,28 @@ import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import {formatString, formatInsertion, getFileName} from "../../utils/utils";
 
+//Edition d'un produit
 const ProductEditScreen = () => {
+    //Récupération des paramètres de l'URL
     const { pageNumber } = useParams() || 1;
     const { category: categoryId } = useParams();
+
     const navigate = useNavigate();
+
     const { id: productId } = useParams();
 
+    //Récupération des catégories
     const { data } = useGetCategoriesQuery(pageNumber);
-
+    //Récupération des détails du produit
     const { data: product, refetch, isLoading, error } = useGetProductDetailsQuery(productId);
-
+    //Mise à jour du produit
     const [updateProduct, { isLoading: loadingUpdate }] = useUpdateProductMutation();
-
+    //Upload de l'image du produit
     const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
-
+    //Suppression de l'image du produit
     const [deleteProductImage, { isLoading: loadingDelete }] = useDeleteProductImageMutation();
 
+    // States
     const [image, setImage] = useState(product && product.image);
     const [uploading, setUploading] = useState(null);
     const [name, setName] = useState(product && product.name);
@@ -37,6 +43,7 @@ const ProductEditScreen = () => {
     const [driver, setDriver] = useState(product && product.driver);
     const [type, setType] = useState(product && product.type);
 
+    //Mise à jour des states
     useEffect(() => {
         if(product) {
             setImage(product.image);
@@ -51,16 +58,19 @@ const ProductEditScreen = () => {
         }
     }, [product]);
 
+    //Mise à jour de l'image
     const handleUpload = async (e) => {
         setUploading(e.target.files[0]);
     }
 
+    //Soumission du formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             let img;
             if(uploading !== null) {
                 if(image !== null && name !== '' && description !== '' && price !== '' && category !== '' && sizes.length > 0) {
+                    //Suppression de l'ancienne image et upload de la nouvelle
                     const fileName = getFileName(image);
                     const formData = new FormData();
                     formData.append('image', uploading);
@@ -71,7 +81,7 @@ const ProductEditScreen = () => {
             } else {
                 img = product.image;
             }
-
+            //Mise à jour du produit
             await updateProduct({ productId, name, price, description, sizes, category, type: type.toLowerCase(), image: img, team: formatInsertion(team), driver: formatInsertion(driver)  });
             toast.success('Le produit a été modifié avec succès');
             refetch();

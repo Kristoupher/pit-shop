@@ -3,19 +3,18 @@ import { useState } from "react";
 import Filters from "./Filters";
 import {useParams} from "react-router-dom";
 import {useGetDriversQuery, useGetSizesQuery, useGetTeamsQuery, useGetTypesQuery} from "../slices/productsApiSlice";
+
+// Modal pour les filtres en mobile
 const FiltersModal = ({filterOpen, setFilterOpen, setFilters, filters}) => {
-
+    // Récupération des données pour les filtres
     const { category: id } = useParams();
-
     const { data: teams } = useGetTeamsQuery(id);
-
     const { data: drivers } = useGetDriversQuery(id);
-
     const { data: types } = useGetTypesQuery(id);
-
     const { data: sizes } = useGetSizesQuery(id);
 
 
+    // Fonction pour soumettre les filtres
     const handleSubmit = (e) => {
         e.preventDefault();
         let teams = [];

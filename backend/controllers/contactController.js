@@ -3,7 +3,11 @@ import main from "../utils/sendMail.js";
 
 const sendEmail = asyncHandler(async (req, res) => {
     const { fullname, mail, subject, message } = req.body;
-    console.log(fullname, mail, subject, message);
+
+    if(fullname === "" || mail === "" || subject === "" || message === "") {
+        res.status(400);
+        throw new Error("Veuillez remplir tous les champs");
+    }
 
     await main(fullname, mail, subject, message);
 

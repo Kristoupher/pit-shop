@@ -1,4 +1,4 @@
-
+// Loader pour les chargements de pages
 const Loader = () => {
     const paths = document.querySelectorAll('path.air');
 

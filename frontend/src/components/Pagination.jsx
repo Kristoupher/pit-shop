@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
+//Module de pagination
 const Pagination = ({ currentPage, totalPages, url }) => {
+    //Initialisation des variables
     currentPage = parseInt(currentPage);
     totalPages = parseInt(totalPages);
 
+    // Fonction qui permet de générer les numéros de page
     const renderPageNumbers = () => {
         const pageNumbers = [];
         const ellipsis = <span className="pagination-link">...</span>;

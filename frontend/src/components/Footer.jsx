@@ -43,7 +43,7 @@ const Footer = () => {
                                     <Link to="/legal">Mentions légales</Link>
                                 </li>
                                 <li>
-                                    <Link to="/privacy">C.G.V</Link>
+                                    <Link to="/cgv">C.G.V</Link>
                                 </li>
                             </ul>
                         </nav>

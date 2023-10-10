@@ -5,10 +5,12 @@ import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
 
+// Page de gestion des commandes
 const OrdersPanelScreen = () => {
+    //Récupération du numéro de page dans l'URL
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
+    //Récupération des commandes
     const { data, isLoading, error } = useGetOrdersQuery(pageNumber);
 
     return (

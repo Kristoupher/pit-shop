@@ -8,19 +8,20 @@ import { useGetProductsQuery, useDeleteProductMutation } from "../../slices/prod
 import {toast} from "react-toastify";
 import Pagination from "../../components/Pagination";
 
+//Gestion des produits
 const ProductsPanelScreen = () => {
+    //Récupération du numéro de page
     const { pageNumber } = useParams() || 1;
-
     const currentPage = pageNumber ? pageNumber : 1;
-
+    //Récupération des produits
     const { data, refetch, isLoading, error } = useGetProductsQuery(pageNumber);
-
+    //Suppression d'un produit
     const [ deleteProduct, { isLoading: loadingDelete } ] = useDeleteProductMutation();
-
+    //States pour les modals
     const [userModals, setUserModals] = useState({});
     const [deleteModal, setDeleteModal] = useState({});
 
-
+    //Ouverture des modals de visualisation
     const openModal = (productId) => {
         setUserModals((prevUserModals) => ({
             ...prevUserModals,
@@ -32,6 +33,7 @@ const ProductsPanelScreen = () => {
         });
     };
 
+    //Ouverture des modals de suppression
     const openDeleteModal = (productId) => {
         setDeleteModal((prevDeleteModal) => ({
             ...prevDeleteModal,
@@ -43,6 +45,7 @@ const ProductsPanelScreen = () => {
         });
     }
 
+    //Fermeture des modals de visualisation
     const closeModal = (userId) => {
         setUserModals((prevUserModals) => ({
             ...prevUserModals,
@@ -50,6 +53,7 @@ const ProductsPanelScreen = () => {
         }));
     };
 
+    //Fermeture des modals de suppression
     const closeDeleteModal = (userId) => {
         setDeleteModal((prevDeleteModal) => ({
             ...prevDeleteModal,
@@ -57,6 +61,7 @@ const ProductsPanelScreen = () => {
         }));
     }
 
+    //Suppression d'un produit
     const deleteHandler  = async (id) => {
         try {
             await deleteProduct(id);

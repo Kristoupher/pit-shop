@@ -35,6 +35,9 @@ import ProductCreateScreen from "./screens/admin/ProductCreateScreen";
 import CategoryEditScreen from "./screens/admin/CategoryEditScreen";
 import CategoryCreateScreen from "./screens/admin/CategoryCreateScreen";
 import SearchResults from "./screens/SearchResults";
+import SiteMapScreen from "./screens/SiteMapScreen";
+import LegalScreen from "./screens/LegalScreen";
+import CgvScreen from "./screens/CgvScreen";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -48,6 +51,9 @@ const router = createBrowserRouter(
             <Route path="signup" element={<SignUpScreen />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/products/search/:keyword" element={<SearchResults />} />
+            <Route path="/sitemap" element={<SiteMapScreen />} />
+            <Route path="legal" element={<LegalScreen />} />
+            <Route path="cgv" element={<CgvScreen />} />
 
 
             <Route path='' element={<PrivateRoute />}>

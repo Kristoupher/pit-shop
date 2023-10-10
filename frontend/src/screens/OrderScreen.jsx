@@ -6,9 +6,10 @@ import Loader from "../components/Loader";
 import {formatDate} from "../utils/utils";
 import { ChevronLeftCircle } from "lucide-react";
 
+//Page d'une commande
 const OrderScreen = () => {
+    //Récupération de l'id de la commande et de la commande
     const {id} = useParams();
-
     const {data: order, isLoading, error} = useGetOrderDetailsQuery(id);
 
     return (
