@@ -60,7 +60,7 @@ const Header = () => {
     return (
         <header className="container header-nav">
             <div className="navbar">
-                <Link to="/">
+                <Link title="Accueil" to="/">
                     <img src={Logo} alt="Logo du pit shop" />
                 </Link>
                 {/*Menu pour la version mobile*/}
@@ -69,7 +69,7 @@ const Header = () => {
                 </div>
                 <form>
                     <input onChange={(e) => setSearch(e.target.value)} value={search} type="text" placeholder="Rechercher un produit..." />
-                    <button onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
+                    <button title="Rechercher" onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
                 </form>
                 <div className="navbar-btns-desktop">
                     <Link title="Panier" className={`header-cart ${cartItems.length > 0 ? 'active' : ''}`} to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/><span>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</span></Link>
@@ -77,16 +77,16 @@ const Header = () => {
                     {
                         userInfo ? (
                             <>
-                                <Link to="/account"><User2 color="#2E2E2E" size={30} strokeWidth={3}/></Link>
+                                <Link title="Mon compte" to="/account"><User2 color="#2E2E2E" size={30} strokeWidth={3}/></Link>
                                 {
                                     userInfo.isAdmin && (
-                                        <Link to='/admin' ><Settings color="#2E2E2E" size={30} strokeWidth={3} /></Link>
+                                        <Link title="Panneau d'administration" to='/admin' ><Settings color="#2E2E2E" size={30} strokeWidth={3} /></Link>
                                     )
                                 }
-                                <button onClick={logoutHandler} className="btn btn-primary">Déconnexion</button>
+                                <button title="Déconnexion" onClick={logoutHandler} className="btn btn-primary">Déconnexion</button>
                             </>
                         ) : (
-                            <Link to="/login" className="btn btn-primary">Connexion</Link>
+                            <Link title="Connexion" to="/login" className="btn btn-primary">Connexion</Link>
                             )
                     }
 
@@ -97,7 +97,7 @@ const Header = () => {
                     {
                         data && data.categories.map((category) => (
                             <li key={category._id}>
-                                <Link className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`} onClick={() => setToggle(false)}>{formatString(category.name)}</Link>
+                                <Link title={formatString(category.name)} className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`} onClick={() => setToggle(false)}>{formatString(category.name)}</Link>
                             </li>
                         ))
                     }
@@ -105,18 +105,18 @@ const Header = () => {
                 <div className="nav-btns">
                     <form>
                         <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Rechercher un produit..." />
-                        <button onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
+                        <button title="Rechercher" onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
                     </form>
-                    <Link to="/contact" className="btn btn-secondary" onClick={() => setToggle(false)}>Contact</Link>
-                    <Link to="/cart" className="btn btn-tertiary" onClick={() => setToggle(false)}>Panier</Link>
+                    <Link title="Contact" to="/contact" className="btn btn-secondary" onClick={() => setToggle(false)}>Contact</Link>
+                    <Link title="Panier" to="/cart" className="btn btn-tertiary" onClick={() => setToggle(false)}>Panier</Link>
                     {
                         userInfo ? (
                             <>
-                                <Link to="/account" className="btn btn-primary" onClick={() => setToggle(false)}>Mon compte</Link>
-                                <button className="btn btn-primary w-100" onClick={logoutHandler}>Déconnexion</button>
+                                <Link title="Mon compte" to="/account" className="btn btn-primary" onClick={() => setToggle(false)}>Mon compte</Link>
+                                <button title="Déconnexion" className="btn btn-primary w-100" onClick={logoutHandler}>Déconnexion</button>
                             </>)
                             : (
-                                <Link to="/login" className="btn btn-primary" onClick={() => setToggle(false)}>Connexion</Link>
+                                <Link title="Connexion" to="/login" className="btn btn-primary" onClick={() => setToggle(false)}>Connexion</Link>
                         )
                     }
                 </div>
@@ -127,7 +127,7 @@ const Header = () => {
                     {
                         data && data.categories.map((category) => (
                             <li key={category._id}>
-                                <Link className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
+                                <Link title={formatString(category.name)} className={`${category._id === categoryId ? 'active' : '' }`} to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
                             </li>
                         ))
                     }

@@ -71,7 +71,7 @@ const UsersPanelScreen = () => {
 
     return (
         <section className="account">
-            <Link className="btn btn-primary mb-5" to="/admin">Retour</Link>
+            <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
             <h1 className="flex flex-align-center"><User2 size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des Utilisateurs</h1>
             {isLoading ? (<Loader />) : error ? (<p>{error.message}</p>) : (
                 <div className="table-responsive section">
@@ -95,9 +95,9 @@ const UsersPanelScreen = () => {
                                     <td>{formatString(user.firstname)}</td>
                                     <td>{user.isAdmin ? "Administrateur" : "Utilisateur"}</td>
                                     <td className="flex flex-center">
-                                        <button onClick={() => openModal(user._id)} className="circle-btn circle-btn-primary"><Eye size={30} color="#2E2E2E" /></button>
-                                        <Link className="circle-btn circle-btn-secondary" to={`/admin/user/edit/${user._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
-                                        <button className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(user._id)}><Trash2 size={30} color="#2E2E2E" /></button>
+                                        <button title="Visualiser" onClick={() => openModal(user._id)} className="circle-btn circle-btn-primary"><Eye size={30} color="#2E2E2E" /></button>
+                                        <Link title="Modifier" className="circle-btn circle-btn-secondary" to={`/admin/user/edit/${user._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
+                                        <button title="Supprimer" className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(user._id)}><Trash2 size={30} color="#2E2E2E" /></button>
                                     </td>
                                     <td>
                                         <div className={`modal ${userModals[user._id] ? 'active' : ''}`}>
@@ -119,8 +119,8 @@ const UsersPanelScreen = () => {
                                                 <p className='mb-5 mt-6'><strong>Êtes-vous sûr de vouloir supprimer l'utilisateur suivant ?</strong></p>
                                                 <p>{formatString(user.firstname)} {formatString(user.lastname)}</p>
                                                 <div className="flex flex-center mt-6">
-                                                    <button className="btn btn-primary mr-5" onClick={() => deleteHandler(user._id)}>Supprimer</button>
-                                                    <button className="btn btn-danger" onClick={() => closeDeleteModal(user._id)}>Annuler</button>
+                                                    <button title="Supprimer" className="btn btn-primary mr-5" onClick={() => deleteHandler(user._id)}>Supprimer</button>
+                                                    <button title="Annuler" className="btn btn-danger" onClick={() => closeDeleteModal(user._id)}>Annuler</button>
                                                 </div>
                                             </div>
                                         </div>

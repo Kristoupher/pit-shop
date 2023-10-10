@@ -39,7 +39,7 @@ const CartScreen = () => {
                                 ))
                             }
                             <div className="center">
-                                <button onClick={deleteCart} className="btn btn-secondary">Vider le panier</button>
+                                <button title="Vider le panier" onClick={deleteCart} className="btn btn-secondary">Vider le panier</button>
                             </div>
                         </div>
                         {

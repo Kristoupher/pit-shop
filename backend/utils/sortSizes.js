@@ -1,3 +1,4 @@
+// Définition de la fonction permettant de trier les tailles par ordre croissant
 const sortSizes = (sizes) => {
     //Trier par ordre suivant : XS, S, M, L, XL, XXL
     sizes.sort((a, b) => {

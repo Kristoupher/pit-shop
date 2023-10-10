@@ -46,7 +46,7 @@ const CategoryCreateScreen = () => {
     return (
         <>
             <section>
-                <Link to="/admin/categories" className="btn btn-primary mb-3">Retour</Link>
+                <Link title="Retour" to="/admin/categories" className="btn btn-primary mb-3">Retour</Link>
                 <h1>Ajouter une catégorie</h1>
             </section>
             <div className="section">
@@ -66,7 +66,7 @@ const CategoryCreateScreen = () => {
                         </div>
                     </div>
                     <div className="btn-container">
-                        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Ajouter</button>
+                        <button title="Ajouter" type="submit" className="btn btn-primary" onClick={handleSubmit}>Ajouter</button>
                     </div>
                 </form>
             </div>

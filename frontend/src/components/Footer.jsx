@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="top">
                 <div className="container">
                     <div>
-                        <Link to={"/"} className="logo">
+                        <Link title="Accueil" to={"/"} className="logo">
                             <img src={Logo} alt="logo du pit shop"/>
                         </Link>
                     </div>
@@ -20,12 +20,12 @@ const Footer = () => {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link to="/">Accueil</Link>
+                                    <Link title="Accueil" to="/">Accueil</Link>
                                 </li>
                                 {
                                     data && data.categories.map((category) => (
                                         <li key={category._id}>
-                                            <Link to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
+                                            <Link title={formatString(category.name)} to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
                                         </li>
                                     ))
                                 }
@@ -34,16 +34,16 @@ const Footer = () => {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link to="/contact">Contact</Link>
+                                    <Link title="Contact" to="/contact">Contact</Link>
                                 </li>
                                 <li>
-                                    <Link to="/sitemap">Plan du site</Link>
+                                    <Link title="Plan du site" to="/sitemap">Plan du site</Link>
                                 </li>
                                 <li>
-                                    <Link to="/legal">Mentions légales</Link>
+                                    <Link title="Mentions légales" to="/legal">Mentions légales</Link>
                                 </li>
                                 <li>
-                                    <Link to="/cgv">C.G.V</Link>
+                                    <Link title="C.G.V." to="/cgv">C.G.V</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -52,7 +52,7 @@ const Footer = () => {
             </div>
             <div className="bottom">
                 <div className="container">
-                    <p>© {year} - Création et développement : <Link to="http://kristopher-arregui.fr" rel="noreferrer noopener" target="_blank">Kristopher Arregui</Link></p>
+                    <p>© {year} - Création et développement : <Link title="Voir le site" to="http://kristopher-arregui.fr" rel="noreferrer noopener" target="_blank">Kristopher Arregui</Link></p>
                 </div>
             </div>
         </footer>

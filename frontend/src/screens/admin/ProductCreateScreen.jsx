@@ -146,7 +146,7 @@ const ProductCreateScreen = () => {
                             <label htmlFor="quantity">Quantité</label>
                             <input type="number" name="quantity" id="quantity" value={sizeQuantity} placeholder="Quantité" onChange={(e) => setSizeQuantity(e.target.value)} />
                         </div>
-                        <button className="btn btn-success" onClick={addSizeHandler}>Ajouter</button>
+                        <button title="Ajouter" className="btn btn-success" onClick={addSizeHandler}>Ajouter</button>
                     </div>
                     <div className="form-group flex flex-center">
                         <ul className="sizes-container">
@@ -160,7 +160,7 @@ const ProductCreateScreen = () => {
                         </ul>
                     </div>
                     <div className="btn-container">
-                        <button onClick={handleSubmit} className="btn btn-primary">Ajouter</button>
+                        <button title="Ajouter" onClick={handleSubmit} className="btn btn-primary">Ajouter</button>
                     </div>
                 </form>
             </div>

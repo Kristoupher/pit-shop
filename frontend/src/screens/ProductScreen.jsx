@@ -39,7 +39,7 @@ const ProductScreen = () => {
 
     return (
         <div className="product-single">
-            <button onClick={goBack} className="btn btn-primary flex flex-center"><ChevronLeftCircle size={30} color="#fff" /> Retour</button>
+            <button title="Retour" onClick={goBack} className="btn btn-primary flex flex-center"><ChevronLeftCircle size={30} color="#fff" /> Retour</button>
             {
                 isLoading ? <Loader /> : error ? <h2>{error}</h2> : (
                     <div className="product-single-content section">
@@ -80,7 +80,7 @@ const ProductScreen = () => {
                                                 ))
                                             }
                                         </select>
-                                        <button onClick={addToCartHandler} className="btn btn-primary">Ajouter au panier</button>
+                                        <button title="Ajouter au panier" onClick={addToCartHandler} className="btn btn-primary">Ajouter au panier</button>
                                     </form>
                                 ) : (
                                     <p>Vous devez sélectionner une taille</p>

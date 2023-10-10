@@ -175,7 +175,7 @@ const ProductEditScreen = () => {
                                 }
                             </ul>
                             <div className="btn-container">
-                                <button onClick={handleSubmit} className="btn btn-primary">Modifier</button>
+                                <button title="Modifier" onClick={handleSubmit} className="btn btn-primary">Modifier</button>
                             </div>
                         </form>
                     </div>

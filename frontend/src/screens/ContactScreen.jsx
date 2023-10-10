@@ -9,6 +9,7 @@ const ContactScreen = () => {
     const [mail, setMail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
+    const [cgv, setCgv] = useState(false);
 
     //Envoyer un email
     const [sendEmail] = useSendEmailMutation();
@@ -18,20 +19,25 @@ const ContactScreen = () => {
         e.preventDefault();
         try {
             if(fullname !== "" && mail !== "" && subject !== "" && message !== ""){
-                //Données à envoyer
-                const data = {
-                    fullname,
-                    mail,
-                    subject,
-                    message
-                };
-                //Envoi de l'email
-                await sendEmail(data).unwrap();
-                toast.success("Votre message a bien été envoyé");
-                setFullname("");
-                setMail("");
-                setSubject("");
-                setMessage("");
+                if(!cgv) {
+                    toast.error("Veuillez accepter les conditions générales de vente");
+                } else {
+                    //Données à envoyer
+                    const data = {
+                        fullname,
+                        mail,
+                        subject,
+                        message
+                    };
+                    //Envoi de l'email
+                    await sendEmail(data).unwrap();
+                    toast.success("Votre message a bien été envoyé");
+                    setFullname("");
+                    setMail("");
+                    setSubject("");
+                    setMessage("");
+                    setCgv(false);
+                }
             } else {
                 toast.error("Veuillez remplir tous les champs");
             }
@@ -60,8 +66,12 @@ const ContactScreen = () => {
                     <input type="text" required={true} name="subject" id="subject" placeholder="Sujet*" value={subject} onChange={(e) => setSubject(e.target.value)} />
                 </div>
                 <textarea required={true} name="message" id="message" rows="8" placeholder="Votre message*" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+                <div className="radio-group">
+                    <input type="checkbox" name="cgu" id="cgu" required={true}  onChange={(e) => setCgv(true)} />
+                    <label htmlFor="cgu">En cochant cette case, j'accepte que Le Pit Shop collecte et utilise les informations que j'ai fournies dans ce formulaire dans le but de traiter ma demande.</label>
+                </div>
                 <div className="btn-container">
-                    <button className="btn btn-primary">Envoyer votre message</button>
+                    <button title="Envoyer votre message" className="btn btn-primary">Envoyer votre message</button>
                 </div>
             </form>
         </div>

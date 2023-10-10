@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-
+//Fonction qui génère le jwt et le stocke dans un cookie http-only
 const generateToken = (res, userId) => {
 
     const token = jwt.sign({ userId }, process.env.JWT_SECRET, {

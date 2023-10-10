@@ -1,3 +1,4 @@
+//Permet d'envoyer manuellement des données dans la base de données
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';

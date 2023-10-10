@@ -37,7 +37,7 @@ const HomeScreen = () => {
                         course automobile, conçus pour allier style et passion.
                     </p>
                     <div>
-                        <button className="btn btn-primary" onClick={goToCategories}>Découvrir</button>
+                        <button title="Découvrir" className="btn btn-primary" onClick={goToCategories}>Découvrir</button>
                     </div>
                 </div>
                 <div className="banner-home">
@@ -78,7 +78,7 @@ const HomeScreen = () => {
                     <div className='content'>
                         <p>Une question , un renseignement ?</p>
                         <div className="btn-container">
-                            <Link className="btn btn-primary flex flex-center" to="/contact">Contactez-nous <Mail size={30} color="#fff" /></Link>
+                            <Link title="Contactez-nous" className="btn btn-primary flex flex-center" to="/contact">Contactez-nous <Mail size={30} color="#fff" /></Link>
                         </div>
                     </div>
                 </div>

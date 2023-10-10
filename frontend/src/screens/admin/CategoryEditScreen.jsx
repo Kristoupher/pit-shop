@@ -79,7 +79,7 @@ const CategoryEditScreen = () => {
     return (
         <>
             <section>
-                    <Link to="/admin/categories" className="btn btn-primary mb-5">Retour</Link>
+                    <Link title="Retour" to="/admin/categories" className="btn btn-primary mb-5">Retour</Link>
                     <h1>Modification d'une catégorie</h1>
             </section>
             {
@@ -101,7 +101,7 @@ const CategoryEditScreen = () => {
                                 </div>
                             </div>
                             <div className="btn-container">
-                                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Ajouter</button>
+                                <button title="Ajouter" type="submit" className="btn btn-primary" onClick={handleSubmit}>Ajouter</button>
                             </div>
                         </form>
                     </div>

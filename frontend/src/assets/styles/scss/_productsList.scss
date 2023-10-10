@@ -1,3 +1,4 @@
+//Page produits par catégorie
 .products-list {
   .banner-category {
     border-radius: 2rem;
@@ -119,7 +120,7 @@
     }
   }
 }
-
+//produits par catégorie
 .products-container {
   .products {
     @include xl {

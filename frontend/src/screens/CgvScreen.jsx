@@ -9,7 +9,7 @@ const CgvScreen = () => {
                 <h2>1. Informations Légales</h2>
                 <p>Le Pit Shop</p>
                 <p><strong>Adresse : </strong> 12 rue de la paix, 33000 Bordeaux</p>
-                <p><strong>Email : </strong> <Link to="mailto:pitshop@webmaster.fr">pitshop@webmaster.fr</Link></p>
+                <p><strong>Email : </strong> <Link title="pitshop@webmaster.fr" to="mailto:pitshop@webmaster.fr">pitshop@webmaster.fr</Link></p>
                 <p><strong>Téléphone : </strong> 07 07 07 07 07</p>
                 <p><strong>Numéro d'enregistrement : </strong> 12345</p>
             </section>
@@ -72,14 +72,14 @@ const CgvScreen = () => {
                 <h2>5. Droit de Rétractation</h2>
                 <p>
                     Conformément aux lois en vigueur, vous avez le droit de vous rétracter de votre commande dans un délai de 14 jours à compter de la réception des produits, sans avoir à donner de motif. Pour exercer votre droit de rétractation,
-                    veuillez nous contacter par e-mail à <Link to="mailto:contact@pitshop.fr">contact@pitshop.fr</Link> pour obtenir les instructions de retour. Les produits doivent être retournés dans leur état d'origine et dans leur emballage d'origine.
+                    veuillez nous contacter par e-mail à <Link title="contact@pitshop.fr" to="mailto:contact@pitshop.fr">contact@pitshop.fr</Link> pour obtenir les instructions de retour. Les produits doivent être retournés dans leur état d'origine et dans leur emballage d'origine.
                 </p>
             </section>
             <section>
                 <h2>6. Protection des Données et RGPD</h2>
                 <p>
                     Le Pit Shop est conforme au Règlement Général sur la Protection des Données (RGPD). Nous collectons et traitons vos données personnelles uniquement dans le but de traiter vos commandes et de vous fournir un service client efficace.
-                    Pour plus d'informations, veuillez consulter nos <Link to="/legal">Mentions Légales</Link>.
+                    Pour plus d'informations, veuillez consulter nos <Link title="Mentions légales" to="/legal">Mentions Légales</Link>.
                 </p>
             </section>
             <section>
@@ -97,8 +97,8 @@ const CgvScreen = () => {
             <div className="section">
                 <p>Le Pit Shop</p>
                 <p>12 rue de la paix, 33000 Bordeaux</p>
-                <p><Link to="mailto:contact@pitshop.fr">mailto:contact@pitshop.fr</Link></p>
-                <p><Link to="tel:+33707070707">07 07 07 07 07</Link></p>
+                <p><Link title='contact@pitshop.fr' to="mailto:contact@pitshop.fr">contact@pitshop.fr</Link></p>
+                <p><Link title="07 07 07 07 07" to="tel:+33707070707">07 07 07 07 07</Link></p>
             </div>
         </div>
     );

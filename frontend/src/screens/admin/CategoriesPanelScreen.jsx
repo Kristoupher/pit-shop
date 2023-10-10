@@ -77,10 +77,10 @@ const CategoriesPanelScreen = () => {
 
     return (
         <section className="account">
-            <Link className="btn btn-primary mb-5" to="/admin">Retour</Link>
+            <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
             <div className="flex-between-desktop">
                 <h1 className="flex flex-align-center"><Bookmark size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des catégories</h1>
-                <Link className="btn btn-primary" to="/admin/category/create">Ajouter une catégorie</Link>
+                <Link title="Ajouter une catégorie" className="btn btn-primary" to="/admin/category/create">Ajouter une catégorie</Link>
             </div>
             {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
@@ -102,9 +102,9 @@ const CategoriesPanelScreen = () => {
                                         <td>{formatString(category.name)}</td>
                                         <td>{formatDate(category.createdAt)}</td>
                                         <td className="flex flex-center">
-                                            <button className="circle-btn circle-btn-primary" onClick={() => openModal(category._id)}><Eye size={30} color="#2E2E2E" /></button>
-                                            <Link className="circle-btn circle-btn-secondary" to={`/admin/category/edit/${category._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
-                                            <button className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(category._id)}><Trash2 size={30} color="#2E2E2E" /></button>
+                                            <button title="Visualiser" className="circle-btn circle-btn-primary" onClick={() => openModal(category._id)}><Eye size={30} color="#2E2E2E" /></button>
+                                            <Link title="Modifier" className="circle-btn circle-btn-secondary" to={`/admin/category/edit/${category._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
+                                            <button title="Supprimer" className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(category._id)}><Trash2 size={30} color="#2E2E2E" /></button>
                                         </td><td>
                                         <div className={`modal ${catModals[category._id] ? 'active' : ''}`}>
                                             <div className="modal-content">
@@ -124,12 +124,12 @@ const CategoriesPanelScreen = () => {
                                         <td>
                                             <div className={`modal ${deleteModal[category._id] ? 'active' : ''}`}>
                                                 <div className="modal-content">
-                                                    <span onClick={() => closeDeleteModal(category._id)}><XCircle size={35} color="#2E2E2E" /></span>
+                                                    <span title="Fermer" onClick={() => closeDeleteModal(category._id)}><XCircle size={35} color="#2E2E2E" /></span>
                                                     <p className='mb-5 mt-6'><strong>Êtes-vous sûr de vouloir supprimer la catégorie suivante ?</strong></p>
                                                     <p>{formatString(category.name)}</p>
                                                     <div className="flex flex-center mt-6">
-                                                        <button className="btn btn-primary mr-5" onClick={() => deleteHandler(category._id)}>Supprimer</button>
-                                                        <button className="btn btn-danger" onClick={() => closeDeleteModal(category._id)}>Annuler</button>
+                                                        <button title="Supprimer" className="btn btn-primary mr-5" onClick={() => deleteHandler(category._id)}>Supprimer</button>
+                                                        <button title="Annuler" className="btn btn-danger" onClick={() => closeDeleteModal(category._id)}>Annuler</button>
                                                     </div>
                                                 </div>
                                             </div>

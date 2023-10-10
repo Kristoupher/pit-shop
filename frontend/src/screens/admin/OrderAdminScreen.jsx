@@ -47,13 +47,13 @@ const OrderAdminScreen = () => {
 
     return (
         <>
-            <Link to="/admin/orders" className="btn btn-primary flex flex-center mw-400">Retour aux commandes</Link>
+            <Link title="Retour" to="/admin/orders" className="btn btn-primary flex flex-center mw-400">Retour aux commandes</Link>
             {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
                     <div className="order section">
                         <div className="flex-between-desktop">
                             <h1>N° de commande : <span>{order.orderNumber} - {formatDate(order.orderDate)}</span></h1>
-                            <button className="btn btn-primary flex flex-center mw-400" onClick={() => setModal(true)}>Modifier le statut</button>
+                            <button title="Modifier le statut" className="btn btn-primary flex flex-center mw-400" onClick={() => setModal(true)}>Modifier le statut</button>
                         </div>
                         <p>Par {formatString(order.user.firstname)} {formatString(order.user.lastname)}</p>
                         <p className="badge">{formatString(order.status)}</p>
@@ -91,7 +91,7 @@ const OrderAdminScreen = () => {
                                         </select>
                                     </div>
                                     <div className="center">
-                                        <button className="btn btn-primary mt-6 w-50" onClick={handleSubmit}>Mettre à jour</button>
+                                        <button title="Mettre à jour" className="btn btn-primary mt-6 w-50" onClick={handleSubmit}>Mettre à jour</button>
                                     </div>
                                 </form>
                             </div>

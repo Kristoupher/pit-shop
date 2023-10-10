@@ -15,7 +15,7 @@ const OrdersPanelScreen = () => {
 
     return (
         <section className="account">
-            <Link className="btn btn-primary mb-5" to="/admin">Retour</Link>
+            <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
             <h1 className="flex flex-align-center"><BadgeEuro size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des commandes</h1>
             {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
@@ -38,7 +38,7 @@ const OrdersPanelScreen = () => {
                                         <td>{formatDate(order.createdAt)}</td>
                                         <td>{formatPrice(order.totalPrice)}</td>
                                         <td>{formatString(order.status)}</td>
-                                        <td><Link className="btn btn-primary" to={`/admin/order/${order._id}`}>Voir</Link></td>
+                                        <td><Link title="Voir" className="btn btn-primary" to={`/admin/order/${order._id}`}>Voir</Link></td>
                                     </tr>
                                 ))
                             }

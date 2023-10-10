@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import asyncHandler from './asyncHandler.js';
 import User from '../models/userModel.js';
 
-// User must be authenticated
+// L'utilisateur doit être connecté
 const protect = asyncHandler(async (req, res, next) => {
     let token;
 
@@ -29,7 +29,7 @@ const protect = asyncHandler(async (req, res, next) => {
     }
 });
 
-// User must be an admin
+// L'utilisateur doit être admin
 const admin = (req, res, next) => {
     if (req.user && req.user.isAdmin) {
         next();

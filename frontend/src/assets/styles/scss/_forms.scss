@@ -140,8 +140,7 @@ form.form {
   }
 }
 
-// Page contact width formlaire
-
+// Page contact width formulaire
 .contact {
   .form {
     max-width: 90rem;
@@ -150,6 +149,7 @@ form.form {
   }
 }
 
+//Formulaire login
 .login {
   p {
     text-align: center;
@@ -192,6 +192,7 @@ form.form {
   }
 }
 
+//Formulaire signup
 .signup {
   .form {
     max-width: 90rem;
@@ -243,6 +244,7 @@ form.form {
   }
 }
 
+//Formulaire shipping
 .shipping {
   .form {
     width: 100%;
@@ -293,6 +295,19 @@ form.form {
       margin-right: 0.5rem;
       width: 2rem;
       height: 2rem;
+    }
+  }
+}
+
+.contact, .signup {
+  .radio-group {
+    margin: 1rem 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    input {
+      width: 2.5rem;
+      height: 2.5rem;
     }
   }
 }

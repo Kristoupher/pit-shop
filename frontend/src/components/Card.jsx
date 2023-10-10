@@ -10,7 +10,7 @@ const Card = ({ name, image, category }) => {
             <div>
                 <p>{name}</p>
                 <div className='btn-container'>
-                    <Link to={`/products/category/${category}`} className="btn btn-primary">Voir le produit</Link>
+                    <Link title="Voir le produit" to={`/products/category/${category}`} className="btn btn-primary">Voir le produit</Link>
                 </div>
             </div>
         </div>

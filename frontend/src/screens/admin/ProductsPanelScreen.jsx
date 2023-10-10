@@ -75,10 +75,10 @@ const ProductsPanelScreen = () => {
 
     return (
                 <section className="account">
-                    <Link className="btn btn-primary mb-5" to="/admin">Retour</Link>
+                    <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
                     <div className="flex-between-desktop">
                         <h1 className="flex flex-align-center"><Shirt size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des Produits</h1>
-                        <Link to="/admin/product/create" className="btn btn-primary">Ajouter un produit</Link>
+                        <Link title="Ajouter un produit" to="/admin/product/create" className="btn btn-primary">Ajouter un produit</Link>
                     </div>
                     {
                         isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
@@ -104,9 +104,9 @@ const ProductsPanelScreen = () => {
                                                 <td>{formatPrice(product.price)}</td>
                                                 <td>{formatDate(product.createdAt)}</td>
                                                 <td className="flex flex-center btns">
-                                                    <button className="circle-btn circle-btn-primary" onClick={() => openModal(product._id)}><Eye size={30} color="#2E2E2E" /></button>
-                                                    <Link className="circle-btn circle-btn-secondary" to={`/admin/product/edit/${product._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
-                                                    <button className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(product._id)}><Trash2 size={30} color="#2E2E2E" /></button>
+                                                    <button title="Visualiser" className="circle-btn circle-btn-primary" onClick={() => openModal(product._id)}><Eye size={30} color="#2E2E2E" /></button>
+                                                    <Link title="Modifier" className="circle-btn circle-btn-secondary" to={`/admin/product/edit/${product._id}`}><Pencil size={30} color="#2E2E2E" /></Link>
+                                                    <button title="Supprimer" className="circle-btn circle-btn-danger" onClick={() => openDeleteModal(product._id)}><Trash2 size={30} color="#2E2E2E" /></button>
                                                 </td>
                                                 <td>
                                                     <div className={`modal ${userModals[product._id] ? 'active' : ''}`}>
@@ -153,8 +153,8 @@ const ProductsPanelScreen = () => {
                                                             <p className='mb-5 mt-6'><strong>Êtes-vous sûr de vouloir supprimer le produit suivant ?</strong></p>
                                                             <p>{formatString(product.name)}</p>
                                                             <div className="flex flex-center mt-6">
-                                                                <button className="btn btn-primary mr-5" onClick={() => deleteHandler(product._id)}>Supprimer</button>
-                                                                <button className="btn btn-danger" onClick={() => closeDeleteModal(product._id)}>Annuler</button>
+                                                                <button title="Supprimer" className="btn btn-primary mr-5" onClick={() => deleteHandler(product._id)}>Supprimer</button>
+                                                                <button title="Annuler" className="btn btn-danger" onClick={() => closeDeleteModal(product._id)}>Annuler</button>
                                                             </div>
                                                         </div>
                                                     </div>

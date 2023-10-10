@@ -94,7 +94,7 @@ const ProductsListScreen = () => {
                     <div className="alert section">
                         <p>Il n'y a pas de produits dans cette catégorie</p>
                         <div className="center">
-                            <Link to="/" className="btn btn-primary section">Retour à l'accueil</Link>
+                            <Link title="Retour à l'accueil" to="/" className="btn btn-primary section">Retour à l'accueil</Link>
                         </div>
                     </div>
                 ) : (
@@ -108,7 +108,7 @@ const ProductsListScreen = () => {
                                         <option value="asc">Prix croissant</option>
                                         <option value="desc">Prix décroissant</option>
                                     </select>
-                                    <button onClick={() => setFilterOpen(!filterOpen)}>Filtrer <SlidersHorizontal size={25} color="#2E2E2E"/></button>
+                                    <button title="Filtrer" onClick={() => setFilterOpen(!filterOpen)}>Filtrer <SlidersHorizontal size={25} color="#2E2E2E"/></button>
                                 </div>
                             </div>
                             <FiltersModal filterOpen={filterOpen} setFilterOpen={setFilterOpen} setFilters={handleFilterChange} filters={filters}/>

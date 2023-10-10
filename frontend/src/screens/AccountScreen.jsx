@@ -25,7 +25,7 @@ const AccountScreen = () => {
                             <>
                                 <section className="head">
                                     <h1>Mon compte</h1>
-                                    <Link className="btn btn-primary" to="/account/edit">Modifier mon profil</Link>
+                                    <Link title="Modifier mon profil" className="btn btn-primary" to="/account/edit">Modifier mon profil</Link>
                                 </section>
                                 <div className="infos">
                                     <p><span>{formatString(userInfo.gender)}</span> {formatString(userInfo.firstname) + ' ' + formatString(userInfo.lastname)}</p>
@@ -57,7 +57,7 @@ const AccountScreen = () => {
                                                     <td>{formatDate(order.createdAt)}</td>
                                                     <td>{formatPrice(order.totalPrice)}</td>
                                                     <td>{formatString(order.status)}</td>
-                                                    <td><Link className="btn btn-primary" to={`/account/order/${order._id}`}>Voir</Link></td>
+                                                    <td><Link title="Voir" className="btn btn-primary" to={`/account/order/${order._id}`}>Voir</Link></td>
                                                 </tr>
                                             ))
                                         }

@@ -67,7 +67,7 @@ const AccountEditScreen = () => {
 
     return (
         <div className="edit section shipping">
-            <Link className="btn btn-primary mb-5" to="/account">Retour</Link>
+            <Link title="Retour" className="btn btn-primary mb-5" to="/account">Retour</Link>
             <h1>Modifier mon profil</h1>
             <div className="section">
                 <form className="form section">
@@ -111,7 +111,7 @@ const AccountEditScreen = () => {
                         <input type="text" id="phone" defaultValue={phone} onChange={(e) => setPhone(e.target.value)} />
                     </div>
                     <div className="btn-container">
-                        <button onClick={submitHandler} className="btn btn-primary">Valider les modifications</button>
+                        <button title="Valider les modifications" onClick={submitHandler} className="btn btn-primary">Valider les modifications</button>
                     </div>
                 </form>
             </div>

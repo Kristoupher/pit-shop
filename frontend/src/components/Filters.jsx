@@ -128,7 +128,7 @@ const Filters = ({ button, filters, setFilters }) => {
                     </div>
                     { button && (
                     <div className="btn-container">
-                        <button className="btn btn-success" >Appliquer</button>
+                        <button title="Appliquer" className="btn btn-success" >Appliquer</button>
                     </div>)
                     }
                 </div>

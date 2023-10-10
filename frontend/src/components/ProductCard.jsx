@@ -14,7 +14,7 @@ const ProductCard = ({ image, name, price, id }) => {
                 <p>{name}</p>
                 <div className="product-price">
                     <p>{formatPrice(price)}</p>
-                    <Link to={`/product/${id}`} className="btn btn-primary">Voir le produit</Link>
+                    <Link title="Voir le produit" to={`/product/${id}`} className="btn btn-primary">Voir le produit</Link>
                 </div>
             </div>
         </div>

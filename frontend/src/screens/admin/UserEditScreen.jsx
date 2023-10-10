@@ -78,7 +78,7 @@ const UserEditScreen = () => {
     return (
         <>
             <section>
-                <Link to="/admin/users" className="btn btn-primary mb-5">Retour</Link>
+                <Link title="Retour" to="/admin/users" className="btn btn-primary mb-5">Retour</Link>
                 <h1>Modification d'un utilisateur</h1>
             </section>
             {
@@ -140,7 +140,7 @@ const UserEditScreen = () => {
                                 </select>
                             </div>
                             <div className="btn-container">
-                                <button onClick={handleSubmit} className="btn btn-primary">Modifier</button>
+                                <button title="Modifier" onClick={handleSubmit} className="btn btn-primary">Modifier</button>
                             </div>
                         </form>
                     </div>

@@ -12,25 +12,25 @@ const LegalScreen = () => {
                     pitshop.kristopher-arregui.fr l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
                 </p>
                 <p><strong>Propriétaire :</strong> Kristopher Arregui - 74 route des moulins - 33390 Eyrans</p>
-                <p><strong>Créateur : </strong> <Link rel="noreferrer noopener" target="_blank" to="https://kristopher-arregui.fr/">Kristopher Arregui</Link></p>
-                <p><strong>Responsable publication :</strong> Kristopher - <Link to="mailto:contact@kristopher-arregui.fr">contact@kristopher-arregui.fr</Link></p>
+                <p><strong>Créateur : </strong> <Link title="Kristopher Arregui" rel="noreferrer noopener" target="_blank" to="https://kristopher-arregui.fr/">Kristopher Arregui</Link></p>
+                <p><strong>Responsable publication :</strong> Kristopher - <Link title="contact@kristopher-arregui.fr" to="mailto:contact@kristopher-arregui.fr">contact@kristopher-arregui.fr</Link></p>
                 <p>Le responsable publication est une personne physique ou une personne morale. </p>
-                <p><strong>Webmaster: </strong> <Link to="mailto:contact@kristopher-arregui.fr">contact@kristopher-arregui.fr</Link></p>
+                <p><strong>Webmaster: </strong> <Link title="contact@kristopher-arregui.fr" to="mailto:contact@kristopher-arregui.fr">contact@kristopher-arregui.fr</Link></p>
                 <p><strong>Hébergeur : </strong> Alwaysdata - 91 rue du Faubourg Saint Honoré - 75008 Paris</p>
             </section>
             <section>
                 <h2>2. Conditions générales d'utilisation du site et des services proposés.</h2>
                 <p>
-                    L'utilisation du site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> implique l'acceptation pleine et entière des conditions
+                    L'utilisation du site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> implique l'acceptation pleine et entière des conditions
                     générales d'utilisation ci-après décrites. Ces conditions d'utilisation sont susceptibles d'être modifiées ou complétées à tout moment, les utilisateurs du site
-                    <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> sont donc invités à les consulter de manière régulière.
+                    <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> sont donc invités à les consulter de manière régulière.
                 </p>
                 <p>
                     Ce site est normalement accessible à tout moment aux utilisateurs. Une interruption pour raison de maintenance technique peut être toutefois décidée
                     par Kristopher Arregui, qui s'efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l'intervention.
                 </p>
                 <p>
-                    Le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> est mis à jour régulièrement par Kristopher. De la même
+                    Le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> est mis à jour régulièrement par Kristopher. De la même
                     façon, les mentions légales peuvent être modifiées à tout moment : elles s'imposent néanmoins à l'utilisateur qui est invité à s'y référer le plus
                     souvent possible afin d'en prendre connaissance.
                 </p>
@@ -38,17 +38,17 @@ const LegalScreen = () => {
             <section>
                 <h2>3. Description des services fournis.</h2>
                 <p>
-                    Le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> a pour objet de fournir une information concernant
+                    Le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> a pour objet de fournir une information concernant
                     l'ensemble des activités de la société.
                 </p>
                 <p>
-                    Kristopher Arregui s'efforce de fournir sur le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> des informations
+                    Kristopher Arregui s'efforce de fournir sur le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> des informations
                     aussi précises que possible. Toutefois, il ne pourra être tenue responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu'elles soient
                     de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.
                 </p>
                 <p>
-                    Tous les informations indiquées sur le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> sont données à titre indicatif,
-                    et sont susceptibles d'évoluer. Par ailleurs, les renseignements figurant sur le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> ne
+                    Tous les informations indiquées sur le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> sont données à titre indicatif,
+                    et sont susceptibles d'évoluer. Par ailleurs, les renseignements figurant sur le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> ne
                     sont pas exhaustifs. Ils sont donnés sous réserve de modifications ayant été apportées depuis leur mise en ligne.
                 </p>
             </section>
@@ -83,7 +83,7 @@ const LegalScreen = () => {
                 </p>
                 <p>
                     Kristopher Arregui ne pourra également être tenue responsable des dommages indirects (tels par exemple qu'une perte de marché ou perte d'une chance) consécutifs
-                    à l'utilisation du site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>.
+                    à l'utilisation du site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>.
                 </p>
                 <p>
                     Des espaces interactifs (possibilité de poser des questions dans l'espace contact) sont à la disposition des utilisateurs. Kristopher Arregui se réserve le droit de supprimer, sans mise
@@ -99,8 +99,8 @@ const LegalScreen = () => {
                     Européenne du 24 octobre 1995.
                 </p>
                 <p>
-                    A l'occasion de l'utilisation du site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>, peuvent êtres recueillies : l'URL des liens par l'intermédiaire desquels
-                    l'utilisateur a accédé au site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>, le fournisseur d'accès de l'utilisateur, l'adresse de protocole Internet (IP) de l'utilisateur.
+                    A l'occasion de l'utilisation du site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>, peuvent êtres recueillies : l'URL des liens par l'intermédiaire desquels
+                    l'utilisateur a accédé au site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>, le fournisseur d'accès de l'utilisateur, l'adresse de protocole Internet (IP) de l'utilisateur.
                 </p>
                 <p>
                     En tout état de cause Kristopher Arregui ne collecte des informations personnelles relatives à l'utilisateur que pour le besoin de certains services proposés par le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>.
@@ -112,7 +112,7 @@ const LegalScreen = () => {
                     en effectuant sa demande écrite et signée, accompagnée d'une copie du titre d'identité avec signature du titulaire de la pièce, en précisant l'adresse à laquelle la réponse doit être envoyée.
                 </p>
                 <p>
-                    Aucune information personnelle de l'utilisateur du site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers.
+                    Aucune information personnelle de l'utilisateur du site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers.
                     Seule l'hypothèse du rachat de Kristopher Arregui et de ses droits permettrait la transmission des dites informations à l'éventuel acquéreur qui serait à son tour tenu de la même obligation de conservation et de modification des données vis à vis de l'utilisateur du site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link>.
                 </p>
                 <p>
@@ -122,11 +122,11 @@ const LegalScreen = () => {
             <section>
                 <h2>8. Liens hypertextes et cookies.</h2>
                 <p>
-                    Le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> contient un certain nombre de liens hypertextes vers d’autres sites, mis en place avec l’autorisation de Kristopher Arregui.
+                    Le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> contient un certain nombre de liens hypertextes vers d’autres sites, mis en place avec l’autorisation de Kristopher Arregui.
                     Cependant, Kristopher Arregui n’a pas la possibilité de vérifier le contenu des sites ainsi visités, et n’assumera en conséquence aucune responsabilité de ce fait.
                 </p>
                 <p>
-                    La navigation sur le site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> est susceptible de provoquer l’installation de cookie(s) sur l’ordinateur de l’utilisateur.
+                    La navigation sur le site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> est susceptible de provoquer l’installation de cookie(s) sur l’ordinateur de l’utilisateur.
                     Un cookie est un fichier de petite taille, qui ne permet pas l’identification de l’utilisateur, mais qui enregistre des informations relatives à la navigation d’un ordinateur sur un site.
                     Les données ainsi obtenues visent à faciliter la navigation ultérieure sur le site, et ont également vocation à permettre diverses mesures de fréquentation.
                 </p>
@@ -143,7 +143,7 @@ const LegalScreen = () => {
             <section>
                 <h2>9. Droit applicable et attribution de juridiction.</h2>
                 <p>
-                    Tout litige en relation avec l’utilisation du site <Link to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
+                    Tout litige en relation avec l’utilisation du site <Link title="pitshop.kristopher-arregui.fr" to="https://pitshop.kristopher-arregui.fr/">pitshop.kristopher-arregui.fr</Link> est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
                 </p>
             </section>
             <section>

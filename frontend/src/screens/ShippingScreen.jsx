@@ -49,7 +49,7 @@ const ShippingScreen = () => {
                     <input type="text" id="city" defaultValue={city} onChange={(e) => setCity(e.target.value)} />
                 </div>
                 <div className="btn-container">
-                    <button onClick={submitHandler} className="btn btn-primary">Suivant</button>
+                    <button title="Suivant" onClick={submitHandler} className="btn btn-primary">Suivant</button>
                 </div>
             </form>
         </div>

@@ -12,7 +12,7 @@ const HorizontalCard = ({ id, name, image, price }) => {
                 <p>{name}</p>
                 <p className="price">{formatPrice(price)}</p>
                 <div className='btn-container'>
-                    <Link to={`/product/${id}`} className="btn btn-primary">Voir le produit</Link>
+                    <Link title="Voir le produit" to={`/product/${id}`} className="btn btn-primary">Voir le produit</Link>
                 </div>
             </div>
         </div>

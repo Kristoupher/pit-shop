@@ -9,8 +9,8 @@ const OrderConfirmScreen = () => {
             <h1>Félicitations 🎉</h1>
             <p>Votre commande est validée, vous pouvez suivre son évolution dans vos commandes.</p>
             <div className="btns-container">
-                <Link to="/" className="btn btn-tertiary">Accueil</Link>
-                <Link to="/account" className="btn btn-primary">Mes commandes</Link>
+                <Link title="Accueil" to="/" className="btn btn-tertiary">Accueil</Link>
+                <Link title="Voir mes Commandes" to="/account" className="btn btn-primary">Mes commandes</Link>
             </div>
         </div>
     );

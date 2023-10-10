@@ -14,7 +14,7 @@ const OrderScreen = () => {
 
     return (
         <>
-        <Link to="/account" className="btn btn-primary flex flex-center mw-400"><ChevronLeftCircle size={25} />Retour aux commandes</Link>
+        <Link title="Retour aux commandes" to="/account" className="btn btn-primary flex flex-center mw-400"><ChevronLeftCircle size={25} />Retour aux commandes</Link>
             {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
                     <div className="order section">

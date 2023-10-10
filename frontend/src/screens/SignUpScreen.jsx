@@ -18,6 +18,7 @@ const SignUpScreen = () => {
     const [postalCode, setPostalCode] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [cgv, setCgv] = useState(false);
     const address = { street, city, postalCode };
 
     const dispatch = useDispatch();
@@ -56,6 +57,10 @@ const SignUpScreen = () => {
             return;
         } else {
             try {
+                if(!cgv) {
+                    toast.error('Veuillez accepter les conditions générales de vente');
+                    return;
+                }
                 //Appel de la fonction d'inscription
                 const res = await register({ gender, lastname, firstname, mail, phone, address, password }).unwrap();
                 dispatch(setCredentials({ ...res, }));
@@ -129,8 +134,15 @@ const SignUpScreen = () => {
                         <input required={true} type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Confirmer le mot de passe*" onChange={(e) => setPasswordConfirm(e.target.value)} />
                     </div>
                 </div>
+                <div className="radio-group">
+                    <input type="checkbox" name="cgu" id="cgu" required={true} onChange={(e) => setCgv(true)} />
+                    <label htmlFor="cgu">
+                        En cochant cette case, je confirme que j'ai lu, compris et accepté les conditions générales d'utilisation du Pit Shop. Je consens à fournir les informations requises pour m'inscrire sur ce site
+                        et à ce que mes données personnelles soient traitées conformément à la politique de confidentialité du Pit Shop.
+                    </label>
+                </div>
                 <div className="btn-container">
-                    <button onClick={handleSubmit} className="btn btn-primary">Inscription</button>
+                    <button title="Inscription" onClick={handleSubmit} className="btn btn-primary">Inscription</button>
                 </div>
             </form>
         </div>

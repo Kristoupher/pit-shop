@@ -13,38 +13,38 @@ const SiteMapScreen = () => {
                 <div className="sitemap-list">
                     <ul>
                         <li>
-                            <Link to="/">Accueil</Link>
+                            <Link title="Accueil" to="/">Accueil</Link>
                         </li>
                         {
                             data && data.categories.map(category => (
                                 <li key={category.id}>
-                                    <Link to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
+                                    <Link title={formatString(category.name)} to={`/products/category/${category._id}`}>{formatString(category.name)}</Link>
                                 </li>
                             ))
                         }
                         <li>
-                            <Link to="/cart">Panier</Link>
+                            <Link title="Panier" to="/cart">Panier</Link>
                         </li>
                         <li>
-                            <Link to="/contact">Contact</Link>
+                            <Link title="Contact" to="/contact">Contact</Link>
                         </li>
                         <li>
-                            <Link to="/login">Connexion</Link>
+                            <Link title="Connexion" to="/login">Connexion</Link>
                         </li>
                         <li>
-                            <Link to="/signup">Inscription</Link>
+                            <Link title="Inscription" to="/signup">Inscription</Link>
                         </li>
                         <li>
-                            <Link to="/account">Mon compte</Link>
+                            <Link title="Mon compte" to="/account">Mon compte</Link>
                         </li>
                         <li>
-                            <Link to="/sitemap">Plan du site</Link>
+                            <Link title="Plan du site" to="/sitemap">Plan du site</Link>
                         </li>
                         <li>
-                            <Link to="/legal">Mentions légales</Link>
+                            <Link title="Mentions légales" to="/legal">Mentions légales</Link>
                         </li>
                         <li>
-                            <Link to="/cgv">CGV</Link>
+                            <Link title="C.G.V." to="/cgv">CGV</Link>
                         </li>
                     </ul>
                 </div>

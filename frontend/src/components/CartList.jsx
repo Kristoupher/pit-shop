@@ -25,7 +25,7 @@ const CartList = ({img, title, size, price, qty, id, button, qtyStock, item}) =>
                     <img src={img} alt={title}/>
                 </div>
                 <div className="title">
-                    <Link to={`/product/${id}`}>{title}</Link>
+                    <Link title={title} to={`/product/${id}`}>{title}</Link>
                     <br/>
                     <span>{size.toUpperCase()}</span>
                 </div>
@@ -42,7 +42,7 @@ const CartList = ({img, title, size, price, qty, id, button, qtyStock, item}) =>
                                     ))
                                 }
                             </select>
-                        <button onClick={() => { removeFromCartHandler(id) }}><Trash2 size={28} color="#fff"/></button>
+                        <button title="Supprimer" onClick={() => { removeFromCartHandler(id) }}><Trash2 size={28} color="#fff"/></button>
                         </>
                     ) : (
                         <p className="qty"><strong>Qté : </strong>{qty}</p>

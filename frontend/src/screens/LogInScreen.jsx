@@ -60,7 +60,7 @@ const LogInScreen = () => {
                     <input type="password" name="password" required={true} id="password" placeholder="Mot de passe" onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="btn-container">
-                    <button className="btn btn-primary">Connexion</button>
+                    <button title="Connexion" className="btn btn-primary">Connexion</button>
                 </div>
             </form>
         </div>

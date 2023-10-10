@@ -1,3 +1,4 @@
+//Flex
 .flex {
     display: flex !important;
 }
@@ -37,9 +38,7 @@
     }
 }
 
-.none {
-    display: none!important;
-}
+//Grid
 
 .cols-2 {
     @include lg {
@@ -70,6 +69,11 @@
     }
 }
 
+// Autre
+.none {
+    display: none!important;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -77,9 +81,12 @@
 .m-0 {
     margin: 0!important;
 }
+.mb-5 {
+    margin-bottom: 2rem!important;
+}
 
-.mw-400 {
-    max-width: 40rem;
+.mt-6 {
+    margin-top: 3rem!important;
 }
 
 .bb_total {
@@ -102,10 +109,6 @@
     width: 25%;
 }
 
-.mb-5 {
-    margin-bottom: 2rem!important;
-}
-
-.mt-6 {
-    margin-top: 3rem!important;
+.mw-400 {
+    max-width: 40rem;
 }

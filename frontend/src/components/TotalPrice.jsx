@@ -23,7 +23,7 @@ const TotalPrice = ({totalHt, tva, shipping, totalTtc, count, button}) => {
             {
                 button &&
                     <div className="btn-container">
-                        <button onClick={checkoutHandler}  className="btn btn-primary">Valider le panier</button>
+                        <button title="Valider le panier" onClick={checkoutHandler}  className="btn btn-primary">Valider le panier</button>
                     </div>
             }
 
