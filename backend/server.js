@@ -10,7 +10,7 @@ import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
-import uploadRoutes from "./routes/UploadRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import {admin, protect} from "./middleware/authMiddleware.js";
 const port = process.env.PORT || 5000;
