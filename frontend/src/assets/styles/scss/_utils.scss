@@ -112,3 +112,9 @@
 .mw-400 {
     max-width: 40rem;
 }
+
+.lg-hidden {
+    @include lg {
+        display: none!important;
+    }
+}

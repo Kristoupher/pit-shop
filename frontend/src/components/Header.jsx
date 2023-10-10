@@ -64,7 +64,8 @@ const Header = () => {
                     <img src={Logo} alt="Logo du pit shop" />
                 </Link>
                 {/*Menu pour la version mobile*/}
-                <div>
+                <div className="flex flex-center lg-hidden">
+                    <Link to="/admin" title="Panneau d'administration"><User2 size={35} color="#2E2E2E" strokeWidth={3}/></Link>
                     <div id="nav-toggle" className={`${toggle ? 'active' : ''}`} onClick={() => setToggle(!toggle)}></div>
                 </div>
                 <form>
