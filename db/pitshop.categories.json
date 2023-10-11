@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a45"
+  },
+  "name": "enfant",
+  "image": "/uploads/categories/images/category-3.png",
+  "banner": "/uploads/categories/banners/banner-3.jpg",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a44"
+  },
+  "name": "femme",
+  "image": "/uploads/categories/images/category-2.png",
+  "banner": "/uploads/categories/banners/banner-2.jpg",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a48"
+  },
+  "name": "objets-de-collection",
+  "image": "/uploads/categories/images/category-6.png",
+  "banner": "/uploads/categories/banners/banner-6.jpg",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a43"
+  },
+  "name": "homme",
+  "image": "/uploads/categories/images/category-1.png",
+  "banner": "/uploads/categories/banners/banner-1.jpg",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.229Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-09T10:11:34.959Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a46"
+  },
+  "name": "casquettes-et-chapeaux",
+  "image": "/uploads/categories/images/category-4.png",
+  "banner": "/uploads/categories/banners/banner-4.jpg",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a47"
+  },
+  "name": "accessoires",
+  "image": "/uploads/categories/images/category-5.png",
+  "banner": "/uploads/categories/banners/banner-5.jpg",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.230Z"
+  }
+}]

@@ -2,18 +2,18 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import Product from "../models/productModel.js";
 import sortSizes from "../utils/sortSizes.js";
 
-// @desc    Fetch all products
-// @route   GET /api/products
-// @access  Public
-const getProducts = asyncHandler(async (req, res) => {
-    const pageSize = process.env.PAGINATION_LIMIT;
-    const page = Number(req.query.pageNumber) || 1;
+    // @desc    Fetch all products
+    // @route   GET /api/products
+    // @access  Public
+    const getProducts = asyncHandler(async (req, res) => {
+        const pageSize = process.env.PAGINATION_LIMIT;
+        const page = Number(req.query.pageNumber) || 1;
 
-    const count = await Product.countDocuments({});
+        const count = await Product.countDocuments({});
 
-    const products = await Product.find({}).limit(pageSize).skip(pageSize * (page - 1));
-    res.json({products, page, pages: Math.ceil(count / pageSize)});
-});
+        const products = await Product.find({}).limit(pageSize).skip(pageSize * (page - 1));
+        res.json({products, page, pages: Math.ceil(count / pageSize)});
+    });
 
 // @desc    Fetch all products from search
 // @route   GET /api/products/:keyword

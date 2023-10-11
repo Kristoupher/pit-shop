@@ -1,0 +1,289 @@
+[{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a4f"
+  },
+  "name": "Polo McLaren F1 Team",
+  "description": "Le polo McLAren incarne l'élégance intemporelle et le raffinement d'une marque de renommée mondiale. Confectionné avec des matériaux de qualité supérieure, ce vêtement allie style et confort. Arborant le logo emblématique de Mercedes, il reflète la sophistication et le prestige de la marque automobile. Que ce soit pour une sortie décontractée ou une occasion spéciale, ce polo incarne le luxe discret et l'exclusivité, faisant de chaque instant une expérience Mercedes inoubliable.",
+  "price": 75,
+  "image": "/uploads/products/images/product-3.png",
+  "sizes": [
+    {
+      "name": "s",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a50"
+      }
+    },
+    {
+      "name": "m",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a51"
+      }
+    },
+    {
+      "name": "l",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a52"
+      }
+    },
+    {
+      "name": "xl",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a53"
+      }
+    }
+  ],
+  "team": "mclaren",
+  "type": "polo",
+  "category": {
+    "$oid": "6511ba1885db730ecbf92a43"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.280Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-07T22:36:58.586Z"
+  },
+  "driver": "oscar-piastri"
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a54"
+  },
+  "name": "Polo Ferrari F1 Team",
+  "description": "Le polo Ferrari incarne l'élégance intemporelle et le raffinement d'une marque de renommée mondiale. Confectionné avec des matériaux de qualité supérieure, ce vêtement allie style et confort. Arborant le logo emblématique de Mercedes, il reflète la sophistication et le prestige de la marque automobile. Que ce soit pour une sortie décontractée ou une occasion spéciale, ce polo incarne le luxe discret et l'exclusivité, faisant de chaque instant une expérience Mercedes inoubliable.",
+  "price": 45,
+  "image": "/uploads/products/images/product-2.png",
+  "sizes": [
+    {
+      "name": "s",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a55"
+      }
+    },
+    {
+      "name": "m",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a56"
+      }
+    },
+    {
+      "name": "l",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a57"
+      }
+    },
+    {
+      "name": "xl",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a58"
+      }
+    }
+  ],
+  "team": "ferrari",
+  "type": "polo",
+  "category": {
+    "$oid": "651164dd4713b2c82a7b54a3"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.281Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.281Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a4a"
+  },
+  "name": "Polo Mercedes F1 Team",
+  "description": "Le polo Mercedes incarne l'élégance intemporelle et le raffinement d'une marque de renommée mondiale. Confectionné avec des matériaux de qualité supérieure, ce vêtement allie style et confort. Arborant le logo emblématique de Mercedes, il reflète la sophistication et le prestige de la marque automobile. Que ce soit pour une sortie décontractée ou une occasion spéciale, ce polo incarne le luxe discret et l'exclusivité, faisant de chaque instant une expérience Mercedes inoubliable.",
+  "price": 80,
+  "image": "/uploads\\products\\images\\product-1696027416677.png",
+  "sizes": [
+    {
+      "name": "s",
+      "quantityInStock": 11,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a4b"
+      }
+    },
+    {
+      "name": "m",
+      "quantityInStock": 3,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a4c"
+      }
+    },
+    {
+      "name": "l",
+      "quantityInStock": 11,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a4d"
+      }
+    },
+    {
+      "name": "xl",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a4e"
+      }
+    }
+  ],
+  "team": "mercedes",
+  "category": {
+    "$oid": "6511ba1885db730ecbf92a43"
+  },
+  "__v": 3,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.280Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-30T17:21:46.172Z"
+  },
+  "driver": "lewis-hamilton",
+  "type": "polo"
+},
+{
+  "_id": {
+    "$oid": "6511ba1885db730ecbf92a59"
+  },
+  "name": "Polo McLaren F1 Team",
+  "description": "Le polo McLaren incarne l'élégance intemporelle et le raffinement d'une marque de renommée mondiale. Confectionné avec des matériaux de qualité supérieure, ce vêtement allie style et confort. Arborant le logo emblématique de Mercedes, il reflète la sophistication et le prestige de la marque automobile. Que ce soit pour une sortie décontractée ou une occasion spéciale, ce polo incarne le luxe discret et l'exclusivité, faisant de chaque instant une expérience Mercedes inoubliable.",
+  "price": 45,
+  "image": "/uploads/products/images/product-3.png",
+  "sizes": [
+    {
+      "name": "s",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a5a"
+      }
+    },
+    {
+      "name": "m",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a5b"
+      }
+    },
+    {
+      "name": "l",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a5c"
+      }
+    },
+    {
+      "name": "xl",
+      "quantityInStock": 10,
+      "_id": {
+        "$oid": "6511ba1885db730ecbf92a5d"
+      }
+    }
+  ],
+  "team": "mclaren",
+  "type": "polo",
+  "category": {
+    "$oid": "651164dd4713b2c82a7b54a3"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-25T16:49:28.281Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T16:49:28.281Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "652321d55164d59c83332d6d"
+  },
+  "name": "Polo mercedes 2021",
+  "description": "Polo mercedes de l'année 2021",
+  "price": 45,
+  "image": "/uploads\\products\\images\\product-1696801237124.png",
+  "sizes": [
+    {
+      "name": "s",
+      "quantityInStock": 3,
+      "_id": {
+        "$oid": "652321d55164d59c83332d6e"
+      }
+    },
+    {
+      "name": "m",
+      "quantityInStock": 4,
+      "_id": {
+        "$oid": "652321d55164d59c83332d6f"
+      }
+    },
+    {
+      "name": "l",
+      "quantityInStock": 4,
+      "_id": {
+        "$oid": "652321d55164d59c83332d70"
+      }
+    }
+  ],
+  "team": "mercedes",
+  "driver": "lewis-hamilton",
+  "type": "polo",
+  "category": {
+    "$oid": "6511ba1885db730ecbf92a43"
+  },
+  "createdAt": {
+    "$date": "2023-10-08T21:40:37.246Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-08T21:40:37.246Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6523220a5164d59c83332dd7"
+  },
+  "name": "Polo Ferrari 2021",
+  "description": "Polo 2021 Ferrari",
+  "price": 45,
+  "image": "/uploads\\products\\images\\product-1696801290525.png",
+  "sizes": [
+    {
+      "name": "s",
+      "quantityInStock": 3,
+      "_id": {
+        "$oid": "6523220a5164d59c83332dd8"
+      }
+    },
+    {
+      "name": "l",
+      "quantityInStock": 1,
+      "_id": {
+        "$oid": "6523220a5164d59c83332dd9"
+      }
+    }
+  ],
+  "team": "Ferrari",
+  "driver": "Charles Leclerc",
+  "type": "polo",
+  "category": {
+    "$oid": "6511ba1885db730ecbf92a43"
+  },
+  "createdAt": {
+    "$date": "2023-10-08T21:41:30.803Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-08T21:41:30.803Z"
+  },
+  "__v": 0
+}]

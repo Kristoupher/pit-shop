@@ -34,18 +34,18 @@ const storageImage = multer.diskStorage({
     }
 });
 
-function checkFileType(file, cb) {
-    const fileTypes = /jpg|jpeg|png|svg/;
-    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = fileTypes.test(file.mimetype);
+    function checkFileType(file, cb) {
+        const fileTypes = /jpg|jpeg|png|svg/;
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = fileTypes.test(file.mimetype);
 
-    if (extname && mimetype) {
-        return cb(null, true);
+        if (extname && mimetype) {
+            return cb(null, true);
+        }
+        else {
+            cb('Vous pouvez uniquement télécharger des images!');
+        }
     }
-    else {
-        cb('Vous pouvez uniquement télécharger des images!');
-    }
-}
 
 const upload = multer({
     storage,
@@ -68,12 +68,12 @@ const uploadImage = multer({
     }
 })
 
-router.post('/', upload.single('image'), (req, res) => {
-    res.send({
-        message: 'Image téléchargée',
-        image: `/${req.file.path}`
+    router.post('/', upload.single('image'), (req, res) => {
+        res.send({
+            message: 'Image téléchargée',
+            image: `/${req.file.path}`
+        });
     });
-});
 
 router.post('/banner', uploadBanner.single('image'), (req, res) => {
     res.send({

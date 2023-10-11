@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "65133f84fc8ae40b0b300a1b"
+  },
+  "lastname": "Arregui",
+  "firstname": "Kristopher",
+  "gender": "mr",
+  "mail": "kri.arregui@gmail.com",
+  "phone": "0770754588",
+  "address": {
+    "street": "74 route des moulins",
+    "city": "Bordeaux",
+    "postalCode": "33390"
+  },
+  "password": "$2a$10$xM3km60P1JYUMOR66oY6KOTlXAI03H3GctLv0a3flKmbp8XaWWDtO",
+  "isAdmin": true,
+  "createdAt": {
+    "$date": "2023-09-26T20:31:00.494Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-08T14:00:32.687Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "651700ef82c8c092b6939791"
+  },
+  "lastname": "Arregui",
+  "firstname": "Chloé",
+  "gender": "mme",
+  "mail": "chloe@gmail.com",
+  "phone": "0707070707",
+  "address": {
+    "street": "12 rue de la paix",
+    "city": "Eyrans",
+    "postalCode": "33390"
+  },
+  "password": "$2a$10$RKKYjjyt39ZxrEsYCzOOeOZcNLurgT5E9mqGPffEIc3O6UQB9JdDq",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2023-09-29T16:53:03.263Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-08T13:45:33.813Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65252229b82f7785d50e81db"
+  },
+  "lastname": "Doe",
+  "firstname": "John",
+  "gender": "mr",
+  "mail": "johndoe@gmail.com",
+  "phone": "0606060606",
+  "address": {
+    "street": "12 rue du stade",
+    "city": "bordeaux",
+    "postalCode": "33000"
+  },
+  "password": "$2a$10$DlZAoQV./ze4ab8sjsSFWOOLTetgYtfcVOpwIq1pIvvNdmPikmMuq",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2023-10-10T10:06:33.487Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-10T10:06:33.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6525227bb82f7785d50e81e5"
+  },
+  "lastname": "Doe",
+  "firstname": "Jane",
+  "gender": "mme",
+  "mail": "janedoe@gmail.com",
+  "phone": "0606060606",
+  "address": {
+    "street": "12 rue de la paix",
+    "city": "Mérignac",
+    "postalCode": "33700"
+  },
+  "password": "$2a$10$/AASnhe9IiYkG4GTI3isvOWRtCworxUDvbkFxzu4pssGTCELyzj5q",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2023-10-10T10:07:55.664Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-10T10:07:55.664Z"
+  },
+  "__v": 0
+}]
