@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetProductsSearchQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import ProductCard from "../components/ProductCard";
+import Meta from "../components/Meta";
 
 //Page de recherche
 const SearchResults = () => {
@@ -13,6 +14,15 @@ const SearchResults = () => {
 
     return (
         <div className="products-list">
+            <Meta title="Résultats de votre recherche | Le Pit Shop"
+                  description="Explorez les résultats de recherche sur Le Pit Shop pour trouver exactement ce que vous cherchez. Découvrez notre
+                  sélection de produits de Formule 1, des accessoires de pilote aux vêtements de course, adaptés à chaque passionné de F1. Trouvez les
+                  articles parfaits qui reflètent votre amour pour la course automobile. Parcourez nos résultats de recherche et plongez dans
+                  l'excitation de l'univers de la Formule 1."
+                  keywords="Résultats de recherche, Produits de Formule 1, Boutique en ligne de F1, Accessoires de pilote, Merchandising F1, Vêtements
+                  de course, Casques de pilote, Articles de course, Produits dérivés de F1, Fans de course automobile, Boutique de souvenirs de F1,
+                  Passionnés de F1, Le Pit Shop, Recherche de produits F1, Équipement de pilote, Boutique de collection F1."
+            />
             <h1>Résultats de la recherche pour : <span className="light">{keyword}</span></h1>
             <div className="products-container">
                 {

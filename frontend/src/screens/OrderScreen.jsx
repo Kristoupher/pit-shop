@@ -5,6 +5,7 @@ import { useGetOrderDetailsQuery} from "../slices/ordersApiSlice";
 import Loader from "../components/Loader";
 import {formatDate} from "../utils/utils";
 import { ChevronLeftCircle } from "lucide-react";
+import Meta from "../components/Meta";
 
 //Page d'une commande
 const OrderScreen = () => {
@@ -18,6 +19,14 @@ const OrderScreen = () => {
             {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
                     <div className="order section">
+                        <Meta title={`Commande n°${order.orderNumber} | Le Pit Shop`}
+                              description="Consultez les détails de votre commande sur Le Pit Shop. Suivez l'état de votre livraison, explorez les articles
+                              que vous avez choisis et obtenez des informations précieuses sur votre achat. Découvrez l'expérience complète de shopping F1
+                              avec des produits de qualité et un service exceptionnel. Plongez dans l'univers passionnant de la Formule 1 avec Le Pit Shop."
+                              keywords="Visualisation de commande, Détails d'achat, Suivi de livraison, Produits de Formule 1, Boutique en ligne de F1, Fans
+                              de course automobile, Articles de pilote, Merchandising F1, Expérience de shopping F1, Le Pit Shop, Numéro de commande, Historique
+                              d'achat, Informations de livraison, Confirmation de commande."
+                        />
                         <h1>N° de commande : <span>{order.orderNumber} - {formatDate(order.orderDate)}</span></h1>
                         <p className="badge">{order.status}</p>
                         <p><strong>Adresse de livraison :</strong></p>

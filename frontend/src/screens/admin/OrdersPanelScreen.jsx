@@ -4,6 +4,7 @@ import {formatDate, formatPrice, formatString} from "../../utils/utils";
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
+import Meta from "../../components/Meta";
 
 // Page de gestion des commandes
 const OrdersPanelScreen = () => {
@@ -15,6 +16,14 @@ const OrdersPanelScreen = () => {
 
     return (
         <section className="account">
+            <Meta title="Gestion des commandes | Le Pit Shop"
+                  description="Explorez la liste complète des commandes sur Le Pit Shop avec notre interface d'administration conviviale. Consultez les
+                  commandes en attente, en cours ou complétées, suivez l'état de la livraison et gérez efficacement les transactions. Optimisez votre
+                  gestion des ventes, suivez les tendances d'achat et assurez une expérience client exceptionnelle sur notre boutique F1 en ligne."
+                  keywords="Liste des commandes, Gestion des commandes, Suivi des ventes, Statut de livraison, Interface d'administration, Boutique en
+                  ligne de F1, Produits de Formule 1, Fans de course automobile, Expérience de gestion des ventes, Le Pit Shop, Processus de commande,
+                  Interface conviviale, Gestion des transactions."
+            />
             <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
             <h1 className="flex flex-align-center"><BadgeEuro size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des commandes</h1>
             {

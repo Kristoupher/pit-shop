@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {toast} from "react-toastify";
 import { useSendEmailMutation } from "../slices/contactApiSlice";
+import Meta from "../components/Meta";
 
 //Page de contact
 const ContactScreen = () => {
@@ -49,6 +50,13 @@ const ContactScreen = () => {
     }
     return (
         <div className="contact section">
+            <Meta title="Contact | Le Pit Shop"
+                  description="Contactez l'équipe du Le Pit Shop pour toute question, suggestion ou assistance. Notre équipe dévouée est là pour vous aider.
+                Remplissez le formulaire de contact ou utilisez nos coordonnées pour entrer en communication. Nous sommes à votre service pour vous offrir une
+                expérience de shopping F1 exceptionnelle."
+                  keywords="Contactez-nous, Service client, Support en ligne, Assistance F1, Questions sur les produits, Aide à l'achat, Formulaire de contact,
+                Coordonnées de contact, Assistance clientèle, Support en direct, Service après-vente, Aide à la clientèle, Besoin d'aide, Support utilisateur."
+            />
             <h1>Contact</h1>
             <form className="form section" onSubmit={submitHandler}>
                 <div className="form-duo">

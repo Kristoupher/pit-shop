@@ -38,3 +38,8 @@ export const checkImageType = (type) => {
         return false;
     }
 }
+
+//Recuperer l'url apres le premier /
+export const getUrlName = () => {
+    return window.location.href.split('/')[3];
+}

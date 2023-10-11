@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import { addToCart} from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 import {formatPrice, formatString} from "../utils/utils";
+import Meta from "../components/Meta";
 
 //Page de détail d'un produit
 const ProductScreen = () => {
@@ -43,6 +44,12 @@ const ProductScreen = () => {
             {
                 isLoading ? <Loader /> : error ? <h2>{error}</h2> : (
                     <div className="product-single-content section">
+                        <Meta title={`${product.name} | Le Pit Shop`}
+                              description={product.description}
+                              keywords={`${product.name} Produit de Formule 1, Boutique en ligne de F1, Accessoires de pilote, Merchandising F1, Articles de course, Produits 
+                              dérivés de F1, Fans de course automobile, Boutique de souvenirs de F1, Qualité supérieure, Passionnés de F1, Le Pit Shop, Ajouter 
+                              au panier, Articles de collection, Équipement de pilote.`}
+                        />
                         <div className="image">
                             <img src={product.image} alt="nom du produit"/>
                         </div>

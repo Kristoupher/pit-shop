@@ -4,6 +4,7 @@ import {formatString, formatDate, formatPrice} from "../utils/utils";
 import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import Loader from "../components/Loader";
 import Pagination from "../components/Pagination";
+import Meta from "../components/Meta";
 
 //Page de compte utilisateur
 const AccountScreen = () => {
@@ -23,6 +24,14 @@ const AccountScreen = () => {
                     {
                         userInfo && (
                             <>
+                                <Meta title="Mon compte | Le Pit Shop"
+                                      description="Découvrez tous les détails de votre compte utilisateur sur Le Pit Shop. Consultez vos informations personnelles,
+                                    suivez vos commandes, gérez vos préférences et profitez d'une expérience de shopping personnalisée pour les passionnés de Formule 1.
+                                    Mettez à jour votre profil et restez connecté à l'univers palpitant de la F1."
+                                      keywords="Compte utilisateur, Profil client, Commandes en cours, Préférences de compte, Expérience personnalisée, Produits de Formule 1,
+                                      Boutique en ligne de F1, Fans de course automobile, Passionnés de F1, Suivi des commandes, Gestion de profil, Accessoires de pilote,
+                                      Merchandising F1."
+                                />
                                 <section className="head">
                                     <h1>Mon compte</h1>
                                     <Link title="Modifier mon profil" className="btn btn-primary" to="/account/edit">Modifier mon profil</Link>

@@ -13,6 +13,7 @@ import FiltersModal from "../components/FiltersModal";
 import ProductCard from "../components/ProductCard";
 import Filters from "../components/Filters";
 import Pagination from "../components/Pagination";
+import Meta from "../components/Meta";
 
 //Page de la liste des produits d'une catégorie
 const ProductsListScreen = () => {
@@ -86,6 +87,15 @@ const ProductsListScreen = () => {
 
     return (
         <div className="products-list">
+            <Meta title={`${category && formatString(category.name)} | Le Pit Shop`}
+                  description="Découvrez la collection complète de produits de Formule 1 sur Le Pit Shop. Parcourez notre vaste assortiment
+                  d'accessoires de pilote, de vêtements de course, de casques et d'autres articles de qualité supérieure. Trouvez l'équipement
+                  parfait pour les fans de F1, que ce soit pour les courses ou pour afficher votre passion au quotidien. Explorez notre boutique en
+                  ligne pour vivre pleinement votre amour de la course automobile."
+                  keywords="Produits de Formule 1, Boutique en ligne de F1, Accessoires de pilote, Merchandising F1, Vêtements de course, Casques de
+                  pilote, Articles de course, Produits dérivés de F1, Fans de course automobile, Boutique de souvenirs de F1, Passionnés de F1,
+                  Le Pit Shop, Collection F1, Équipement de pilote, Boutique de collection F1."
+            />
             {
                 category && <BannerCategory category={formatString(category.name)} image={category.banner}/>
             }

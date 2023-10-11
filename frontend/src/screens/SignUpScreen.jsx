@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation} from "../slices/usersApiSlice";
 import { setCredentials} from "../slices/authSlice";
+import Meta from "../components/Meta";
 
 //Page d'inscription
 const SignUpScreen = () => {
@@ -74,6 +75,15 @@ const SignUpScreen = () => {
 
     return (
         <div className="signup section">
+            <Meta title="Inscription | Le Pit Shop"
+                  description="Inscrivez-vous sur Le Pit Shop pour accéder à des offres exclusives, suivre vos commandes et personnaliser votre
+                  expérience de shopping F1. Rejoignez notre communauté de passionnés de Formule 1 et profitez d'avantages réservés aux membres.
+                  L'inscription est rapide, facile et gratuite. Commencez votre aventure F1 avec nous et explorez notre collection de produits de
+                  haute qualité."
+                  keywords="Inscription, Créer un compte, Devenir membre, Avantages membres, Accès exclusif, Expérience personnalisée, Boutique en
+                  ligne de F1, Produits de Formule 1, Fans de course automobile, Compte utilisateur, Communauté de F1, Le Pit Shop, Membres privilégiés,
+                  Inscription gratuite, Accès réservé."
+            />
             <h1>Inscription</h1>
             <form className="form section">
                 <p>Vous avez déjà un compte, <Link to="/login">se connecter</Link> !</p>

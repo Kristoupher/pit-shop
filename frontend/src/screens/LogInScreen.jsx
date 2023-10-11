@@ -4,6 +4,7 @@ import { useLoginMutation} from "../slices/usersApiSlice";
 import { setCredentials} from "../slices/authSlice";
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
+import Meta from "../components/Meta";
 
 //Page de connexion
 const LogInScreen = () => {
@@ -48,6 +49,14 @@ const LogInScreen = () => {
 
     return (
         <div className="login section">
+            <Meta title="Connexion | Le Pit Shop"
+                  description="Connectez-vous à votre compte Le Pit Shop pour accéder à des offres exclusives, suivre vos commandes et personnaliser
+                  votre expérience de shopping F1. Saisissez vos identifiants pour accéder à un monde de produits de Formule 1 de qualité supérieure.
+                  Connectez-vous et plongez dans l'univers palpitant de la F1 dès maintenant."
+                  keywords="Connexion, Se connecter, Accès au compte, Authentification utilisateur, Espace client, Identifiants de connexion, Compte
+                  utilisateur, Expérience personnalisée, Boutique en ligne de F1, Produits de Formule 1, Fans de course automobile, Espace membre,
+                  Accès réservé, Le Pit Shop."
+            />
             <h1>Connexion</h1>
             <form className="form section" onSubmit={submitHandler}>
                 <p>Pas encore de compte ? Venez vous <Link to="/signup">inscrire</Link> !</p>

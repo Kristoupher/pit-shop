@@ -6,6 +6,7 @@ import { useGetCategoriesQuery, useDeleteCategoryMutation} from "../../slices/ca
 import {useState} from "react";
 import {toast} from "react-toastify";
 import Pagination from "../../components/Pagination";
+import Meta from "../../components/Meta";
 
 //Panneau de gestion des catégories
 const CategoriesPanelScreen = () => {
@@ -77,6 +78,15 @@ const CategoriesPanelScreen = () => {
 
     return (
         <section className="account">
+            <Meta title="Gestion des catégories | Le Pit Shop"
+                  description="Gérez efficacement les catégories de produits sur Le Pit Shop avec notre interface d'administration conviviale.
+                  Organisez vos produits de Formule 1 en différentes catégories pour une navigation fluide des clients. Ajoutez, modifiez ou
+                  supprimez des catégories en quelques clics. Optimisez la structure de votre boutique F1 et offrez à vos clients une expérience de
+                  shopping F1 simplifiée."
+                  keywords="Panneau d'administration des catégories, Gestion des catégories, Organisation des produits, Catégories de Formule 1,
+                  Boutique en ligne de F1, Produits de Formule 1, Fans de course automobile, Navigation simplifiée, Gestion des produits, Le Pit Shop,
+                  Structure de la boutique, Expérience de shopping F1, Interface conviviale."
+            />
             <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
             <div className="flex-between-desktop">
                 <h1 className="flex flex-align-center"><Bookmark size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des catégories</h1>

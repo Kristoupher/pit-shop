@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import {toast} from "react-toastify";
 import Pagination from "../../components/Pagination";
+import Meta from "../../components/Meta";
+
 
 //Gestion des utilisateurs
 const UsersPanelScreen = () => {
@@ -71,6 +73,14 @@ const UsersPanelScreen = () => {
 
     return (
         <section className="account">
+            <Meta title="Gestion des Utilisateurs | Le Pit Shop"
+                  description="Explorez la liste complète des utilisateurs sur Le Pit Shop avec notre interface d'administration conviviale. Consultez
+                  les détails des comptes, gérez les autorisations et suivez l'activité des utilisateurs en temps réel. Optimisez votre gestion des
+                  comptes utilisateurs et assurez une expérience client exceptionnelle sur notre boutique F1 en ligne."
+                  keywords="Liste des utilisateurs, Gestion des comptes, Détails des comptes, Autorisations utilisateur, Boutique en ligne de F1,
+                  Fans de course automobile, Expérience de gestion des utilisateurs, Le Pit Shop, Interface conviviale, Suivi de l'activité utilisateur,
+                  Administration de comptes, Outils de gestion d'utilisateur."
+            />
             <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
             <h1 className="flex flex-align-center"><User2 size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des Utilisateurs</h1>
             {isLoading ? (<Loader />) : error ? (<p>{error.message}</p>) : (

@@ -6,6 +6,8 @@ import {formatString} from "../../utils/utils";
 import { XCircle } from "lucide-react";
 import { toast } from "react-toastify";
 import { checkImageType } from "../../utils/utils";
+import Meta from "../../components/Meta";
+
 
 //Création d'un produit
 const ProductCreateScreen = () => {
@@ -90,6 +92,15 @@ const ProductCreateScreen = () => {
 
     return (
         <section>
+            <Meta title="Ajouter un produit | Le Pit Shop"
+                  description="Créez de nouveaux produits de Formule 1 sur Le Pit Shop avec facilité. Utilisez notre interface d'administration
+                  conviviale pour ajouter des détails, télécharger des images, définir les prix et gérer les stocks. Personnalisez chaque aspect de vos
+                  produits pour offrir à vos clients une expérience de shopping F1 unique. Mettez en valeur votre passion pour la course automobile
+                  avec des produits exceptionnels."
+                  keywords="Création de produit, Ajout de produit, Personnalisation de produit, Produits de Formule 1, Interface d'administration,
+                  Boutique en ligne de F1, Fans de course automobile, Expérience de création de produit, Le Pit Shop, Gestion de stock, Interface
+                  conviviale, Personnalisation de produit F1."
+            />
             <Link to="/admin/products" className="btn btn-primary mb-5">Retour</Link>
             <h1>Ajouter un produit</h1>
             <div className="account section">

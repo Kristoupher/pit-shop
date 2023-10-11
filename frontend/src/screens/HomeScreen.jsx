@@ -7,6 +7,7 @@ import {formatString} from "../utils/utils";
 import Banner from "../assets/images/home-banner.jpg";
 import HorizontalCard from "../components/HorizontalCard";
 import Card from "../components/Card";
+import Meta from "../components/Meta";
 
 //PAge d'accueil
 const HomeScreen = () => {
@@ -29,6 +30,7 @@ const HomeScreen = () => {
 
     return (
         <div className="home">
+            <Meta />
             <div className="banner-card">
                 <div>
                     <h1>Bienvenue sur le Pit Shop !</h1>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import {toast} from "react-toastify";
 import { useUploadCategoryImageMutation, useUploadCategoryBannerMutation, useCreateCategoryMutation } from "../../slices/categoriesApiSlice";
 import { checkImageType } from "../../utils/utils";
+import Meta from "../../components/Meta";
 
 //Création d'une catégorie
 const CategoryCreateScreen = () => {
@@ -51,6 +52,14 @@ const CategoryCreateScreen = () => {
     return (
         <>
             <section>
+                <Meta title="Ajouter une catégorie | Le Pit Shop"
+                      description="Créez de nouvelles catégories de produits sur Le Pit Shop avec facilité. Utilisez notre interface conviviale
+                      pour définir des catégories de Formule 1 spécifiques et organisez vos produits de manière structurée. Personnalisez les détails,
+                      ajoutez des descriptions et optimisez la navigation pour offrir à vos clients une expérience de shopping F1 exceptionnelle."
+                      keywords="Création de catégorie, Catégories de produits, Personnalisation des catégories, Organisation des produits, Boutique en
+                      ligne de F1, Produits de Formule 1, Fans de course automobile, Expérience de shopping F1, Gestion des catégories, Le Pit Shop,
+                      Structure de la boutique, Interface conviviale, Ajout de catégorie."
+                />
                 <Link title="Retour" to="/admin/categories" className="btn btn-primary mb-3">Retour</Link>
                 <h1>Ajouter une catégorie</h1>
             </section>

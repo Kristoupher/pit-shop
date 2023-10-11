@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import {formatString, getFileName} from "../../utils/utils";
 import {toast} from "react-toastify";
 import  {checkImageType} from "../../utils/utils";
+import Meta from "../../components/Meta";
 
 //Edition d'une catégorie
 const CategoryEditScreen = () => {
@@ -88,6 +89,15 @@ const CategoryEditScreen = () => {
     return (
         <>
             <section>
+                <Meta title="Modifier une catégorie | Le Pit Shop"
+                      description="Modifiez les catégories de produits sur Le Pit Shop sans tracas. Utilisez notre interface conviviale de modification
+                      de catégories pour ajuster les détails, mettre à jour les descriptions et optimiser la navigation. Personnalisez votre boutique
+                      de Formule 1 selon vos besoins. Offrez à vos clients une expérience de shopping F1 encore meilleure en organisant votre boutique
+                      de manière précise."
+                      keywords="Modification de catégorie, Catégories de produits, Personnalisation des catégories, Organisation des produits, Boutique
+                       en ligne de F1, Produits de Formule 1, Fans de course automobile, Expérience de shopping F1, Gestion des catégories,
+                       Le Pit Shop, Structure de la boutique, Interface conviviale, Mise à jour de catégorie."
+                />
                     <Link title="Retour" to="/admin/categories" className="btn btn-primary mb-5">Retour</Link>
                     <h1>Modification d'une catégorie</h1>
             </section>

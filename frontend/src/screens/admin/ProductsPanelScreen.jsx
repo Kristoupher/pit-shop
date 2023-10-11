@@ -7,6 +7,8 @@ import {formatPrice, formatString, formatDate} from "../../utils/utils";
 import { useGetProductsQuery, useDeleteProductMutation } from "../../slices/productsApiSlice";
 import {toast} from "react-toastify";
 import Pagination from "../../components/Pagination";
+import Meta from "../../components/Meta";
+
 
 //Gestion des produits
 const ProductsPanelScreen = () => {
@@ -75,6 +77,15 @@ const ProductsPanelScreen = () => {
 
     return (
                 <section className="account">
+                    <Meta title="Gestion des produits | Le Pit Shop"
+                          description="Gérez efficacement votre inventaire de produits de Formule 1 sur Le Pit Shop avec notre interface
+                          d'administration conviviale. Ajoutez, modifiez ou supprimez des produits en un instant. Suivez les stocks, mettez à jour les
+                          détails et optimisez votre catalogue pour offrir une expérience de shopping F1 exceptionnelle. Simplifiez votre gestion
+                          des produits et proposez les meilleures sélections à vos clients."
+                          keywords="Gestion des produits, Inventaire de produits, Ajout de produits, Modification de produits, Suppression de
+                          produits, Produits de Formule 1, Interface d'administration, Boutique en ligne de F1, Fans de course automobile, Expérience
+                          de gestion des produits, Le Pit Shop, Optimisation du catalogue, Interface conviviale, Suivi des stocks."
+                    />
                     <Link title="Retour" className="btn btn-primary mb-5" to="/admin">Retour</Link>
                     <div className="flex-between-desktop">
                         <h1 className="flex flex-align-center"><Shirt size={30} color="#2E2E2E" strokeWidth={3} /> Gestion des Produits</h1>

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import { useGetCategoriesQuery} from "../slices/categoriesApiSlice";
 import {formatString} from "../utils/utils";
+import Meta from "../components/Meta";
 
 //Page plan du site
 const SiteMapScreen = () => {
@@ -8,6 +9,14 @@ const SiteMapScreen = () => {
     const { data } = useGetCategoriesQuery(1);
     return (
         <div className="sitemap section">
+            <Meta title="Plan du site | Le Pit Shop"
+                  description="Explorez le plan du site de Le Pit Shop pour trouver rapidement ce que vous cherchez. Découvrez la structure de notre
+                  boutique en ligne, explorez nos catégories de produits et trouvez des liens directs vers toutes nos pages. Simplifiez votre navigation
+                  et profitez d'une expérience de shopping F1 fluide et efficace en explorant notre plan du site détaillé."
+                  keywords="Plan du site, Structure du site, Navigation simplifiée, Catégories de produits, Liens directs, Boutique en ligne de F1,
+                  Produits de Formule 1, Fans de course automobile, Expérience de shopping F1, Le Pit Shop, Recherche rapide, Navigation efficace,
+                  Découverte de produits."
+            />
             <h1>Plan du site</h1>
             <div className="sitemap-container section">
                 <div className="sitemap-list">

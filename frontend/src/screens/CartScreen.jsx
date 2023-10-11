@@ -3,6 +3,7 @@ import TotalPrice from "../components/TotalPrice";
 import { toast } from "react-toastify";
 import { clearCartItems, removeFromCart} from "../slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Meta from "../components/Meta";
 
 // Page panier
 const CartScreen = () => {
@@ -24,6 +25,15 @@ const CartScreen = () => {
 
     return (
         <div className="cart section">
+            <Meta title="Votre panier | Le Pit Shop"
+                  description="Découvrez ce qui se trouve dans votre panier sur Le Pit Shop. Trouvez tous vos produits de Formule 1 préférés
+                soigneusement sélectionnés. Ajoutez, supprimez et ajustez les quantités pour créer le panier idéal. Préparez-vous à vivre une
+                expérience de shopping F1 inégalée avec des produits de qualité et un service exceptionnel."
+                  keywords="Panier d'achat, Produits de Formule 1, Articles F1, Accessoires de course, Merchandising F1, Panier en ligne, Articles
+                  de pilote, Équipement de course, Boutique F1, Passionnés de Formule 1, Boutique en ligne de F1, Souvenirs de F1, Produits dérivés F1,
+                  Panier de commande."
+
+            />
             <h1>Votre panier</h1>
             {
                 cartItems.length === 0 ? (

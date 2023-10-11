@@ -1,9 +1,19 @@
 import {Link} from "react-router-dom";
+import Meta from "../components/Meta";
 
 //Mentions légales
 const LegalScreen = () => {
     return (
         <div className="legal section">
+            <Meta title="Mentions légales | Le Pit Shop"
+                  description="Consultez nos Mentions Légales sur Le Pit Shop. Découvrez les informations légales sur notre entreprise, les
+                  responsabilités, la protection des données et bien plus encore. Assurez-vous de comprendre les aspects juridiques de votre
+                  interaction avec notre boutique en ligne. Faites vos achats en toute confiance en connaissant nos engagements envers nos clients et
+                  nos pratiques légales transparentes."
+                  keywords="Mentions Légales, Informations légales, Responsabilités légales, Protection des données, Boutique en ligne de F1, Produits de
+                  Formule 1, Fans de course automobile, Transparence légale, Le Pit Shop, Pratiques commerciales légales, Conformité légale, Engagement
+                  envers les clients."
+            />
             <h1>Mentions légales</h1>
             <section>
                 <h2>1.Présentation du site.</h2>

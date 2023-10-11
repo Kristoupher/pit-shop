@@ -105,9 +105,12 @@
       }
       a svg {
         transition: all .3s ease-in-out;
-        &:hover {
+        &:hover{
           stroke: $primary;
         }
+      }
+      a.active svg {
+        stroke: $primary;
       }
     }
   }
@@ -251,7 +254,7 @@
     span {
       display: none;
     }
-    &.active {
+    &.cart-badge {
       span {
         position: absolute;
         top: -1rem;
@@ -268,5 +271,11 @@
         font-weight: 600;
       }
     }
+  }
+}
+
+.btns-mobile {
+  a.active svg {
+    stroke: $primary;
   }
 }

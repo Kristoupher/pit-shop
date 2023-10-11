@@ -10,6 +10,8 @@ import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import {formatString, formatInsertion, getFileName} from "../../utils/utils";
 import { checkImageType } from "../../utils/utils";
+import Meta from "../../components/Meta";
+
 
 //Edition d'un produit
 const ProductEditScreen = () => {
@@ -102,6 +104,15 @@ const ProductEditScreen = () => {
 
     return (
         <section>
+            <Meta title="Modification d'un produit | Le Pit Shop"
+                  description="Modifiez facilement les produits de Formule 1 sur Le Pit Shop avec notre interface d'administration conviviale.
+                  Mettez à jour les détails, modifiez les images, ajustez les prix et gérez les stocks en temps réel. Personnalisez vos produits
+                  pour répondre aux besoins changeants du marché et offrez à vos clients des articles F1 exceptionnels. Optimisez votre offre avec
+                  notre outil de modification de produits efficace."
+                  keywords="Modification de produit, Mise à jour de produit, Personnalisation de produit, Produits de Formule 1, Interface
+                  d'administration, Boutique en ligne de F1, Fans de course automobile, Expérience de modification de produit, Le Pit Shop, Gestion
+                  de stock en temps réel, Interface conviviale, Personnalisation de produit F1."
+            />
             <Link to="/admin/products" className="btn btn-primary mb-5">Retour</Link>
             <h1>Modification d'un produit</h1>
             {

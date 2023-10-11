@@ -8,6 +8,7 @@ import Loader from "../../components/Loader";
 import {formatDate, formatString, removeFirstChar} from "../../utils/utils";
 import {XCircle} from "lucide-react";
 import {toast} from "react-toastify";
+import Meta from "../../components/Meta";
 
 //Liste des commandes
 const OrderAdminScreen = () => {
@@ -51,6 +52,15 @@ const OrderAdminScreen = () => {
             {
                 isLoading ? <Loader /> : error ? <p>{error.message}</p> : (
                     <div className="order section">
+                        <Meta title={`Commande n°${order.orderNumber}`}
+                              description="Accédez aux détails complets des commandes sur Le Pit Shop avec notre interface d'administration conviviale.
+                              Visualisez les informations essentielles des commandes, suivez l'état de la livraison et gérez les détails des
+                              transactions en temps réel. Optimisez votre processus de gestion des commandes et assurez une expérience client sans
+                              faille sur notre boutique F1 en ligne."
+                              keywords="Visualisation de commande, Détails de commande, Suivi de livraison, Gestion des transactions, Interface
+                              d'administration, Boutique en ligne de F1, Produits de Formule 1, Fans de course automobile, Expérience de gestion des
+                              commandes, Le Pit Shop, Processus de commande, Interface conviviale, Gestion des ventes."
+                        />
                         <div className="flex-between-desktop">
                             <h1>N° de commande : <span>{order.orderNumber} - {formatDate(order.orderDate)}</span></h1>
                             <button title="Modifier le statut" className="btn btn-primary flex flex-center mw-400" onClick={() => setModal(true)}>Modifier le statut</button>

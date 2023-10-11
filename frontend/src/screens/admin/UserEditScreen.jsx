@@ -4,6 +4,8 @@ import { useGetUserByIdQuery} from "../../slices/usersApiSlice";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import { useUpdateUserMutation } from "../../slices/usersApiSlice";
+import Meta from "../../components/Meta";
+
 
 //Modification d'un utilisateur
 const UserEditScreen = () => {
@@ -78,6 +80,15 @@ const UserEditScreen = () => {
     return (
         <>
             <section>
+                <Meta title="Modification d'un utilisateur | Le Pit Shop"
+                      description="Administrez les comptes utilisateurs sur Le Pit Shop avec facilité. Utilisez notre interface d'administration
+                      conviviale pour mettre à jour les informations des utilisateurs, gérer les préférences et optimiser les comptes. Personnalisez
+                      les expériences des utilisateurs et assurez-vous qu'ils profitent pleinement de notre boutique F1 en ligne. Simplifiez la
+                      gestion des utilisateurs avec nos outils de modification efficaces."
+                      keywords="Modification d'utilisateur, Mise à jour d'utilisateur, Gestion de compte, Comptes utilisateurs, Boutique en ligne de
+                      F1, Fans de course automobile, Expérience de modification d'utilisateur, Le Pit Shop, Personnalisation de compte, Interface
+                      conviviale, Outils de gestion d'utilisateur, Administration de comptes."
+                />
                 <Link title="Retour" to="/admin/users" className="btn btn-primary mb-5">Retour</Link>
                 <h1>Modification d'un utilisateur</h1>
             </section>

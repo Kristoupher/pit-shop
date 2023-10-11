@@ -1,9 +1,18 @@
 import {Link} from "react-router-dom";
+import Meta from "../components/Meta";
 
 //PAge des Conditions Générales de Vente
 const CgvScreen = () => {
     return (
         <div className="cgv section">
+            <Meta title="Conditions Générales de Vente | Le Pit Shop"
+                  description="Consultez nos Conditions Générales de Vente (CGV) sur Le Pit Shop. Découvrez nos politiques de paiement, de livraison, de
+                  retour et bien plus encore. Familiarisez-vous avec nos engagements envers nos clients et assurez-vous de comprendre les termes et
+                  conditions de vos achats. Profitez d'une expérience de shopping F1 transparente et sécurisée en lisant nos CGV détaillées."
+                  keywords="Conditions Générales de Vente, CGV, Politique de paiement, Politique de livraison, Politique de retour, Termes et conditions,
+                  Boutique en ligne de F1, Produits de Formule 1, Fans de course automobile, Expérience de shopping F1, Le Pit Shop, Transparence des
+                  achats, Politique d'achat, Législation des achats."
+            />
             <h1>Conditions générales de vente</h1>
             <section>
                 <h2>1. Informations Légales</h2>

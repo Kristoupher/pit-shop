@@ -8,6 +8,7 @@ import {formatString} from "../utils/utils";
 import { useLogoutMutation} from "../slices/usersApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/authSlice";
+import { getUrlName } from "../utils/utils";
 
 const Header = () => {
     // States
@@ -56,6 +57,9 @@ const Header = () => {
         }
     }
 
+    //Récupération de l'url pour le active
+    const url = getUrlName();
+
 
     return (
         <header className="container header-nav">
@@ -64,8 +68,8 @@ const Header = () => {
                     <img src={Logo} alt="Logo du pit shop" />
                 </Link>
                 {/*Menu pour la version mobile*/}
-                <div className="flex flex-center lg-hidden">
-                    <Link to="/admin" title="Panneau d'administration"><User2 size={35} color="#2E2E2E" strokeWidth={3}/></Link>
+                <div className="flex flex-center lg-hidden btns-mobile">
+                    <Link to="/admin" title="Panneau d'administration" className={`${url === 'admin' ? 'active' : ''}`}><User2 size={35} color="#2E2E2E" strokeWidth={3}/></Link>
                     <div id="nav-toggle" className={`${toggle ? 'active' : ''}`} onClick={() => setToggle(!toggle)}></div>
                 </div>
                 <form>
@@ -73,15 +77,15 @@ const Header = () => {
                     <button title="Rechercher" onClick={handleSearch}> <Search color="#fff" size={25} strokeWidth={3} /> </button>
                 </form>
                 <div className="navbar-btns-desktop">
-                    <Link title="Panier" className={`header-cart ${cartItems.length > 0 ? 'active' : ''}`} to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/><span>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</span></Link>
-                    <Link title="Contact" to="/contact"><Mail color="#2E2E2E" size={30} strokeWidth={3}/></Link>
+                    <Link title="Panier" className={`header-cart ${cartItems.length > 0 ? 'cart-badge' : ''} ${url === 'cart' ? 'active' : ''}`} to="/cart"><ShoppingCart color="#2E2E2E" size={30} strokeWidth={3}/><span>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</span></Link>
+                    <Link title="Contact" to="/contact" className={`${url === 'contact' ? 'active' : ''}`}><Mail color="#2E2E2E" size={30} strokeWidth={3}/></Link>
                     {
                         userInfo ? (
                             <>
-                                <Link title="Mon compte" to="/account"><User2 color="#2E2E2E" size={30} strokeWidth={3}/></Link>
+                                <Link title="Mon compte" to="/account" className={`${url === 'account' ? 'active' : ''}`}><User2 color="#2E2E2E" size={30} strokeWidth={3}/></Link>
                                 {
                                     userInfo.isAdmin && (
-                                        <Link title="Panneau d'administration" to='/admin' ><Settings color="#2E2E2E" size={30} strokeWidth={3} /></Link>
+                                        <Link title="Panneau d'administration" to='/admin' className={`${url === 'admin' ? 'active' : ''}`} ><Settings color="#2E2E2E" size={30} strokeWidth={3} /></Link>
                                     )
                                 }
                                 <button title="Déconnexion" onClick={logoutHandler} className="btn btn-primary">Déconnexion</button>

@@ -5,6 +5,8 @@ import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import { useProfileMutation } from "../slices/usersApiSlice";
 import { updateCredentials } from "../slices/authSlice";
+import Meta from "../components/Meta";
+
 
 //Modifier le profil de l'utilisateur
 const AccountEditScreen = () => {
@@ -67,6 +69,13 @@ const AccountEditScreen = () => {
 
     return (
         <div className="edit section shipping">
+            <Meta title="Modifier mon profil | Le Pit Shop"
+                  description="Optimisez votre expérience de shopping sur Le Pit Shop en mettant à jour votre compte utilisateur. Modifiez vos informations
+                  personnelles, gérez vos préférences et restez à jour avec les dernières nouveautés et offres exclusives sur les produits de Formule 1.
+                  Personnalisez votre expérience de passionné de F1 dès maintenant !"
+                  keywords="Formule 1, F1, Course automobile, Équipement F1, Accessoires de pilote, Merchandising F1, Vêtements de course, Casques de pilote,
+                  Pièces de voiture de F1, Fans de Formule 1, Boutique de F1 en ligne, Produits dérivés de F1, Grand Prix, Voitures de course"
+            />
             <Link title="Retour" className="btn btn-primary mb-5" to="/account">Retour</Link>
             <h1>Modifier mon profil</h1>
             <div className="section">
