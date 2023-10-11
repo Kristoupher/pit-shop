@@ -29,7 +29,4 @@ async function main(fullname, mail, subject, message) {
     return 'Votre message a bien été envoyé';
 }
 
-
-main().catch(console.error);
-
 export default main;
