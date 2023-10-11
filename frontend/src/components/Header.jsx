@@ -69,7 +69,9 @@ const Header = () => {
                 </Link>
                 {/*Menu pour la version mobile*/}
                 <div className="flex flex-center lg-hidden btns-mobile">
-                    <Link to="/admin" title="Panneau d'administration" className={`${url === 'admin' ? 'active' : ''}`}><User2 size={35} color="#2E2E2E" strokeWidth={3}/></Link>
+                    {
+                        userInfo && <Link to="/admin" title="Panneau d'administration" className={`${url === 'admin' ? 'active' : ''}`}><User2 size={35} color="#2E2E2E" strokeWidth={3}/></Link>
+                    }
                     <div id="nav-toggle" className={`${toggle ? 'active' : ''}`} onClick={() => setToggle(!toggle)}></div>
                 </div>
                 <form>
